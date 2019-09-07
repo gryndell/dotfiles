@@ -1,0 +1,42 @@
+#!/usr/bin/perl
+# Find out if there are any updates.
+
+use strict;
+use warnings;
+use utf8;
+use open ':std', ':encoding(UTF-8)';
+
+my $locked;
+my $pkgupd;
+my $pkgcnt;
+my $status;
+my $flags;
+my $num;
+my $uid;
+my $gid;
+my $size;
+my $updated;
+my $logfile = `ls -l --time-style +%F /var/log/pacman.log`;
+my $today = `date +%F`;
+chop($logfile);
+chop($today);
+($flags, $num, $uid, $gid, $size, $updated) = split(/ /, $logfile);
+
+if ($updated lt $today) {
+    $locked = `sudo ls /var/lib/pacman/db.lck > /tmp/lockcheck 2> /tmp/lockerror; echo \$?`;
+    $pkgupd = `sudo pacman -Sy > /home/ralph/logs/pacman.log 2> /home/ralph/logs/pacman.err`;
+    $pkgcnt = `sudo pacman -Qu | wc -l`;
+
+    if ($locked == "2") {
+        if ($pkgcnt == "0") {
+            $status = "";
+        } else {
+            $status = " $pkgcnt";
+        }
+    }
+} else {
+    $status = "";
+}
+
+printf "$status\n";
+

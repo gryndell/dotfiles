@@ -1,0 +1,17 @@
+#!/bin/bash
+# Need to find a Debian non-Ubuntu way to do this
+# count how many updates we have got
+ups=`/usr/lib/update-notifier/apt-check --human-readable | head -1 | awk '{print $1;}'`
+ 
+# print the results
+if [ "$ups" -eq "1" ]
+then
+  echo "There is 1 update"
+elif [ "$ups" -gt "1" ]
+then
+  echo "There are $ups updates"
+elif [ -f /var/run/reboot-required ]; then
+  echo 'Reboot required'
+else
+  echo "Up to date"
+fi

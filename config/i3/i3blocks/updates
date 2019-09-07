@@ -1,0 +1,55 @@
+#!/usr/bin/perl
+# Find out if there are any updates.
+
+use strict;
+use warnings;
+use utf8;
+use open ':std', ':encoding(UTF-8)';
+
+my $locked;
+my $pkgupd;
+my $pkgcnt;
+# Default value of status
+my $status = "";
+my $flags;
+my $db;
+my $num;
+my $uid;
+my $gid;
+my $size;
+my $updated = "";
+# Get a list of the databases with timestamps
+my @dbfile = `ls -l --time-style +%F /var/lib/pacman/sync/*.db`;
+# Get today's date for comparison
+my $today = `date +%F`;
+my $doupdate = "no";
+chop($today);
+
+foreach my $line (@dbfile) {
+    chop($line);
+    ($flags, $num, $uid, $gid, $size, $updated, $db) = split(/ +/, $line);
+    # If not updated today and no pacman lock file, then update the databases
+    if ($updated lt $today) {
+        $locked = `sudo ls /var/lib/pacman/db.lck > /tmp/lockcheck 2> /tmp/lockerror; echo \$?`;
+        chop($locked);
+        if ($locked == "2") {
+            $pkgupd = `sudo pacman -Sy > /home/ralph/logs/pacman.log 2> /home/ralph/logs/pacman.err`;
+        }
+    }
+}
+
+$locked = `sudo ls /var/lib/pacman/db.lck > /tmp/lockcheck 2> /tmp/lockerror; echo \$?`;
+chop($locked);
+if ($locked == 2) {
+    # get a count of the packages available for update
+    $pkgcnt = `sudo pacman -Qu | wc -l`;
+    chop($pkgcnt);
+    if ($pkgcnt == 0) {
+        $status = "";
+    } else {
+        $status = " $pkgcnt";
+    }
+}
+
+print "$status\n";
+

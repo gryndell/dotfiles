@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+""" Return the phase of the moon """
+from datetime import datetime
+from datetime import date
+from decimal import Decimal, localcontext, ROUND_DOWN
+
+
+def truncate(number, places):
+    """ Truncate a float to *places* places """
+    if not isinstance(places, int):
+        raise ValueError("Decimal places must be an integer.")
+    if places < 1:
+        raise ValueError("Decimal places must be at least 1.")
+    # If you want to truncate to 0 decimal places, just do int(number).
+
+    with localcontext() as context:
+        context.rounding = ROUND_DOWN
+        exponent = Decimal(str(10 ** - places))
+        return Decimal(str(number)).quantize(exponent).to_eng_string()
+
+
+def get_phase():
+    """ Get the phase of the moon as a number from 0 to 8 """
+    last_new = date(2019, 3, 6)
+    now = datetime.now()
+    today = date(now.year, now.month, now.day)
+    new_moons = (today - last_new).days / 29.53
+    moonday = (new_moons - int(new_moons)) * 29.53
+    if moonday < 1:
+        phase = "🌑"
+    else:
+        if moonday < 4:
+            phase = "🌘"
+        else:
+            if moonday < 8:
+                phase = "🌗"
+            else:
+                if moonday < 14:
+                    phase = "🌖"
+                else:
+                    if moonday < 16:
+                        phase = "🌕"
+                    else:
+                        if moonday < 18:
+                            phase = "🌔"
+                        else:
+                            if moonday < 22:
+                                phase = "🌓"
+                            else:
+                                phase = "🌒"
+    return phase
+
+print(get_phase())
+
+# if [ $phase -lt 5 ] ; then
+#     glyph="🌑"
+# elif [ $phase -lt 45 ] ; then
+#     glyph="🌘"
+# elif [ $phase -lt 55 ] ; then
+#     glyph="🌗"
+# elif [ $phase -lt 95 ] ; then
+#     glyph="🌖"
+# else
+#     glyph="full"
+# fi
+# echo "The moon is currently $glyph with $phase% illuminated."

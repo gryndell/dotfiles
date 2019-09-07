@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Get a list of block devices connected
+# disks=`lsblk | grep '^[a-z].*disk' | wc | cut -d ' ' -f 7`
+disks=`lsblk | grep '^[a-z].*disk' | cut -d ' ' -f 1`
+echo $disks
+for disk in $disks; do
+    list="$list $disk"
+done
+echo $list

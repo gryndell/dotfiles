@@ -1,0 +1,26 @@
+#!/bin/bash
+#===============================================================================
+#
+#          FILE: exit_menu.sh
+#
+#         USAGE: ./exit_menu.sh
+#
+#   DESCRIPTION:
+#
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: Alfred Pengelly (), alfred.pengelly@gmail.com
+#  ORGANIZATION:
+#       CREATED: 25/03/19 18:56:49
+#      REVISION:  ---
+#===============================================================================
+
+while [ "$select" != "NO" -a "$select" != "YES" ]; do
+    select=$(echo -e 'NO\nYES' | dmenu -nb '#151515' -nf '#999999' -sb '#f00060' -sf '#000000' -fn '-*-*-medium-r-normal-*-*-*-*-*-*-100-*-*' -i -p "Exit i3?")
+    [ -z "$select" ] && exit 0
+done
+[ "$select" = "NO" ] && exit 0
+i3-msg exit
+

@@ -1,0 +1,55 @@
+#!/usr/bin/perl
+
+# keyboard: cycle through keyboard settings and indicate
+# current setting.
+
+use strict;
+use warnings;
+use utf8;
+use Getopt::Long;
+
+# global variables
+my $rules;
+my $model;
+my $layout;
+my $options;
+my $swapon = "";
+my $state;
+my $button;
+
+sub get_stat {
+    open (KBSTAT, "setxkbmap -query |") or die;
+    while (<KBSTAT>) {
+        if (/^rules: *(.*)$/) {
+            $rules = $1;
+        }
+        if (/^model: *(.*)$/) {
+            $model = $1;
+        }
+        if (/^layout: *(.*)$/) {
+            $layout = $1;
+        }
+        if (/^options: *(.*)$/) {
+            $options = $1;
+            if ($options =~ /swapesc/) {
+                $swapon = "yes";
+            } else {
+                $swapon = "no";
+            }
+        }
+    } # while
+    printf "%s\n", $layout;
+} # get_stat
+
+$button = $ENV{"BLOCK_BUTTON"} || 0;
+
+get_stat();
+if ($button == 1) {
+    if ($layout eq "us") {
+        system("setxkbmap -layout 'us(intl)' -option caps:swapescape");
+    } else {
+        system("setxkbmap -layout 'us' -option caps:swapescape");
+    }
+    get_stat();
+}
+
