@@ -193,11 +193,11 @@ endif
 " ColorColumn highlight
 highlight ColorColumn ctermbg=darkgrey
 " StatusLine
-highlight StatusLine cterm=NONE
+highlight StatusLine  cterm=NONE
 highlight SL_Path     ctermbg=darkgrey ctermfg=lightgrey
 highlight SL_Path_Sep ctermfg=darkgrey ctermbg=grey
 highlight SL_Type     ctermbg=grey     ctermfg=black
-highlight SL_Type_Sep ctermbg=grey     ctermfg=darkgrey
+highlight SL_Type_Sep ctermbg=darkgrey ctermfg=grey
 highlight SL_Pos      ctermbg=darkgrey ctermfg=lightgrey
 
 " Set autoindent
@@ -333,36 +333,52 @@ let g:UltisnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltisnipsJumpBackwardTrigger = '<s-tab>'
 
+" Some useful glyphs
+let g:line_vertical = '│'
+let g:slant_right   = '╱'
+let g:slant_left    = '╲'
+let g:chevron_sr    = ''
+let g:chevron_sl    = ''
+let g:chevron_or    = ''
+let g:chevron_ol    = ''
+let g:logo_ruby     = ''
+let g:logo_java     = ''
+let g:logo_js       = ''
+let g:logo_md       = ''
+let g:logo_cpp      = ''
+let g:logo_c        = ''
+let g:logo_hask     = ''
+let g:logo_lua      = ''
+let g:logo_go       = ''
+let g:logo_html     = ''
+let g:logo_python   = ''
+let g:logo_php      = ''
+let g:logo_code     = ''
+let g:logo_vim      = ''
+let g:logo_win      = ''
+let g:logo_apple    = ''
+let g:logo_linux    = ''
+
 " Base Settings }}}
 
 " ┏━┓╺┳╸┏━┓╺┳╸╻ ╻┏━┓   ╻  ╻┏┓╻┏━╸
 " ┗━┓ ┃ ┣━┫ ┃ ┃ ┃┗━┓   ┃  ┃┃┗┫┣╸
 " ┗━┛ ╹ ╹ ╹ ╹ ┗━┛┗━┛   ┗━╸╹╹ ╹┗━╸
 " {{{ Status Line
-" " Set the status line to something useful
-" set statusline=%F\ %m
-" set statusline+=\ %{ShowFileType()}
-" set statusline+=\ %{ShowFileFormat()}
-" set statusline+=\ %{&fileencoding}\ %r
-" set statusline+=%{ShowSpell()}
-" set statusline+=%=\ L:%l/%L\ %c\ (%p%%)\ 0x%04.B
-" set laststatus=2
-" set showtabline=2
-
 " Set the status line to something useful
 set statusline=%#SL_Path#
 set statusline+=%F\ %m
 set statusline+=%#SL_Path_Sep#
-set statusline+=
+set statusline+=%{g:chevron_sr}
 set statusline+=%#SL_Type#
 set statusline+=\ %{ShowFileType()}
 set statusline+=\ %{ShowFileFormat()}
 set statusline+=\ %{&fileencoding}\ %r
 set statusline+=%{ShowSpell()}
 set statusline+=%=%#SL_Type_Sep#
-set statusline+=
+set statusline+=%{g:chevron_sr}
 set statusline+=%#SL_Pos#
-set statusline+=\ L:%l/%L\ %c\ (%p%%)\ 0x%04.B
+set statusline+=\ ℓ:%l/%L\ %c\ (%p%%)\ 0x%04.B
 set laststatus=2
 set showtabline=2
 
@@ -496,10 +512,12 @@ function! CheckModified() abort
     highlight SL_Path ctermfg=green
     highlight SL_Type ctermfg=green
     highlight SL_Pos ctermfg=green
+    highlight TabLineSel ctermfg=green
   else
     highlight SL_Path ctermfg=lightgrey
     highlight SL_Type ctermfg=black
     highlight SL_Pos  ctermfg=lightgrey
+    highlight TabLineSel ctermfg=lightgrey
   endif
 endfunction
 
@@ -515,47 +533,78 @@ endfunction
 " Get file format
 function! ShowFileFormat()
   if &ff == 'dos'
-    return ''
+    return g:logo_win
   elseif &ff == 'mac'
-    return ''
+    return g:logo_apple
   else
-    return ''
+    return g:logo_linux
 endfunction
 
 " Show filetype glyph
 function! ShowFileType()
   if &ft == 'c'
-    return ''
+    return g:logo_c
   elseif &ft == 'cpp'
-    return ''
+    return g:logo_cpp
   elseif &ft == 'go'
-    return ''
+    return g:logo_go
   elseif &ft == 'haskell'
-    return ''
+    return g:logo_hask
   elseif &ft == 'html'
-    return ''
+    return g:logo_html
   elseif &ft == 'java'
-    return ''
+    return g:logo_java
   elseif &ft == 'javascript'
-    return ''
+    return g:logo_js
   elseif &ft == 'lua'
-    return ''
+    return g:logo_lua
   elseif &ft == 'markdown'
-    return ''
+    return g:logo_md
   elseif &ft == 'php'
-    return ''
+    return g:logo_php
   elseif &ft == 'python'
-    return ''
+    return g:logo_python
   elseif &ft == 'ruby'
-    return ''
+    return g:logo_ruby
   elseif &ft == 'vim'
-    return ''
+    return g:logo_vim
   else
     return '[' . &ft . ']'
   endif
 endfunction
 
-" │╱╲
+" Custom tabline WIP
+function! MyTabLine()
+  let s = ''
+  for i in range(bufnr('$'))
+    " select the highlighting
+    if i + 1 == bufnr('.')
+      let s .= '%#TabLineSel#'
+    else
+      let s .= '%#TabLine#'
+    endif
+
+    let s .= bufname(i)
+
+    if i == bufnr('.')
+      let s .= '%#TabChevronSolid#' . g:chevron_sr
+    else
+      let s .= g:chevron_or
+    endif
+
+  endfor
+
+  " after the last tab fill with TabLineFill
+  let s .= '%#TabLineFill#'
+
+  " right-align the label to close the current tab page
+  if tabpagenr('$') > 1
+    let s .= '%=%#TabLine#%999Xbuffers'
+  endif
+
+  return s
+endfunction
+
 " Functions }}}
 
 " ┏┳┓┏━┓┏━┓┏━┓╻┏┓╻┏━╸┏━┓
