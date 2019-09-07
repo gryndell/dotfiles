@@ -142,16 +142,6 @@ set list
 " Get rid of the delay when pressing O (for example)
 set timeout ttimeout timeoutlen=1000 ttimeoutlen=100
 
-" Set the status line to something useful
-set statusline=%F\ %m
-set statusline+=\ %{ShowFileType()}
-set statusline+=\ %{ShowFileFormat()}
-set statusline+=\ %{&fileencoding}\ %r
-set statusline+=%{ShowSpell()}
-set statusline+=%=\ L:%l/%L\ %c\ (%p%%)\ 0x%04.B
-set laststatus=2
-set showtabline=2
-
 " UTF encoding
 set encoding=utf-8 fileencodings=utf-8,latin1,ucs-bom,default
 
@@ -203,7 +193,12 @@ endif
 " ColorColumn highlight
 highlight ColorColumn ctermbg=darkgrey
 " StatusLine
-highlight StatusLine cterm=NONE ctermfg=grey
+highlight StatusLine cterm=NONE
+highlight SL_Path     ctermbg=darkgrey ctermfg=lightgrey
+highlight SL_Path_Sep ctermfg=darkgrey ctermbg=grey
+highlight SL_Type     ctermbg=grey     ctermfg=black
+highlight SL_Type_Sep ctermbg=grey     ctermfg=darkgrey
+highlight SL_Pos      ctermbg=darkgrey ctermfg=lightgrey
 
 " Set autoindent
 set autoindent
@@ -340,6 +335,39 @@ let g:UltisnipsJumpBackwardTrigger = '<s-tab>'
 
 " Base Settings }}}
 
+" ┏━┓╺┳╸┏━┓╺┳╸╻ ╻┏━┓   ╻  ╻┏┓╻┏━╸
+" ┗━┓ ┃ ┣━┫ ┃ ┃ ┃┗━┓   ┃  ┃┃┗┫┣╸
+" ┗━┛ ╹ ╹ ╹ ╹ ┗━┛┗━┛   ┗━╸╹╹ ╹┗━╸
+" {{{ Status Line
+" " Set the status line to something useful
+" set statusline=%F\ %m
+" set statusline+=\ %{ShowFileType()}
+" set statusline+=\ %{ShowFileFormat()}
+" set statusline+=\ %{&fileencoding}\ %r
+" set statusline+=%{ShowSpell()}
+" set statusline+=%=\ L:%l/%L\ %c\ (%p%%)\ 0x%04.B
+" set laststatus=2
+" set showtabline=2
+
+" Set the status line to something useful
+set statusline=%#SL_Path#
+set statusline+=%F\ %m
+set statusline+=%#SL_Path_Sep#
+set statusline+=
+set statusline+=%#SL_Type#
+set statusline+=\ %{ShowFileType()}
+set statusline+=\ %{ShowFileFormat()}
+set statusline+=\ %{&fileencoding}\ %r
+set statusline+=%{ShowSpell()}
+set statusline+=%=%#SL_Type_Sep#
+set statusline+=
+set statusline+=%#SL_Pos#
+set statusline+=\ L:%l/%L\ %c\ (%p%%)\ 0x%04.B
+set laststatus=2
+set showtabline=2
+
+" }}} Status Line
+
 " ┏━╸╻ ╻┏┓╻┏━╸╺┳╸╻┏━┓┏┓╻┏━┓
 " ┣╸ ┃ ┃┃┗┫┃   ┃ ┃┃ ┃┃┗┫┗━┓
 " ╹  ┗━┛╹ ╹┗━╸ ╹ ╹┗━┛╹ ╹┗━┛
@@ -465,9 +493,13 @@ endfunction
 " Check for modified
 function! CheckModified() abort
   if &modified
-    highlight StatusLine ctermfg=green
+    highlight SL_Path ctermfg=green
+    highlight SL_Type ctermfg=green
+    highlight SL_Pos ctermfg=green
   else
-    highlight StatusLine ctermfg=grey
+    highlight SL_Path ctermfg=lightgrey
+    highlight SL_Type ctermfg=black
+    highlight SL_Pos  ctermfg=lightgrey
   endif
 endfunction
 
@@ -661,9 +693,6 @@ nnoremap <leader>ac :call AutoCorrect()<cr>
 " inoremap < <><Esc>i
 " inoremap ' ''<Esc>i
 " inoremap " ""<Esc>i
-
-" Paste from default register
-inoremap <silent> <c-v> <c-r>"
 
 " Repeat last find+operation
 nnoremap <silent> <leader>r @='n.'<cr>
