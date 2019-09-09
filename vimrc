@@ -622,9 +622,6 @@ nnoremap <silent> <leader>th :terminal<cr>
 " Command to use sudo when needed
 cnoremap <silent> w!! %!sudo tee > /dev/null %
 
-" Map w to w!
-cnoremap <silent> w w!
-
 " Command to compile Latex documents
 noremap <silent> <f10> :VimtexCompile<cr>
 
