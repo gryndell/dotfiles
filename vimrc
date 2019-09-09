@@ -135,7 +135,7 @@ set formatoptions+=nj1
 " Limit what is saved of a view
 set viewoptions=folds,options,cursor,curdir
 
-" Highlight trailing whitespace and any tabs
+" Identify trailing whitespace and any tabs
 set listchars=tab:»-,trail:·,nbsp:␣,extends:→,precedes:←
 set list
 
@@ -193,7 +193,8 @@ endif
 " ColorColumn highlight
 highlight ColorColumn ctermbg=darkgrey
 " StatusLine
-highlight StatusLine  cterm=NONE
+highlight StatusLine   cterm=NONE guibg=darkgrey
+highlight StatusLineNC cterm=NONE guibg=black
 highlight SL_Path     ctermbg=darkgrey ctermfg=lightgrey
 highlight SL_Path_Sep ctermfg=darkgrey ctermbg=grey
 highlight SL_Type     ctermbg=grey     ctermfg=black
@@ -621,6 +622,9 @@ nnoremap <silent> <leader>th :terminal<cr>
 " Command to use sudo when needed
 cnoremap <silent> w!! %!sudo tee > /dev/null %
 
+" Map w to w!
+cnoremap <silent> w w!
+
 " Command to compile Latex documents
 noremap <silent> <f10> :VimtexCompile<cr>
 
@@ -647,6 +651,10 @@ nnoremap <silent> <up>    <c-w>k
 nnoremap <silent> <down>  <c-w>j
 nnoremap <silent> <left>  <c-w>h
 nnoremap <silent> <right> <c-w>l
+nnoremap <silent> <c-up>    :resize -1<cr>
+nnoremap <silent> <c-down>  :resize +1<cr>
+nnoremap <silent> <c-left>  :vertical resize -1<cr>
+nnoremap <silent> <c-right> :vertical resize +1<cr>
 
 " Move lines vertically in visual mode
 xnoremap <silent> K :call Move_Up()<cr>
@@ -661,6 +669,8 @@ xnoremap <silent> > >gv
 xnoremap <silent> < <gv
 
 " switch buffer
+nnoremap <c-PageDown> :bn<cr>
+nnoremap <c-PageUp> :bp <cr>
 nnoremap <silent> <c-j> :bn<cr>
 nnoremap <silent> <c-k> :bp<cr>
 
@@ -808,7 +818,7 @@ augroup file_types
     \ call matchadd('ColorColumn', '\%80v', 100)
   autocmd FileType tex,markdown
     \ call matchadd('ColorColumn', '\%80v', 100)
-  autocmd FileType text,vimwiki,html
+  autocmd FileType text,vimwiki,html,progress
     \ call matchadd('ColorColumn', '\%80v', 100)
 
   " Wrapping and formatting
@@ -872,6 +882,7 @@ augroup file_types
   autocmd FileType vimwiki autocmd BufWritePost <buffer> silent Vimwiki2HTML
   " Check file in shellcheck
   autocmd FileType sh nnoremap <silent> <leader>s :!clear && shellcheck %<cr>
+  autocmd Filetype progress setlocal fdm=indent wrap sw=4 ts=4
 
 
   " Run xrdb whenever .Xresources is updated
