@@ -316,7 +316,7 @@ endif
 let g:vimwiki_folding = 'syntax'
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_listsyms = '✗○◐●✔'
+let g:vimwiki_listsyms = ' ○◐●✔'
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1, 'index': 'index', 'path_html': '~/vimwiki_html', 'auto_export': 1}]
 highlight VimwikiHeader1 ctermfg=red
 highlight VimwikiHeader2 ctermfg=yellow
@@ -681,6 +681,8 @@ nnoremap <silent> <c-j> :bn<cr>
 nnoremap <silent> <c-k> :bp<cr>
 
 " <F5> to insert date
+nnoremap <silent> <f4> "=strftime('%H:%M')<cr>p
+inoremap <silent> <f4> <c-r>=strftime('%H:%M')<cr>
 nnoremap <silent> <f5> "=strftime('%F')<cr>p
 inoremap <silent> <f5> <c-r>=strftime('%F')<cr>
 
@@ -691,6 +693,15 @@ nnoremap <silent> <f6> :UndotreeToggle<cr>
 nnoremap <silent> <leader>y :Calendar -view=year<cr>
 nnoremap <silent> <leader>d :Calendar -view=day<cr>
 nnoremap <silent> <leader>k :Calendar -view=clock<cr>
+
+" (Progress/QAD) turn cursor-down trigger into cursor-up trigger
+nnoremap <leader>D V/^end<cr>:s/first/last/<cr>gv:s/gt/lt/<cr>gv:s/down/up/<cr>:nohls<cr>
+
+" (Temporarily) make Edifact document easier to read
+nnoremap <leader>E :set nospell<cr>:%s/\v\~/\r/g<cr>
+
+" Rename Leadtec EDI files to remove trailing part
+nnoremap <leader>L :e rename.txt<cr>:r !ls Leadtec_*.txt.*<cr>:%s/\v(Leadtec_.*\.txt)\..*/mv & \1/<cr>:w !sh<cr>
 
 " Quotes around
 nnoremap <silent> <leader>" viw<esc>a"<esc>bi"<esc>lel
