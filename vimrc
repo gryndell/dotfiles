@@ -261,11 +261,11 @@ let g:gist_open_browser_after_post = 1
 " https://github.com/tpope/vim-fugitive
 
 " Vimtex settings
-let g:osenv=environ()
 let g:tex_flavor='latex'
 let g:vimtex_view_enabled=1
 let g:vimtex_view_automatic=1
-if osenv['OS'] ==? 'linux'
+" Check that we are running in X
+if has_key(environ(), 'XDG_SESSION_PATH')
   let g:vimtex_view_method='zathura'
 endif
 let g:vimtex_quickfix_mode=1
