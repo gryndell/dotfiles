@@ -261,10 +261,13 @@ let g:gist_open_browser_after_post = 1
 " https://github.com/tpope/vim-fugitive
 
 " Vimtex settings
+let g:osenv=environ()
 let g:tex_flavor='latex'
 let g:vimtex_view_enabled=1
 let g:vimtex_view_automatic=1
-let g:vimtex_view_method='zathura'
+if osenv['OS'] ==? 'linux'
+  let g:vimtex_view_method='zathura'
+endif
 let g:vimtex_quickfix_mode=1
 let g:vimtex_fold_types = {
     \ 'preamble': {'enabled': 1},
@@ -314,7 +317,13 @@ let g:vimwiki_folding = 'syntax'
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_listsyms = '✗○◐●✔'
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1, 'index': 'index'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1, 'index': 'index', 'path_html': '~/vimwiki_html', 'auto_export': 1}]
+highlight VimwikiHeader1 ctermfg=red
+highlight VimwikiHeader2 ctermfg=yellow
+highlight VimwikiHeader3 ctermfg=green
+highlight VimwikiHeader4 ctermfg=cyan
+highlight VimwikiHeader5 ctermfg=blue
+highlight VimwikiHeader6 ctermfg=magenta
 
 " Fill Characters
 if has('folding')
@@ -510,14 +519,14 @@ endfunction
 " Check for modified
 function! CheckModified() abort
   if &modified
-    highlight SL_Path ctermfg=green
-    highlight SL_Type ctermfg=green
-    highlight SL_Pos ctermfg=green
+    " highlight SL_Path ctermfg=green
+    " highlight SL_Type ctermfg=green
+    " highlight SL_Pos ctermfg=green
     highlight TabLineSel ctermfg=green
   else
-    highlight SL_Path ctermfg=lightgrey
-    highlight SL_Type ctermfg=black
-    highlight SL_Pos  ctermfg=lightgrey
+    " highlight SL_Path ctermfg=lightgrey
+    " highlight SL_Type ctermfg=black
+    " highlight SL_Pos  ctermfg=lightgrey
     highlight TabLineSel ctermfg=lightgrey
   endif
 endfunction
@@ -884,6 +893,31 @@ augroup file_types
 
   " Run xrdb whenever .Xresources is updated
   autocmd BufWritePost ~/.Xresources silent! !xrdb %
+
+  " Settings for Progress
+  autocmd FileType progress setlocal textwidth=79
+  autocmd FileType progress iabbrev ava available
+  autocmd FileType progress iabbrev cha character
+  autocmd FileType progress iabbrev dec decimal
+  autocmd FileType progress iabbrev def define
+  autocmd FileType progress iabbrev fun function
+  autocmd FileType progress iabbrev ini initial
+  autocmd FileType progress iabbrev inp input
+  autocmd FileType progress iabbrev int integer
+  autocmd FileType progress iabbrev log logical
+  autocmd FileType progress iabbrev mes message
+  autocmd FileType progress iabbrev noa no-apply
+  autocmd FileType progress iabbrev noe no-error
+  autocmd FileType progress iabbrev nol no-lock
+  autocmd FileType progress iabbrev nom no-message
+  autocmd FileType progress iabbrev nop no-pause
+  autocmd FileType progress iabbrev nou no-undo
+  autocmd FileType progress iabbrev par parameter
+  autocmd FileType progress iabbrev pro procedure
+  autocmd FileType progress iabbrev rep repeat
+  autocmd FileType progress iabbrev ret return
+  autocmd FileType progress iabbrev var variable
+  autocmd FileType progress iabbrev do: do:<cr><bs>end.<space>/**<esc>ko
 augroup end
 
 " Highlight words to avoid in tech writing
