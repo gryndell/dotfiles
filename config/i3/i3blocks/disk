@@ -36,6 +36,9 @@ END {
 	if (100 - use < alert_low) {
 		# color
 		print "#FF0000"
-	}
+  } else {
+    # color
+    print "#00FF00"
+  }
 }
 '
