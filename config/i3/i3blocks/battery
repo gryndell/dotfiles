@@ -65,9 +65,10 @@ if ($percent > 90) {
 } else {
     $full_text = "";
     if ($status eq 'Discharging') {
-        system("/usr/bin/notify-send 'Battery Low. Prepare for Shutdown...'");
-        system("/usr/bin/sleep 120");
-        system("sudo shutdown -h now");
+        # system("/usr/bin/notify-send 'Battery Low. Prepare for Shutdown...'");
+        # system("/usr/bin/sleep 120");
+        # system("sudo shutdown -h now");
+        system("/usr/bin/notify-send 'Battery Critical. Shutdown ASAP!'");
     }
 }
 
