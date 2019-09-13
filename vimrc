@@ -890,7 +890,7 @@ augroup file_types
   autocmd BufRead,BufNewFile *.h   setlocal ft=c
   autocmd BufRead,BufNewFile *.tsv
     \ setlocal shiftwidth=20 tabstop=20 softtabstop=20 noexpandtab
-  autocmd BufRead,BufNewFile *.ms  setlocal ft=nroff
+  autocmd BufRead,BufNewFile *.ms,*.me,*.mom setlocal ft=nroff
   autocmd BufRead,BufNewFile *.c,*.py,*.js,*.java,*.vim,*rc
     \ run :IndentLinesEnable<cr>
   " autocmd BufWritePost       *.c,*.py,*.js,*.java silent! !ctags -R &
