@@ -583,7 +583,7 @@ function! ShowFileType()
   endif
 endfunction
 
-" Custom tabline WIP
+" Custom tabline: WIP to replace plugin buftabline
 function! MyTabLine()
   let s = ''
   for i in range(bufnr('$'))
@@ -613,6 +613,12 @@ function! MyTabLine()
   endif
 
   return s
+endfunction
+
+function! NroffPrep()
+  if filereadable(glob("~/.groff.vimrc"))
+    source ~/.groff.vimrc
+  endif
 endfunction
 
 " Functions }}}
@@ -811,6 +817,7 @@ augroup file_types
   autocmd FileType nroff setlocal tw=79 sw=4 wrap
   autocmd FileType nroff :let b:nroff_is_groff=1
   autocmd FileType nroff :let b:nroff_space_errors = 1
+  autocmd FileType nroff :call NroffPrep()
 
   " Text settings
   autocmd FileType tex,vimwiki,text
