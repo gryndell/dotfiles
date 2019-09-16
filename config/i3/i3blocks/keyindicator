@@ -22,7 +22,7 @@ use Getopt::Long;
 use File::Basename;
 
 # Default values
-my $indicator = $ENV{BLOCK_INSTANCE} || "CAPS";
+my $indicator = $ENV{BLOCK_INSTANCE} || $ENV{KEY} || "CAPS";
 my $color_on  = "#00FF00";
 my $color_off = "#222222";
 my $glyph = "";
