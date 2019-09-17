@@ -153,6 +153,9 @@ set autoread
 
 " Use system clipboard
 set clipboard+=unnamed
+if has('unnamedplus')
+  set clipboard+=unnamedplus
+endif
 
 " Don't show intro
 set shortmess+=I
