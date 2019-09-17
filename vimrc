@@ -321,6 +321,7 @@ let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_listsyms = ' ○◐●✔'
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1, 'index': 'index', 'path_html': '~/vimwiki/html', 'auto_export': 1}]
+endif
 highlight VimwikiHeader1 ctermfg=red
 highlight VimwikiHeader2 ctermfg=yellow
 highlight VimwikiHeader3 ctermfg=green
@@ -910,7 +911,6 @@ augroup file_types
     \ setlocal textwidth=0 shiftwidth=2 tabstop=2 expandtab
   autocmd BufRead,BufNewFile *.wiki run :nunmap <buffer> o<cr>
   autocmd FileType crontab setlocal backupcopy=yes
-  autocmd FileType vimwiki autocmd BufWritePost <buffer> silent Vimwiki2HTML
   " Check file in shellcheck
   autocmd FileType sh nnoremap <silent> <leader>s :!clear && shellcheck %<cr>
   autocmd Filetype progress setlocal fdm=indent wrap sw=4 ts=4
