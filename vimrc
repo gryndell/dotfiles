@@ -135,7 +135,7 @@ set formatoptions+=nj1
 " Limit what is saved of a view
 set viewoptions=folds,options,cursor,curdir
 
-" Identify trailing whitespace and any tabs
+" Identify trailing whitespace, tabs etc.
 set listchars=tab:»-,trail:·,nbsp:␣,extends:→,precedes:←
 set list
 
@@ -247,9 +247,6 @@ let g:showbreak = '→ '
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 
-" Code block syntax highlighting in Markdown
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
-
 " Ack (uses Ag behind the scenes)
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
@@ -263,70 +260,9 @@ let g:gist_open_browser_after_post = 1
 " https://github.com/vim-scripts/Gist.vim
 " https://github.com/tpope/vim-fugitive
 
-" Vimtex settings
-let g:tex_flavor='latex'
-let g:vimtex_view_enabled=1
-let g:vimtex_view_automatic=1
-" Check that we are running in X
-if has_key(environ(), 'XDG_SESSION_PATH')
-  let g:vimtex_view_method='zathura'
-endif
-let g:vimtex_quickfix_mode=1
-let g:vimtex_fold_types = {
-    \ 'preamble': {'enabled': 1},
-    \ 'sections': {'enabled': 1},
-    \ 'comments': {'enabled': 1},
-    \ 'markers': {'enabled': 1},
-    \ 'envs': {'enabled': 1},
-    \ 'env_options': {'enabled': 1},
-    \ 'cmd_single': {'enabled': 1},
-    \ 'cmd_single_opt': {'enabled': 1},
-    \ 'cmd_multi': {'enabled': 1},
-    \ 'cmd_addplot': {'enabled': 1}
-    \}
-let g:vimtex_compiler_latexmk = {
-    \ 'backend' : 'jobs',
-    \ 'background' : 1,
-    \ 'build_dir' : '',
-    \ 'callback' : 1,
-    \ 'continuous' : 0,
-    \ 'executable' : 'latexmk',
-    \ 'options' : [
-    \   '-verbose',
-    \   '-file-line-error',
-    \   '-synctex=1',
-    \   '-interaction=nonstopmode',
-    \ ],
-    \}
-" let g:tex_conceal='abdmg'
-
-" ALE: Asynchronous Linter Engine
-" For Javascript files, use `eslint` (and only eslint)
-let g:ale_linters = {
-      \   'javascript': ['eslint'],
-      \}
-
-" debug compilation in C
-let $CFLAGS='-Wall -g'
-" "release" compilation in C++
-let $CXXFLAGS='-Wall -O3 -DNDEBUG -march=native'
-
 if filereadable(glob(".vimrc.local"))
   source .vimrc.local
 endif
-
-" Vimwiki
-let g:vimwiki_folding = 'syntax'
-let g:vimwiki_hl_headers = 1
-let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_listsyms = ' ○◐●✔'
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1, 'index': 'index', 'path_html': '~/vimwiki/html', 'auto_export': 1}]
-highlight VimwikiHeader1 ctermfg=red
-highlight VimwikiHeader2 ctermfg=yellow
-highlight VimwikiHeader3 ctermfg=green
-highlight VimwikiHeader4 ctermfg=cyan
-highlight VimwikiHeader5 ctermfg=blue
-highlight VimwikiHeader6 ctermfg=magenta
 
 " Fill Characters
 if has('folding')
@@ -414,7 +350,7 @@ function!ToggleNumber()
     set norelativenumber
     set nonumber
   endif
-endfunction
+endfunction " ToggleNumber
 
 function!ToggleConceal()
   if (&conceallevel == 0)
@@ -427,7 +363,7 @@ function!ToggleConceal()
     set conceallevel=0
   endif
   echo "Conceal Level is " &conceallevel
-endfunction
+endfunction " ToggleConceal
 
 " Smart Home Key
 function! SmartHome()
@@ -439,7 +375,7 @@ function! SmartHome()
     return '0'  " if at first nonblank, go to start line
   endif
   return &wrap && wincol() > 1 ? 'g^' : '^'
-endfunction
+endfunction " SmartHome
 
 " Toggle Folding Level
 function! ToggleFolded()
@@ -448,7 +384,7 @@ function! ToggleFolded()
   else
     normal! zM
   endif
-endfunction
+endfunction " ToggleFolded
 
 " Strip Trailing Whitespace
 function! StripTrailingWhitespace()
@@ -473,14 +409,14 @@ function! StripTrailingWhitespace()
     " Restore position
     call setpos('.', l:_save_pos)
   endif
-endfunction
+endfunction " StripTrailingWhitespace
 
 " Reset spelling colours when reading a new buffer
 " This works around an issue where the colorscheme is changed by .local.vimrc
 function! SetSpellingColors()
   highlight SpellBad cterm=bold ctermfg=white ctermbg=red
   highlight SpellCap cterm=bold ctermfg=red ctermbg=white
-endfunction
+endfunction " SetSpellingColors
 
 " Change colourscheme when diffing
 function! SetDiffColors()
@@ -488,13 +424,13 @@ function! SetDiffColors()
   highlight DiffDelete  cterm=bold ctermfg=white ctermbg=DarkGrey
   highlight DiffChange  cterm=bold ctermfg=white ctermbg=DarkBlue
   highlight DiffText    cterm=bold ctermfg=white ctermbg=DarkRed
-endfunction
+endfunction " SetDiffColors
 
 " Visual Move Functions from Drew Neil's vimcasts - http://vimcasts.org/episodes/bubbling-text/
 " Modified to check for line-visual mode.
 function! Visual()
   return visualmode() ==# 'V'
-endfunction
+endfunction " Visual
 " Move Up
 function! Move_Up() abort range
   let l:at_top=a:firstline == 1
@@ -503,7 +439,7 @@ function! Move_Up() abort range
     call feedkeys('gv=', 'n')
   endif
   call feedkeys('gv', 'n')
-endfunction
+endfunction " Move_Up
 " Move Down
 function! Move_Down() abort range
   let l:at_bottom=a:lastline == line('$')
@@ -512,12 +448,12 @@ function! Move_Down() abort range
     call feedkeys('gv=', 'n')
   endif
   call feedkeys('gv', 'n')
-endfunction
+endfunction " Move_Down
 
 " Go to previous spelling error and use first suggestion
 function! AutoCorrect()
     normal! ms[s1z=`s
-endfunction
+endfunction " AutoCorrect
 
 " Check for modified
 function! CheckModified() abort
@@ -532,7 +468,7 @@ function! CheckModified() abort
     " highlight SL_Pos  ctermfg=lightgrey
     highlight TabLineSel ctermfg=lightgrey
   endif
-endfunction
+endfunction " CheckModified
 
 " See if Spelling is on
 function! ShowSpell()
@@ -541,7 +477,7 @@ function! ShowSpell()
   else
     return ''
   endif
-endfunction
+endfunction " ShowSpell
 
 " Get file format
 function! ShowFileFormat()
@@ -551,7 +487,7 @@ function! ShowFileFormat()
     return g:logo_apple
   else
     return g:logo_linux
-endfunction
+  endfunction " ShowFileFormat
 
 " Show filetype glyph
 function! ShowFileType()
@@ -584,7 +520,7 @@ function! ShowFileType()
   else
     return '[' . &ft . ']'
   endif
-endfunction
+endfunction " ShowFileType
 
 " Custom tabline: WIP to replace plugin buftabline
 function! MyTabLine()
@@ -616,13 +552,7 @@ function! MyTabLine()
   endif
 
   return s
-endfunction
-
-function! NroffPrep()
-  if filereadable(glob("~/.groff.vimrc"))
-    source ~/.groff.vimrc
-  endif
-endfunction
+endfunction " MyTabLine
 
 " Functions }}}
 
@@ -639,9 +569,6 @@ nnoremap <silent> <leader>th :terminal<cr>
 
 " Command to use sudo when needed
 cnoremap <silent> w!! %!sudo tee > /dev/null %
-
-" Command to compile Latex documents
-noremap <silent> <f10> :VimtexCompile<cr>
 
 " File System Explorer (in horizontal split; called a vertical split in vim)
 nnoremap <silent> <leader>. :Vexplore<cr>:vertical-resize 28<cr>
@@ -702,9 +629,6 @@ nnoremap <silent> <f6> :UndotreeToggle<cr>
 nnoremap <silent> <leader>y :Calendar -view=year<cr>
 nnoremap <silent> <leader>d :Calendar -view=day<cr>
 nnoremap <silent> <leader>k :Calendar -view=clock<cr>
-
-" (Progress/QAD) turn cursor-down trigger into cursor-up trigger
-nnoremap <leader>D V/^end<cr>:s/first/last/<cr>gv:s/gt/lt/<cr>gv:s/down/up/<cr>:nohls<cr>
 
 " (Temporarily) make Edifact document easier to read
 nnoremap <leader>E :set nospell<cr>:%s/\v\~/\r/g<cr>
@@ -817,10 +741,6 @@ augroup file_types
     \ setlocal dictionary+=/usr/share/dict/british-english
   autocmd FileType tex,vimwiki,text setlocal thesaurus+=~/mthesaur.txt
   autocmd FileType tex,vimwiki,text setlocal complete+=,kspell
-  autocmd FileType nroff setlocal tw=79 sw=4 wrap
-  autocmd FileType nroff :let b:nroff_is_groff=1
-  autocmd FileType nroff :let b:nroff_space_errors = 1
-  autocmd FileType nroff :call NroffPrep()
 
   " Text settings
   autocmd FileType tex,vimwiki,text
@@ -829,8 +749,6 @@ augroup file_types
   autocmd FileType sh,ruby
     \ setlocal textwidth=0 shiftwidth=2 tabstop=2 expandtab
   autocmd FileType vim
-    \ setlocal textwidth=0 shiftwidth=2 tabstop=2 expandtab
-  autocmd FileType javascript
     \ setlocal textwidth=0 shiftwidth=2 tabstop=2 expandtab
   autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
   autocmd FileType html,phtml,xhtml,xml,xsl   :CloseTagEnableBuffer
@@ -868,12 +786,7 @@ augroup file_types
   autocmd FileType lua,python,sh    setlocal foldmethod=indent
   autocmd FileType c,cpp,java,vimwiki,go    setlocal foldmethod=syntax
   autocmd FileType sh,vim   setlocal foldmethod=marker
-  autocmd FileType tex      setlocal foldmethod=expr
-  autocmd FileType tex      setlocal foldexpr=vimtex#fold#level(v:lnum)
-  autocmd FileType tex      setlocal foldtext=vimtex#fold#text()
-
   " Comment out lines/sections in various file types
-  autocmd FileType javascript nnoremap <buffer> <leader>c I// <esc>
   autocmd FileType python     nnoremap <buffer> <leader>c I# <esc>
   autocmd FileType tmux,conf  nnoremap <buffer> <leader>c I# <esc>
   autocmd FileType c
@@ -881,9 +794,6 @@ augroup file_types
   autocmd FileType cpp
     \ vnoremap <buffer> <leader>c <esc>`>a*/<esc>`<i/*<esc>
   autocmd FileType vim        nnoremap <buffer> <leader>c I" <esc>
-  autocmd FileType tex        nnoremap <buffer> <leader>c I% <esc>
-  autocmd FileType tex
-    \ vnoremap <buffer> <leader>c :s/^/% /<cr>:set nohls<cr>
   autocmd BufRead,BufNewFile .Xresources nnoremap <buffer> <leader>c I! <esc>
   autocmd BufRead,BufNewFile .Xresources nnoremap <buffer> gcc I! <esc>
   autocmd BufRead,BufNewFile .Xresources
@@ -912,36 +822,9 @@ augroup file_types
   autocmd FileType crontab setlocal backupcopy=yes
   " Check file in shellcheck
   autocmd FileType sh nnoremap <silent> <leader>s :!clear && shellcheck %<cr>
-  autocmd Filetype progress setlocal fdm=indent wrap sw=4 ts=4
-
 
   " Run xrdb whenever .Xresources is updated
   autocmd BufWritePost ~/.Xresources silent! !xrdb %
-
-  " Settings for Progress
-  autocmd FileType progress setlocal textwidth=79
-  autocmd FileType progress iabbrev ava available
-  autocmd FileType progress iabbrev cha character
-  autocmd FileType progress iabbrev dec decimal
-  autocmd FileType progress iabbrev def define
-  autocmd FileType progress iabbrev fun function
-  autocmd FileType progress iabbrev ini initial
-  autocmd FileType progress iabbrev inp input
-  autocmd FileType progress iabbrev int integer
-  autocmd FileType progress iabbrev log logical
-  autocmd FileType progress iabbrev mes message
-  autocmd FileType progress iabbrev noa no-apply
-  autocmd FileType progress iabbrev noe no-error
-  autocmd FileType progress iabbrev nol no-lock
-  autocmd FileType progress iabbrev nom no-message
-  autocmd FileType progress iabbrev nop no-pause
-  autocmd FileType progress iabbrev nou no-undo
-  autocmd FileType progress iabbrev par parameter
-  autocmd FileType progress iabbrev pro procedure
-  autocmd FileType progress iabbrev rep repeat
-  autocmd FileType progress iabbrev ret return
-  autocmd FileType progress iabbrev var variable
-  autocmd FileType progress iabbrev do: do:<cr><bs>end.<space>/**<esc>ko
 augroup end
 
 " Highlight words to avoid in tech writing
