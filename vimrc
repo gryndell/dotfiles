@@ -307,6 +307,7 @@ let g:logo_vim      = ''
 let g:logo_win      = ''
 let g:logo_apple    = ''
 let g:logo_linux    = ''
+let g:logo_rust     = ''
 
 " Base Settings }}}
 
@@ -515,6 +516,8 @@ function! ShowFileType()
     return g:logo_python
   elseif &ft == 'ruby'
     return g:logo_ruby
+  elseif &ft == 'rust'
+    return g:logo_rust
   elseif &ft == 'vim'
     return g:logo_vim
   else
