@@ -282,6 +282,13 @@ let g:UltisnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltisnipsJumpBackwardTrigger = '<s-tab>'
 
+" Vimwiki settings
+let g:vimwiki_folding = 'syntax'
+let g:vimwiki_hl_headers = 1
+let g:vimwiki_hl_cb_checked = 2
+let g:vimwiki_listsyms = ' ○◐●✔'
+let g:vimwiki_list = [{'path': '/cygdrive/h/vimwiki/', 'auto_toc': 1, 'index': 'index', 'path_html': '/cygdrive/h/vimwiki/html', 'auto_export': 1}]
+
 " Some useful glyphs
 let g:line_vertical = '│'
 let g:slant_right   = '╱'
