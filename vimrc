@@ -45,6 +45,7 @@ call minpac#add('freitass/todo.txt-vim') " Syntax highlighting for todo.txt file
 call minpac#add('mbbill/undotree') " Undo tree visualisation
 call minpac#add('alvan/vim-closetag') " Automatically close tags in html
 call minpac#add('mboughaba/i3config.vim') " i3 config sytax
+call minpac#add('rust-lang/rust.vim') " Configuration for Rust
 
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
