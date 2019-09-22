@@ -12,7 +12,7 @@ def get_glyph(in_desc, in_hour):
     wglyph = '&#61829;'
     if re.match('.*clouds.*', in_desc):
         if (in_hour >= 6 and in_hour < 18):
-            wglyph = '&#61620'
+            wglyph = '&#61620;'
         else:
             wglyph = '&#61619;'
     else:
