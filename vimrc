@@ -787,9 +787,9 @@ augroup file_types
     \ setlocal wrap linebreak formatoptions=tcqn
   autocmd FileType text,vimwiki
     \ setlocal wrap linebreak formatoptions=tcqn
-  autocmd FileType tex,markdown setlocal formatprg="par\ -w79"
-  autocmd FileType text,vimwiki       setlocal formatprg="par\ -w79"
-  autocmd FileType c,cpp,java,lua     setlocal cindent
+  autocmd FileType tex,markdown       setlocal formatprg=par\ -w79
+  autocmd FileType text,vimwiki,nroff setlocal formatprg=par\ -w79
+  autocmd FileType c,cpp,rust,lua     setlocal cindent
   autocmd FileType javascript,sh,vim  setlocal cindent
 
   " Fold Methods
