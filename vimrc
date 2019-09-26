@@ -757,7 +757,7 @@ augroup file_types
   autocmd FileType tex,vimwiki,text
     \ setlocal textwidth=79 wrap shiftwidth=4 tabstop=4 expandtab
   autocmd FileType gitcommit  setlocal spell textwidth=72
-  autocmd FileType sh,ruby
+  autocmd FileType sh,zsh,ruby
     \ setlocal textwidth=0 shiftwidth=2 tabstop=2 expandtab
   autocmd FileType vim
     \ setlocal textwidth=0 shiftwidth=2 tabstop=2 expandtab
