@@ -31,6 +31,8 @@ _fix_cursor() {
 }
 
 precmd_functions+=(_fix_cursor)
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # }}} Some extra settings
 
 # {{{ Prompt
