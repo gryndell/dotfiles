@@ -26,17 +26,46 @@ SAVEHIST=1000
 setopt completealiases
 setopt autocd autopushd pushdignoredups
 
-_fix_cursor() {
-    echo -ne '\e[3 q'
-}
+# _fix_cursor() {
+#     echo -ne '\e[3 q'
+# }
 
-precmd_functions+=(_fix_cursor)
+# precmd_functions+=(_fix_cursor)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # }}} Some extra settings
 
-# {{{ Prompt
+# {{{ Prompt
 bindkey -v
+KEYTIMEOUT=5
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} == '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[3 q'
+  fi
+}
+zle -N zle-keymap-select
+
+# Use underscore cursor for each new prompt.
+make_underscore() {
+  echo -ne '\e[3 q'
+}
+
+preexec() {
+  echo -ne '\e[3 q'
+}
+# Use underscore cursor on startup and each new prompt.
+make_underscore
+autoload -U add-zsh-hook
+add-zsh-hook preexec make_underscore
+
 # autoload -Uz promptinit
 # promptinit
 NEWLINE=$'\n'
