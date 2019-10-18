@@ -26,7 +26,7 @@ if [[ $HOST == 'ishtar' ]]; then
   alias rm='~/bin/newrm'
 fi
 alias cp='cp -iv'
-alias xterm='xterm -font -*-fixed-medium-r-*-20-*-*-*-*-*-iso8859-16'
+# alias xterm='xterm -font -*-fixed-medium-r-*-20-*-*-*-*-*-iso8859-16'
 alias tty-clock='tty-clock -bcC5'
 # alias tmux='tmux -u'
 
