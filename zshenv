@@ -1,3 +1,16 @@
+# Exports {{{
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# Recommended by Pro Vim
+export GITHUB_USER="gryndell"
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;32'
+export MANPAGER="less -X" # Don’t clear the screen after quitting a manual page
+export CLICOLOR=1
+
+# Exports }}}
+
 # Aliases {{{
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -10,9 +23,6 @@ if [ -x /usr/bin/dircolors ]; then
   #alias fgrep='fgrep --color=auto'
   #alias egrep='egrep --color=auto'
 fi
-
-# colored GCC warnings and errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -l'
