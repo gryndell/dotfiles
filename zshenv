@@ -4,7 +4,6 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 # Recommended by Pro Vim
 export GITHUB_USER="gryndell"
-export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 export MANPAGER="less -X" # Don’t clear the screen after quitting a manual page
 export CLICOLOR=1
