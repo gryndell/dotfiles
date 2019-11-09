@@ -193,9 +193,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Bindings to start particular apps
-# bindsym $mod+Shift+x exec i3lock --color "#000000"
+bindsym $mod+Shift+x exec i3lock --color "#000000"
 # bindsym $mod+Shift+x exec ~/.config/i3/lock -gf DejaVu-Sans-Mono -- scrot -z
-bindsym $mod+Shift+x exec "i3lock-fancy -gf DejaVu-Sans-Mono -- scrot -z"
+# bindsym $mod+Shift+x exec "i3lock-fancy -gf DejaVu-Sans-Mono -- scrot -z"
 bindsym $mod+F2 exec "/usr/bin/thunar"
 bindsym $mod+F3 exec "firefox-developer-edition"
 bindsym $mod+F4 exec "firefox-developer-edition -private-window"
