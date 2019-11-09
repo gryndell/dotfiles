@@ -199,6 +199,7 @@ bindsym $mod+Shift+x exec "i3lock-fancy -gf DejaVu-Sans-Mono -- scrot -z"
 bindsym $mod+F2 exec "/usr/bin/thunar"
 bindsym $mod+F3 exec "firefox-developer-edition"
 bindsym $mod+F4 exec "firefox-developer-edition -private-window"
+bindsym $mod+F5 exec "chromium"
 bindsym Print exec --no-startup-id "scrot -e 'mv $f ~/Screenshots' && notify-send 'screenshot saved in\n ~/Screenshots'"
 bindsym $mod+Print exec --no-startup-id "scrot -ue 'mv $f ~/Screenshots' && notify-send 'window screenshot saved in\n ~/Screenshots'"
 bindsym $mod+Shift+o exit
