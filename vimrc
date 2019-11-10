@@ -327,15 +327,15 @@ let g:logo_rust     = ''
 " Set the status line to something useful
 set statusline=%#SL_Path#
 set statusline+=%F\ %m
-set statusline+=%#SL_Path_Sep#
-set statusline+=%{g:chevron_sr}
+" set statusline+=%#SL_Path_Sep#
+" set statusline+=%{g:chevron_sr}
 set statusline+=%#SL_Type#
 set statusline+=\ %{ShowFileType()}
 set statusline+=\ %{ShowFileFormat()}
 set statusline+=\ %{&fileencoding}\ %r
 set statusline+=%{ShowSpell()}
-set statusline+=%=%#SL_Type_Sep#
-set statusline+=%{g:chevron_sr}
+" set statusline+=%=%#SL_Type_Sep#
+" set statusline+=%{g:chevron_sr}
 set statusline+=%#SL_Pos#
 set statusline+=\ ℓ:%l/%L\ %c\ (%p%%)\ 0x%04.B
 set laststatus=2
