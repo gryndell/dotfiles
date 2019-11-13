@@ -69,6 +69,8 @@ add-zsh-hook preexec make_underscore
 # autoload -Uz promptinit
 # promptinit
 NEWLINE=$'\n'
-PROMPT='%F{magenta}%m%f:[%F{cyan}%~%f]
+# PROMPT='%F{magenta}%m%f:[%F{cyan}%~%f]
+# %(?.%F{green} ✔%f.%F{red} ✗%f):%(!.#.%%) '
+PROMPT='[%F{cyan}%~%f]
 %(?.%F{green} ✔%f.%F{red} ✗%f):%(!.#.%%) '
 # }}} Prompt
