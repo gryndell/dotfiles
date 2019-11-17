@@ -196,15 +196,15 @@ else
 endif
 " highlight Terminal ctermbg=NONE
 " ColorColumn highlight
-highlight ColorColumn ctermbg=darkgrey
+highlight ColorColumn ctermbg=darkgrey  guibg=darkgrey
 " StatusLine
-highlight StatusLine   cterm=NONE guibg=darkgrey
+highlight StatusLine   cterm=NONE guibg=black
 highlight StatusLineNC cterm=NONE guibg=black
-highlight SL_Path     ctermbg=darkgrey ctermfg=lightgrey
-highlight SL_Path_Sep ctermfg=darkgrey ctermbg=grey
-highlight SL_Type     ctermbg=grey     ctermfg=black
-highlight SL_Type_Sep ctermbg=darkgrey ctermfg=grey
-highlight SL_Pos      ctermbg=darkgrey ctermfg=lightgrey
+highlight SL_Path     ctermbg=darkgrey ctermfg=lightgrey  guibg=#222222   guifg=#888888
+highlight SL_Path_Sep ctermfg=darkgrey ctermbg=grey       guifg=#222222   guibg=#666666
+highlight SL_Type     ctermbg=grey     ctermfg=black      guibg=#666666   guifg=#000000
+highlight SL_Type_Sep ctermbg=darkgrey ctermfg=grey       guibg=#222222   guifg=#666666
+highlight SL_Pos      ctermbg=darkgrey ctermfg=lightgrey  guibg=#222222   guifg=#888888
 
 " Set autoindent
 set autoindent
