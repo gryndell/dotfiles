@@ -8,6 +8,9 @@ export GREP_COLOR='1;32'
 export MANPAGER="less -X" # Don’t clear the screen after quitting a manual page
 export CLICOLOR=1
 
+# Initialisation for par (text formatter)
+export PARINIT='rTbgqR\ B=.,?_A_a Q=_s>|'
+
 # Exports }}}
 
 # Aliases {{{
