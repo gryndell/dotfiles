@@ -623,10 +623,10 @@ xnoremap <silent> > >gv
 xnoremap <silent> < <gv
 
 " switch buffer
-nnoremap <c-PageDown> :bn<cr>
-nnoremap <c-PageUp> :bp <cr>
-nnoremap <silent> <c-j> :bn<cr>
-nnoremap <silent> <c-k> :bp<cr>
+nnoremap <c-PageDown> :bn!<cr>
+nnoremap <c-PageUp> :bp!<cr>
+nnoremap <silent> <c-j> :bn!<cr>
+nnoremap <silent> <c-k> :bp!<cr>
 
 " <F5> to insert date
 nnoremap <silent> <f4> "=strftime('%H:%M')<cr>p
