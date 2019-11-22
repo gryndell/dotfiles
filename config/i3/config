@@ -329,7 +329,8 @@ exec_always --no-startup-id xset -dpms
 exec --no-startup-id gnome-settings-daemon
 
 # Start compositor
-exec --no-startup-id compton --config ~/.config/i3/compton.conf -b
+# exec --no-startup-id compton --config ~/.config/i3/compton.conf -b
+exec --no-startup-id picom --config ~/.config/i3/picom.conf -b
 
 # Start notification daemon
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc &

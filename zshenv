@@ -9,7 +9,7 @@ export MANPAGER="less -X" # Don’t clear the screen after quitting a manual pag
 export CLICOLOR=1
 
 # Initialisation for par (text formatter)
-export PARINIT='rTbgqR\ B=.,?_A_a Q=_s>|'
+export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 
 # Exports }}}
 
