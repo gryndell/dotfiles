@@ -166,8 +166,9 @@ set shortmess+=I
 " but it makes help windows split below too.
 set splitright
 
-" Highlight the current line
+" Highlight the current line and column
 set cursorline
+set cursorcolumn
 
 " Ensure Vim doesn't beep at you every time you make a mistype
 set novisualbell
