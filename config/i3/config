@@ -29,16 +29,6 @@ set $urgent-bg-color     #ff0000
 
 # Workspaces
 # ----------
-# set $workspace1 "1 "
-# set $workspace2 "2 "
-# set $workspace3 "3 "
-# set $workspace4 "4 "
-# set $workspace5 "5 "
-# set $workspace6 "6 "
-# set $workspace7 "7 "
-# set $workspace8 "8 "
-# set $workspace9 "9 "
-# set $workspace0 "0 "
 set $workspace1 "1"
 set $workspace2 "2"
 set $workspace3 "3"
@@ -302,7 +292,7 @@ for_window [class="XClock"] floating enable
 # assign [class="konsole"] $workspace2
 # assign [class="Thunar"] $workspace3
 # assign [class="Rhythmbox"] $workspace4
-assign [class="Wfica"] $workspace2
+assign [class="Wfica"] $workspace3
 #
 # Dropdown window traits. The order can matter.
 for_window [instance="dropdown_*"] floating enable
