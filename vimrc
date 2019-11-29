@@ -201,11 +201,6 @@ highlight ColorColumn ctermbg=darkgrey  guibg=darkgrey
 " StatusLine
 highlight StatusLine   cterm=NONE ctermfg=grey guibg=black
 highlight StatusLineNC cterm=NONE ctermfg=grey guibg=black
-highlight SL_Path     ctermbg=darkgrey ctermfg=lightgrey  guibg=#222222   guifg=#888888
-highlight SL_Path_Sep ctermfg=darkgrey ctermbg=grey       guifg=#222222   guibg=#666666
-highlight SL_Type     ctermbg=grey     ctermfg=black      guibg=#666666   guifg=#000000
-highlight SL_Type_Sep ctermbg=darkgrey ctermfg=grey       guibg=#222222   guifg=#666666
-highlight SL_Pos      ctermbg=darkgrey ctermfg=lightgrey  guibg=#222222   guifg=#888888
 
 " Set autoindent
 set autoindent
@@ -326,18 +321,11 @@ let g:logo_rust     = ''
 " ┗━┛ ╹ ╹ ╹ ╹ ┗━┛┗━┛   ┗━╸╹╹ ╹┗━╸
 " {{{ Status Line
 " Set the status line to something useful
-" set statusline=%#SL_Path#
 set statusline+=%F\ %m
-" set statusline+=%#SL_Path_Sep#
-" set statusline+=%{g:chevron_sr}
-" set statusline+=%#SL_Type#
 set statusline+=\ %{ShowFileType()}
 set statusline+=\ %{ShowFileFormat()}
 set statusline+=\ %{&fileencoding}\ %r
 set statusline+=%{ShowSpell()}
-" set statusline+=%=%#SL_Type_Sep#
-" set statusline+=%{g:chevron_sr}
-" set statusline+=%#SL_Pos#
 set statusline+=%=\ ℓ:%l/%L\ %c\ (%p%%)\ 0x%04.B
 set laststatus=2
 set showtabline=2
@@ -469,14 +457,8 @@ endfunction " AutoCorrect
 " Check for modified
 function! CheckModified() abort
   if &modified
-    " highlight SL_Path ctermfg=green
-    " highlight SL_Type ctermfg=green
-    " highlight SL_Pos ctermfg=green
     highlight TabLineSel ctermfg=green
   else
-    " highlight SL_Path ctermfg=lightgrey
-    " highlight SL_Type ctermfg=black
-    " highlight SL_Pos  ctermfg=lightgrey
     highlight TabLineSel ctermfg=lightgrey
   endif
 endfunction " CheckModified
