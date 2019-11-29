@@ -199,8 +199,8 @@ endif
 " ColorColumn highlight
 highlight ColorColumn ctermbg=darkgrey  guibg=darkgrey
 " StatusLine
-highlight StatusLine   cterm=NONE guibg=black
-highlight StatusLineNC cterm=NONE guibg=black
+highlight StatusLine   cterm=NONE ctermfg=grey guibg=black
+highlight StatusLineNC cterm=NONE ctermfg=grey guibg=black
 highlight SL_Path     ctermbg=darkgrey ctermfg=lightgrey  guibg=#222222   guifg=#888888
 highlight SL_Path_Sep ctermfg=darkgrey ctermbg=grey       guifg=#222222   guibg=#666666
 highlight SL_Type     ctermbg=grey     ctermfg=black      guibg=#666666   guifg=#000000
@@ -338,7 +338,7 @@ set statusline+=%{ShowSpell()}
 " set statusline+=%=%#SL_Type_Sep#
 " set statusline+=%{g:chevron_sr}
 " set statusline+=%#SL_Pos#
-set statusline+=\ ℓ:%l/%L\ %c\ (%p%%)\ 0x%04.B
+set statusline+=%=\ ℓ:%l/%L\ %c\ (%p%%)\ 0x%04.B
 set laststatus=2
 set showtabline=2
 
