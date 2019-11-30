@@ -24,6 +24,7 @@ call minpac#add('tpope/vim-surround') " Wrap a selection with pairs
 call minpac#add('tpope/vim-dadbod') " Database Connectivity
 call minpac#add('tpope/vim-vinegar') " File finder
 call minpac#add('tpope/vim-endwise') " Automatically add end constructs
+call minpac#add('tpope/vim-eunuch') " UNIX shell command helpers
 call minpac#add('junegunn/fzf') " Advanced fuzzy finder
 call minpac#add('junegunn/goyo.vim') " Distraction-free editing
 call minpac#add('kshenoy/vim-signature') " Place, toggle and display marks
