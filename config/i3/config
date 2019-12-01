@@ -388,7 +388,7 @@ exec --no-startup-id urxvtd -q -f -o
 # Map Caps_Lock to <Esc>
 # exec_always --no-startup-id "xrandr --output eDP-1-1 --primary --auto --rotate normal"
 # exec_always --no-startup-id "xrandr | grep 'HDMI-1-2 connected' && xrandr --output eDP-1-1 --primary --auto --rotate normal --output HDMI-1-2 --auto --right-of eDP-1-1 --rotate normal"
-exec --no-startup-id setxkbmap -layout "us" -option caps:swapescape
+# exec --no-startup-id setxkbmap -layout "us" -option caps:swapescape
 
 # exec_always --no-startup-id "xrandr --output eDP-1-1 --primary --auto --rotate normal"
 # exec_always --no-startup-id "xrandr | grep 'HDMI-1-2 connected' && xrandr --output eDP-1-1 --primary --auto --rotate normal --output HDMI-1-2 --auto --right-of eDP-1-1 --rotate normal"
