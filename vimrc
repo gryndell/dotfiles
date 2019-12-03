@@ -327,7 +327,7 @@ set statusline+=\ %{ShowFileType()}
 set statusline+=\ %{ShowFileFormat()}
 set statusline+=\ %{&fileencoding}\ %r
 set statusline+=%{ShowSpell()}
-set statusline+=%=\ ℓ:%l/%L\ %c\ (%p%%)\ 0x%04.B
+set statusline+=%=\ ≡:%l/%L\ %c\ (%p%%)\ 0x%04.B
 set laststatus=2
 set showtabline=2
 
