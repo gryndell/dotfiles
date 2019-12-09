@@ -896,10 +896,10 @@ augroup end
 
 augroup cursor_highlight
   autocmd!
-  autocmd BufEnter * set cursorline
-  autocmd BufEnter * set cursorcolumn
-  autocmd BufLeave * set nocursorline
-  autocmd BufLeave * set nocursorcolumn
+  autocmd WinEnter * set cursorline
+  autocmd WinEnter * set cursorcolumn
+  autocmd WinLeave * set nocursorline
+  autocmd WinLeave * set nocursorcolumn
 augroup END
 
 " Auto Commands }}}
