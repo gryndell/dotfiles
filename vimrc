@@ -894,6 +894,14 @@ augroup checkmod
   autocmd TextChanged,TextChangedI,WinEnter * call CheckModified()
 augroup end
 
+augroup cursor_highlight
+  autocmd!
+  autocmd BufEnter * set cursorline
+  autocmd BufEnter * set cursorcolumn
+  autocmd BufLeave * set nocursorline
+  autocmd BufLeave * set nocursorcolumn
+augroup END
+
 " Auto Commands }}}
 
 " ┏━┓┏┓ ┏┓ ┏━┓┏━╸╻ ╻╻┏━┓╺┳╸╻┏━┓┏┓╻┏━┓
