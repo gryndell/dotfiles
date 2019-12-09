@@ -200,8 +200,8 @@ endif
 " ColorColumn highlight
 highlight ColorColumn ctermbg=darkgrey  guibg=darkgrey
 " StatusLine
-highlight StatusLine   cterm=NONE ctermfg=grey guibg=black
-highlight StatusLineNC cterm=NONE ctermfg=grey guibg=black
+highlight StatusLine   cterm=NONE ctermfg=lightgrey guibg=black
+highlight StatusLineNC cterm=NONE ctermfg=darkgrey guibg=black
 
 " Set autoindent
 set autoindent
@@ -326,7 +326,7 @@ set statusline+=%F\ %m
 set statusline+=\ %{ShowFileType()}
 set statusline+=\ %{ShowFileFormat()}
 set statusline+=\ %{&fileencoding}\ %r
-set statusline+=%{ShowSpell()}
+set statusline+=\ %{ShowSpell()}
 set statusline+=%=\ ≡:%l/%L\ %c\ (%p%%)\ 0x%04.B
 set laststatus=2
 set showtabline=2
