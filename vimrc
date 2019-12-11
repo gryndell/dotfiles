@@ -200,8 +200,8 @@ endif
 " ColorColumn highlight
 highlight ColorColumn ctermbg=darkgrey  guibg=darkgrey
 " StatusLine
-highlight StatusLine   cterm=NONE ctermfg=lightgrey guibg=black
-highlight StatusLineNC cterm=NONE ctermfg=darkgrey guibg=black
+highlight StatusLine   cterm=NONE ctermfg=lightgrey gui=NONE guifg=lightgrey
+highlight StatusLineNC cterm=NONE ctermfg=darkgrey  gui=NONE guifg=darkgrey
 
 " Set autoindent
 set autoindent
