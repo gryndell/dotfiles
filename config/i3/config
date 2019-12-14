@@ -194,9 +194,9 @@ bindsym Print exec --no-startup-id "scrot -e 'mv $f ~/Screenshots' && notify-sen
 bindsym $mod+Print exec --no-startup-id "scrot -ue 'mv $f ~/Screenshots' && notify-send 'window screenshot saved in\n ~/Screenshots'"
 bindsym $mod+Shift+o exit
 
-# Bindings so that i3blocks can show keylock status
-bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
-bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+# # Bindings so that i3blocks can show keylock status
+# bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+# bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 # Pulse Audio controls
 #---------------------
@@ -206,10 +206,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 # mute sound
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
-# Show volume in i3blocks
-bindsym --release XF86AudioRaiseVolume exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release XF86AudioLowerVolume exec pkill -SIGRTMIN+10 i3blocks
-bindsym --release XF86AudioMute exec pkill -SIGRTMIN+10 i3blocks
+# # Show volume in i3blocks
+# bindsym --release XF86AudioRaiseVolume exec pkill -SIGRTMIN+10 i3blocks
+# bindsym --release XF86AudioLowerVolume exec pkill -SIGRTMIN+10 i3blocks
+# bindsym --release XF86AudioMute exec pkill -SIGRTMIN+10 i3blocks
 
 # Sreen brightness controls
 # -------------------------
@@ -359,15 +359,15 @@ exec_always --no-startup-id ~/.fehbg
 #
 # font pango:Inconsolata for Powerline Medium, FontAwesome 10
 # font pango:DejaVu Sans Mono Book, FontAwesome 8
-bar {
-        position top
-        font pango:DejaVu Sans Mono Book, FontAwesome 12
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
-        mode dock
-        tray_output primary
-        # hidden_state hide
-        modifier Mod4
-}
+# bar {
+#         position top
+#         font pango:DejaVu Sans Mono Book, FontAwesome 12
+#         status_command i3blocks -c ~/.config/i3/i3blocks.conf
+#         mode dock
+#         tray_output primary
+#         # hidden_state hide
+#         modifier Mod4
+# }
 # i3bar Settings }}}
 # ┏━┓┏━┓┏━┓╻  ╻┏━╸┏━┓╺┳╸╻┏━┓┏┓╻   ┏━┓╺┳╸┏━┓┏━┓╺┳╸╻ ╻┏━┓
 # ┣━┫┣━┛┣━┛┃  ┃┃  ┣━┫ ┃ ┃┃ ┃┃┗┫   ┗━┓ ┃ ┣━┫┣┳┛ ┃ ┃ ┃┣━┛
@@ -375,7 +375,7 @@ bar {
 # Application Startup {{{
 # ----------- -------
 # # Start Polybar
-# exec_always --no-startup-id /home/ralph/.config/polybar/launch.sh
+exec_always --no-startup-id /home/ralph/.config/polybar/launch.sh
 
 # # Start Firefox
 # exec --no-startup-id firefox-developer-edition
