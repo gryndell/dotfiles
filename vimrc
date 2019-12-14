@@ -270,7 +270,7 @@ if has('folding')
   endif
   set fillchars=fold:↕
   " Folding details
-  highlight folded ctermbg=NONE ctermfg=darkgrey
+  highlight folded ctermbg=NONE ctermfg=darkgrey guibg=NONE guifg=darkgrey
 endif
 
 " Calendar cyclic view
