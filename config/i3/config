@@ -360,6 +360,9 @@ exec_always --no-startup-id ~/.fehbg
 # font pango:Inconsolata for Powerline Medium, FontAwesome 10
 # font pango:DejaVu Sans Mono Book, FontAwesome 8
 bar {
+    colors {
+        background #00000000
+    }
         position top
         font pango:DejaVu Sans Mono Book, FontAwesome 12
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
