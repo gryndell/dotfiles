@@ -52,4 +52,17 @@ if ($locked == 2) {
 }
 
 print "$status\n";
-
+print "$status\n";
+if ($pkgcnt == 0) {
+    print "#00ff00\n";
+} elsif ($pkgcnt < 20) {
+    print "#33cc00\n";
+} elsif ($pkgcnt < 60) {
+    print "#669900\n";
+} elsif ($pkgcnt < 80) {
+    print "#996600\n";
+} elsif ($pkgcnt < 100) {
+    print "#cc3300\n";
+} else {
+    print "#ff0000\n";
+}
