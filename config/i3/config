@@ -346,7 +346,8 @@ exec_always --no-startup-id nm-applet
 # exec_always --no-startup-id flashfocus
 
 # Set wallpaper
-exec_always --no-startup-id ~/.fehbg
+# exec_always --no-startup-id ~/.fehbg
+exec_always --no-startup-id ~/bin/mkwall
 # Personal Execs }}}
 # ╻┏━┓┏┓ ┏━┓┏━┓   ┏━┓┏━╸╺┳╸╺┳╸╻┏┓╻┏━╸┏━┓
 # ┃╺━┫┣┻┓┣━┫┣┳┛   ┗━┓┣╸  ┃  ┃ ┃┃┗┫┃╺┓┗━┓
