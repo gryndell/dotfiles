@@ -9,7 +9,8 @@
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:DejaVu Sans Mono Book, FontAwesome 10
 # font pango:Inconsolata for Powerline Medium, FontAwesome 10
-font pango:Inconsolata Nerd Font Mono, FontAwesome 11
+# font pango:Inconsolata Nerd Font Mono, FontAwesome 11
+font pango: FontAwesome 11
 # Fonts }}}
 # ┏━┓┏━╸╺┳╸   ╻ ╻┏━┓┏━┓╻┏━┓┏┓ ╻  ┏━╸┏━┓
 # ┗━┓┣╸  ┃    ┃┏┛┣━┫┣┳┛┃┣━┫┣┻┓┃  ┣╸ ┗━┓
@@ -365,7 +366,8 @@ bar {
         background #00000000
     }
         position top
-        font pango:DejaVu Sans Mono Book, FontAwesome 12
+        # font pango:DejaVu Sans Mono Book, FontAwesome 12
+        font pango: Boecklins Universe 12
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
         mode dock
         tray_output primary
