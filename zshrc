@@ -36,6 +36,9 @@ setopt autocd autopushd pushdignoredups
 # precmd_functions+=(_fix_cursor)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Command not found handler
+source /usr/share/doc/pkgfile/command-not-found.zsh
+
 # }}} Some extra settings
 
 # {{{ Prompt
