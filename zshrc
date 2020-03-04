@@ -39,6 +39,9 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Command not found handler
 source /usr/share/doc/pkgfile/command-not-found.zsh
 
+# Autosuggestions fish-style
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # }}} Some extra settings
 
 # {{{ Prompt

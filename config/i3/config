@@ -333,8 +333,8 @@ exec --no-startup-id dunst -config ~/.config/dunst/dunstrc &
 # Set NumLock on
 exec --no-startup-id  numlockx on
 
-# Set Sound Volume to 40%
-exec --no-startup-id  pactl set-sink-volume 0 40%
+# Set Sound Volume to 80%
+exec --no-startup-id  pactl set-sink-volume 0 80%
 
 # Unlock keyring
 # exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
