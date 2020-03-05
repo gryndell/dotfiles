@@ -61,6 +61,7 @@ alias -s {jpg,jpeg}=feh
 alias -s gif=vim
 alias -s ps=zathura
 alias -s pdf=zathura
+alias clear='[ $[$RANDOM % 10] = 0 ] && timeout 6 cbeams -o; clear || clear'
 
 # }}} Aliases
 
