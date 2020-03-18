@@ -367,7 +367,7 @@ bar {
     }
         position top
         # font pango:DejaVu Sans Mono Book, FontAwesome 12
-        font pango: Boecklins Universe 12
+        font pango: FontAwesome 12
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
         mode dock
         tray_output primary
