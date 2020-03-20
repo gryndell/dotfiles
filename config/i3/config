@@ -18,11 +18,11 @@ font pango: FontAwesome 11
 # Set variables {{{
 # -------------
 set $mod Mod4
-set $bg-color            #ff40ff
-set $text-color          #40ff40
-set $inactive-bg-color   #aa40aa
-set $inactive-text-color #88aa88
-set $urgent-bg-color     #ff0000
+set $bg-color            #ff40ff00
+set $text-color          #40ff40ff
+set $inactive-bg-color   #aa40aa00
+set $inactive-text-color #88aa88ff
+set $urgent-bg-color     #ff000000
 
 # Set eDP-1 as primary output
 # ---------------------------
