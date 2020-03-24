@@ -8,6 +8,7 @@
 use strict;
 use warnings;
 use utf8;
+binmode *STDOUT, qw<:encoding(UTF-8)>;
 use Getopt::Long;
 
 # default values
