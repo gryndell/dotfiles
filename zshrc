@@ -80,6 +80,8 @@ add-zsh-hook preexec make_underscore
 NEWLINE=$'\n'
 # PROMPT='%F{magenta}%m%f:[%F{cyan}%~%f]
 # %(?.%F{green} ✔%f.%F{red} ✗%f):%(!.#.%%) '
-PROMPT='[%F{cyan}%~%f]
-%(?.%F{green} ✔%f.%F{red} ✗%f):%(!.#.%%) '
+# PROMPT='[%F{cyan}%~%f]
+# %(?.%F{green} ✔%f.%F{red} ✗%f):%(!.#.%%) '
 # }}} Prompt
+eval "$(starship init zsh)"
+
