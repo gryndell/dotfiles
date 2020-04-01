@@ -261,11 +261,20 @@ bindsym $mod+Shift+ m exec --no-startup-id "xrandr --output eDP-1-1 --primary --
 # ┃╻┃┃┃┗┫ ┃┃┃ ┃┃╻┃   ┃  ┃ ┃┃  ┃ ┃┣┳┛┗━┓
 # ┗┻┛╹╹ ╹╺┻┛┗━┛┗┻┛   ┗━╸┗━┛┗━╸┗━┛╹┗╸┗━┛
 # Window Colors {{{
-# ------ ------         border              background         text                 indicator
-client.focused          $bg-color          $bg-color          $text-color           $bg-color
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color  $inactive-bg-color
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color  $inactive-bg-color
-client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color           $inactive-bg-color
+# # ------ ------         border              background         text                 indicator
+# client.focused          $bg-color          $bg-color          $text-color           $bg-color
+# client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color  $inactive-bg-color
+# client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color  $inactive-bg-color
+# client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color           $inactive-bg-color
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
+
 # Window Colors }}}
 # ╻ ╻╻┏┓╻╺┳┓┏━┓╻ ╻   ┏┓ ┏━┓┏━┓╺┳┓┏━╸┏━┓┏━┓
 # ┃╻┃┃┃┗┫ ┃┃┃ ┃┃╻┃   ┣┻┓┃ ┃┣┳┛ ┃┃┣╸ ┣┳┛┗━┓
@@ -363,7 +372,16 @@ exec_always --no-startup-id ~/.fehbg
 # font pango:DejaVu Sans Mono Book, FontAwesome 8
 bar {
     colors {
-        background #00000000
+        # background #00000000
+        background #282A36
+        statusline #F8F8F2
+        separator  #44475A
+
+        focused_workspace  #44475A #44475A #F8F8F2
+        active_workspace   #282A36 #44475A #F8F8F2
+        inactive_workspace #282A36 #282A36 #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        binding_mode       #FF5555 #FF5555 #F8F8F2
     }
         position top
         # font pango:DejaVu Sans Mono Book, FontAwesome 12

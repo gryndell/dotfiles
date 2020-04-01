@@ -70,17 +70,11 @@ printf "%s\n", $cpu_usage;
 
 # Print color, if needed
 if ($cpu_usage < $t_low) {
-    print "#00FF00\n";
-} elsif ($cpu_usage < $t_med) {
-    print "#A8FF00\n";
-} elsif ($cpu_usage < $t_high) {
-    print "#FFFF00\n";
-} elsif ($cpu_usage < $t_warn) {
-    print "#FFF600\n";
+    print "#50FA7B\n";
 } elsif ($cpu_usage < $t_crit) {
-    print "#FFAE00\n";
+    print "#F1FA8C\n";
 } else {
-    print "#FF0000\n";
+    print "#FF5555\n";
 }
 
 exit 0;

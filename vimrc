@@ -62,7 +62,15 @@ command! PackClean call minpac#clean()
 if has("gui_running")
   " Autoselect
   set guioptions=a
-  set guifont=Hack\ Nerd\ Font\ Mono\ 16
+  set guifont=Fira\ Code\ 16
+endif
+
+" Make sure background colour of text will fill anything
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://sunaku.github.io/vim-256color-bce.html
+  set t_ut=
 endif
 
 " Use vim, not vi

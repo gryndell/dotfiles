@@ -23,7 +23,7 @@ use File::Basename;
 
 # Default values
 my $indicator = $ENV{BLOCK_INSTANCE} || $ENV{KEY} || "CAPS";
-my $color_on  = "#00FF00";
+my $color_on  = "#50FA7B";
 my $color_off = "#222222";
 my $glyph = "";
 
@@ -62,7 +62,7 @@ close(XSET);
 
 if ($indicator eq "CAPS") {
     $glyph = "";
-    $color_on = "#FF0000";
+    $color_on = "#FF5555";
 }
 
 # Output
