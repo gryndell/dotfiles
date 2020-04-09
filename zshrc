@@ -48,6 +48,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 # {{{ Prompt
 bindkey -v
 KEYTIMEOUT=5
+NEWLINE=$'\n'
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -78,7 +79,6 @@ add-zsh-hook preexec make_underscore
 
 # autoload -Uz promptinit
 # promptinit
-NEWLINE=$'\n'
 # PROMPT='%F{magenta}%m%f:[%F{cyan}%~%f]
 # %(?.%F{green} ✔%f.%F{red} ✗%f):%(!.#.%%) '
 # PROMPT='[%F{cyan}%~%f]
