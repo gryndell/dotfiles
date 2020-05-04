@@ -42,8 +42,7 @@ alias cp='cp -iv'
 alias tty-clock='tty-clock -bcC5'
 # alias tmux='tmux -u'
 
-# Archlinux upgrade
-alias upgrade='sudo pacman -Syu'
+alias nnn='nnn -egHrx'
 
 # Suffix aliases
 alias -s tex=vim

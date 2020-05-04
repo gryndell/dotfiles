@@ -57,10 +57,10 @@ floating_modifier $mod
 # Bindings {{{
 # --------
 
-# start a terminal st
-bindsym $mod+Return exec kitty
 # start a terminal kitty
-bindsym $mod+Shift+Return exec kitty
+bindsym $mod+Return exec kitty
+# start a terminal st
+bindsym $mod+Shift+Return exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -285,7 +285,7 @@ client.background       #F8F8F2
 # ------ -------
 # Set border size: deprecated - will be default_border and default_floating_border
 #
-new_window pixel 1
+new_window pixel 0
 # default_border pixel 1
 new_float pixel 1
 # default_floating_border pixel 1
@@ -301,6 +301,7 @@ hide_edge_borders none
 # for_window [class="Synaptic"] floating enable
 for_window [class="Steam"] floating enable
 for_window [class="XClock"] floating enable
+for_window [class="Yad"] floating enable
 # assign [class="Firefox"] $workspace1
 # assign [class="konsole"] $workspace2
 # assign [class="Thunar"] $workspace3
@@ -370,11 +371,21 @@ exec_always --no-startup-id ~/.fehbg
 # position can be bottom|top
 # mode can be dock|hide|invisible
 #
-# font pango:Inconsolata for Powerline Medium, FontAwesome 10
 # font pango:DejaVu Sans Mono Book, FontAwesome 8
 bar {
+    font pango: Fira Code, FontAwesome 10
+    # font pango: Inconsolata for Powerline Medium 10
+    position top
+    # status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    status_command /usr/bin/i3status-rs /home/ralph/.config/i3/status.toml
+    # font pango:DejaVu Sans Mono Book, FontAwesome 12
+    mode dock
+    # output primary
+    tray_output primary
+    hidden_state hide
+    modifier Mod4
     colors {
-        background #00000000
+        background #282A3688
         # background #282A36
         statusline #f8f8f2ff
         separator  #44475Aff
@@ -385,15 +396,6 @@ bar {
         urgent_workspace   #FF5555 #FF5555 #F8F8F2
         binding_mode       #FF5555 #FF5555 #F8F8F2
     }
-        position top
-        # font pango:DejaVu Sans Mono Book, FontAwesome 12
-        font pango: FontAwesome 12
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
-        mode dock
-        # output primary
-        # tray_output primary
-        hidden_state hide
-        modifier Mod4
 }
 # i3bar Settings }}}
 # ┏━┓┏━┓┏━┓╻  ╻┏━╸┏━┓╺┳╸╻┏━┓┏┓╻   ┏━┓╺┳╸┏━┓┏━┓╺┳╸╻ ╻┏━┓
