@@ -13,7 +13,7 @@ call minpac#init()
 call minpac#add('k-takata/minpac', {'type': 'opt'}) " Plugin manager
 
 " Various plugins
-call minpac#add('ap/vim-buftabline') " Buffers in the tab line
+" call minpac#add('ap/vim-buftabline') " Buffers in the tab line
 call minpac#add('vimwiki/vimwiki') " Personal wiki
 call minpac#add('tpope/vim-scriptease', {'type': 'opt'}) " Help for VimL
 call minpac#add('tpope/vim-commentary') " Shortcuts for comments
@@ -49,6 +49,10 @@ call minpac#add('mboughaba/i3config.vim') " i3 config sytax
 call minpac#add('rust-lang/rust.vim') " Configuration for Rust
 call minpac#add('cespare/vim-toml') " Syntax for TOML
 call minpac#add('tommcdo/vim-lion') " Align text around a character
+call minpac#add('vim-airline/vim-airline') " Fancy status/tabline
+call minpac#add('vim-airline/vim-airline-themes') " Themes for airline
+call minpac#add('arcticicestudio/nord-vim') " Nord colorscheme
+call minpac#add('ryanoasis/vim-devicons') " Vim Dev Icons
 
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
@@ -195,7 +199,7 @@ set showmatch
 
 " Theme
 set background=dark
-colorscheme dracula
+colorscheme nord
 " colorscheme afterglow
 " colorscheme firesparks-256
 " colorscheme oceanblack256
@@ -208,9 +212,10 @@ endif
 " highlight Terminal ctermbg=NONE
 " ColorColumn highlight
 highlight ColorColumn ctermbg=darkgrey  guibg=darkgrey
-" StatusLine
-highlight StatusLine   cterm=NONE ctermfg=lightgrey gui=NONE guifg=lightgrey
-highlight StatusLineNC cterm=NONE ctermfg=darkgrey  gui=NONE guifg=darkgrey
+highlight Visual ctermbg=grey guibg=grey
+" " StatusLine
+" highlight StatusLine   cterm=NONE ctermfg=lightgrey gui=NONE guifg=lightgrey
+" highlight StatusLineNC cterm=NONE ctermfg=darkgrey  gui=NONE guifg=darkgrey
 
 " Set autoindent
 set autoindent
@@ -267,6 +272,12 @@ let g:gist_open_browser_after_post = 1
 " https://github.com/mattn/webapi-vim
 " https://github.com/vim-scripts/Gist.vim
 " https://github.com/tpope/vim-fugitive
+
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_theme='nord'
 
 if filereadable(glob(".vimrc.local"))
   source .vimrc.local
@@ -330,13 +341,13 @@ let g:logo_rust     = ''
 " ┗━┓ ┃ ┣━┫ ┃ ┃ ┃┗━┓   ┃  ┃┃┗┫┣╸
 " ┗━┛ ╹ ╹ ╹ ╹ ┗━┛┗━┛   ┗━╸╹╹ ╹┗━╸
 " {{{ Status Line
-" Set the status line to something useful
-set statusline+=%F\ %m
-set statusline+=\ %{ShowFileType()}
-set statusline+=\ %{ShowFileFormat()}
-set statusline+=\ %{&fileencoding}\ %r
-set statusline+=\ %{ShowSpell()}
-set statusline+=%=\ ≡:%l/%L\ %c\ (%p%%)\ 0x%04.B
+" " Set the status line to something useful
+" set statusline+=%F\ %m
+" set statusline+=\ %{ShowFileType()}
+" set statusline+=\ %{ShowFileFormat()}
+" set statusline+=\ %{&fileencoding}\ %r
+" set statusline+=\ %{ShowSpell()}
+" set statusline+=%=\ ≡:%l/%L\ %c\ (%p%%)\ 0x%04.B
 set laststatus=2
 set showtabline=2
 
@@ -420,20 +431,20 @@ function! StripTrailingWhitespace()
   endif
 endfunction " StripTrailingWhitespace
 
-" Reset spelling colours when reading a new buffer
-" This works around an issue where the colorscheme is changed by .local.vimrc
-function! SetSpellingColors()
-  highlight SpellBad cterm=bold ctermfg=white ctermbg=red
-  highlight SpellCap cterm=bold ctermfg=red ctermbg=white
-endfunction " SetSpellingColors
+" " Reset spelling colours when reading a new buffer
+" " This works around an issue where the colorscheme is changed by .local.vimrc
+" function! SetSpellingColors()
+"   highlight SpellBad cterm=bold ctermfg=white ctermbg=red
+"   highlight SpellCap cterm=bold ctermfg=red ctermbg=white
+" endfunction " SetSpellingColors
 
-" Change colourscheme when diffing
-function! SetDiffColors()
-  highlight DiffAdd     cterm=bold ctermfg=white ctermbg=DarkGreen
-  highlight DiffDelete  cterm=bold ctermfg=white ctermbg=DarkGrey
-  highlight DiffChange  cterm=bold ctermfg=white ctermbg=DarkBlue
-  highlight DiffText    cterm=bold ctermfg=white ctermbg=DarkRed
-endfunction " SetDiffColors
+" " Change colourscheme when diffing
+" function! SetDiffColors()
+"   highlight DiffAdd     cterm=bold ctermfg=white ctermbg=DarkGreen
+"   highlight DiffDelete  cterm=bold ctermfg=white ctermbg=DarkGrey
+"   highlight DiffChange  cterm=bold ctermfg=white ctermbg=DarkBlue
+"   highlight DiffText    cterm=bold ctermfg=white ctermbg=DarkRed
+" endfunction " SetDiffColors
 
 " Visual Move Functions from Drew Neil's vimcasts - http://vimcasts.org/episodes/bubbling-text/
 " Modified to check for line-visual mode.
@@ -464,100 +475,68 @@ function! AutoCorrect()
     normal! ms[s1z=`s
 endfunction " AutoCorrect
 
-" Check for modified
-function! CheckModified() abort
-  if &modified
-    highlight TabLineSel ctermfg=green
-  else
-    highlight TabLineSel ctermfg=lightgrey
-  endif
-endfunction " CheckModified
+" " Check for modified
+" function! CheckModified() abort
+"   if &modified
+"     highlight TabLineSel ctermfg=green
+"   else
+"     highlight TabLineSel ctermfg=lightgrey
+"   endif
+" endfunction " CheckModified
 
-" See if Spelling is on
-function! ShowSpell()
-  if &spell
-    return ' [SPELL]'
-  else
-    return ''
-  endif
-endfunction " ShowSpell
+" " See if Spelling is on
+" function! ShowSpell()
+"   if &spell
+"     return ' [SPELL]'
+"   else
+"     return ''
+"   endif
+" endfunction " ShowSpell
 
-" Get file format
-function! ShowFileFormat()
-  if &ff == 'dos'
-    return g:logo_win
-  elseif &ff == 'mac'
-    return g:logo_apple
-  else
-    return g:logo_linux
-  endfunction " ShowFileFormat
+" " Get file format
+" function! ShowFileFormat()
+"   if &ff == 'dos'
+"     return g:logo_win
+"   elseif &ff == 'mac'
+"     return g:logo_apple
+"   else
+"     return g:logo_linux
+"   endfunction " ShowFileFormat
 
-" Show filetype glyph
-function! ShowFileType()
-  if &ft == 'c'
-    return g:logo_c
-  elseif &ft == 'cpp'
-    return g:logo_cpp
-  elseif &ft == 'go'
-    return g:logo_go
-  elseif &ft == 'haskell'
-    return g:logo_hask
-  elseif &ft == 'html'
-    return g:logo_html
-  elseif &ft == 'java'
-    return g:logo_java
-  elseif &ft == 'javascript'
-    return g:logo_js
-  elseif &ft == 'lua'
-    return g:logo_lua
-  elseif &ft == 'markdown'
-    return g:logo_md
-  elseif &ft == 'php'
-    return g:logo_php
-  elseif &ft == 'python'
-    return g:logo_python
-  elseif &ft == 'ruby'
-    return g:logo_ruby
-  elseif &ft == 'rust'
-    return g:logo_rust
-  elseif &ft == 'vim'
-    return g:logo_vim
-  else
-    return '[' . &ft . ']'
-  endif
-endfunction " ShowFileType
-
-" Custom tabline: WIP to replace plugin buftabline
-function! MyTabLine()
-  let s = ''
-  for i in range(bufnr('$'))
-    " select the highlighting
-    if i + 1 == bufnr('.')
-      let s .= '%#TabLineSel#'
-    else
-      let s .= '%#TabLine#'
-    endif
-
-    let s .= bufname(i)
-
-    if i == bufnr('.')
-      let s .= '%#TabChevronSolid#' . g:chevron_sr
-    else
-      let s .= g:chevron_or
-    endif
-
-  endfor
-
-  " after the last tab fill with TabLineFill
-  let s .= '%#TabLineFill#'
-
-  " right-align the label to close the current tab page
-  if tabpagenr('$') > 1
-    let s .= '%=%#TabLine#%999Xbuffers'
-  endif
-
-  return s
-endfunction " MyTabLine
+" " Show filetype glyph
+" function! ShowFileType()
+"   if &ft == 'c'
+"     return g:logo_c
+"   elseif &ft == 'cpp'
+"     return g:logo_cpp
+"   elseif &ft == 'go'
+"     return g:logo_go
+"   elseif &ft == 'haskell'
+"     return g:logo_hask
+"   elseif &ft == 'html'
+"     return g:logo_html
+"   elseif &ft == 'java'
+"     return g:logo_java
+"   elseif &ft == 'javascript'
+"     return g:logo_js
+"   elseif &ft == 'lua'
+"     return g:logo_lua
+"   elseif &ft == 'markdown'
+"     return g:logo_md
+"   elseif &ft == 'php'
+"     return g:logo_php
+"   elseif &ft == 'python'
+"     return g:logo_python
+"   elseif &ft == 'ruby'
+"     return g:logo_ruby
+"   elseif &ft == 'rust'
+"     return g:logo_rust
+"   elseif &ft == 'vim'
+"     return g:logo_vim
+"   else
+"     return '[' . &ft . ']'
+"   endif
+" endfunction " ShowFileType
 
 " Functions }}}
 
@@ -834,8 +813,6 @@ augroup end
 
 " Highlight words to avoid in tech writing
 " http://css-tricks.com/words-avoid-educational-writing/
-" match TechWordsToAvoid
-" /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy/
 augroup tech_words
   autocmd!
   autocmd BufWinEnter *.tex,*.vimwiki highlight TechWordsToAvoid ctermbg=red
@@ -883,25 +860,25 @@ augroup view_group
 augroup end
 
 
-augroup spelling_colors
-  autocmd!
-  autocmd BufWinEnter * call SetSpellingColors()
-  autocmd BufNewFile * call SetSpellingColors()
-  autocmd BufRead * call SetSpellingColors()
-  autocmd InsertEnter * call SetSpellingColors()
-  autocmd InsertLeave * call SetSpellingColors()
-augroup end
+" augroup spelling_colors
+"   autocmd!
+"   autocmd BufWinEnter * call SetSpellingColors()
+"   autocmd BufNewFile * call SetSpellingColors()
+"   autocmd BufRead * call SetSpellingColors()
+"   autocmd InsertEnter * call SetSpellingColors()
+"   autocmd InsertLeave * call SetSpellingColors()
+" augroup end
 
-augroup diff_colors
-  autocmd!
-  autocmd FilterWritePre * call SetDiffColors()
-augroup end
+" augroup diff_colors
+"   autocmd!
+"   autocmd FilterWritePre * call SetDiffColors()
+" augroup end
 
-augroup checkmod
-  autocmd!
-  autocmd BufWinEnter,BufWritePost,FileWritePost * call CheckModified()
-  autocmd TextChanged,TextChangedI,WinEnter * call CheckModified()
-augroup end
+" augroup checkmod
+"   autocmd!
+"   autocmd BufWinEnter,BufWritePost,FileWritePost * call CheckModified()
+"   autocmd TextChanged,TextChangedI,WinEnter * call CheckModified()
+" augroup end
 
 augroup cursor_highlight
   autocmd!

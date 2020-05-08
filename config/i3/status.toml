@@ -1,0 +1,86 @@
+[theme]
+name = "slick"
+[theme.overrides]
+# idle_bg = "#44475A"
+# idle_fg = "#F8F8F2"
+# idle_bg = "#44475A"
+# idle_fg = "#282A36"
+info_fg = "#000000"
+good_fg = "#000000"
+warning_fg = "#000000"
+critical_fg = "#000000"
+separator = ""
+
+[icons]
+name = "awesome"
+
+# [[block]]
+# block = "focused_window"
+# max_width = 20
+
+# [[block]]
+# block = "custom"
+# command = "/home/ralph/.config/i3/i3blocks/updates"
+# interval = 3600
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "pacman"
+interval = 3600
+format = "{count}"
+format_singular = "{count}"
+format_up_to_date = ""
+
+[[block]]
+block = "net"
+device = "wlp3s0"
+ssid = true
+ip = false
+speed_up = true
+speed_down = true
+interval = 10
+use_bits = false
+hide_missing = true
+hide_inactive = true
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = ""
+info_type = "available"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mup}%"
+format_swap = "{SUp}%"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = "{barchart} {utilization}%"
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m}"
+
+[[block]]
+block = "battery"
+driver = "upower"
+format = "{percentage}% {time}"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %F %R"
+
+[[block]]
+block = "keyboard_layout"
+driver = "localebus"
