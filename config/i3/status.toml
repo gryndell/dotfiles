@@ -9,6 +9,7 @@ info_fg = "#000000"
 good_fg = "#000000"
 warning_fg = "#000000"
 critical_fg = "#000000"
+# separator = "▒▒▓"
 separator = ""
 
 [icons]
