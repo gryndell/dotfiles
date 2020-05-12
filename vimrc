@@ -98,6 +98,10 @@ set writebackup
 " No swap file
 set noswapfile
 
+" Undo persistence
+set undofile
+set undodir=~/.vim/undo
+
 " Command history
 set history=100
 
@@ -124,7 +128,7 @@ set backspace=indent,eol,start
 set expandtab
 
 " Set tab size in spaces (this is for manual indenting)
-set tabstop=4
+set tabstop=4 softtabstop=4
 
 " The number of spaces inserted for a tab (used for auto indenting)
 set shiftwidth=4
