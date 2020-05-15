@@ -70,11 +70,11 @@ if has("gui_running")
 endif
 
 " Make sure background colour of text will fill anything
-if &term =~ '256color'
+if &term =~ '256color' || &term =~ 'kitty'
   " disable Background Color Erase (BCE) so that color schemes
   " render properly when inside 256-color tmux and GNU screen.
   " see also http://sunaku.github.io/vim-256color-bce.html
-  set t_ut=
+  set t_ut=''
 endif
 
 " Use vim, not vi
@@ -316,32 +316,33 @@ let g:vimwiki_hl_cb_checked = 2
 let g:vimwiki_listsyms = ' ○◐●✔'
 let g:vimwiki_list = [{'path': '/cygdrive/h/vimwiki/', 'auto_toc': 1, 'index': 'index', 'path_html': '/cygdrive/h/vimwiki/html', 'auto_export': 0}]
 
-" Some useful glyphs
-let g:line_vertical = '│'
-let g:slant_right   = '╱'
-let g:slant_left    = '╲'
-let g:chevron_sr    = ''
-let g:chevron_sl    = ''
-let g:chevron_or    = ''
-let g:chevron_ol    = ''
-let g:logo_ruby     = ''
-let g:logo_java     = ''
-let g:logo_js       = ''
-let g:logo_md       = ''
-let g:logo_cpp      = ''
-let g:logo_c        = ''
-let g:logo_hask     = ''
-let g:logo_lua      = ''
-let g:logo_go       = ''
-let g:logo_html     = ''
-let g:logo_python   = ''
-let g:logo_php      = ''
-let g:logo_code     = ''
-let g:logo_vim      = ''
-let g:logo_win      = ''
-let g:logo_apple    = ''
-let g:logo_linux    = ''
-let g:logo_rust     = ''
+" " Some useful glyphs
+" let g:line_vertical = '│'
+" let g:slant_right   = '╱'
+" let g:slant_left    = '╲'
+" let g:chevron_sr    = ''
+" let g:chevron_sl    = ''
+" let g:chevron_or    = ''
+" let g:chevron_ol    = ''
+" let g:logo_ruby     = ''
+" let g:logo_java     = ''
+" let g:logo_js       = ''
+" let g:logo_md       = ''
+" let g:logo_cpp      = ''
+" let g:logo_c        = ''
+" let g:logo_hask     = ''
+" let g:logo_lua      = ''
+" let g:logo_go       = ''
+" let g:logo_html     = ''
+" let g:logo_python   = ''
+" let g:logo_php      = ''
+" let g:logo_code     = ''
+" let g:logo_vim      = ''
+" let g:logo_win      = ''
+" let g:logo_apple    = ''
+" let g:logo_linux    = ''
+" let g:logo_rust     = ''
+let &t_ut=''
 
 " Base Settings }}}
 

@@ -1,5 +1,8 @@
+# {{{ theme
 [theme]
-name = "slick"
+theme = "solarized-dark"
+name = "awesome"
+
 [theme.overrides]
 # idle_bg = "#44475A"
 # idle_fg = "#F8F8F2"
@@ -9,12 +12,11 @@ info_fg = "#000000"
 good_fg = "#000000"
 warning_fg = "#000000"
 critical_fg = "#000000"
-# separator = "▒▒▓"
+# separator = "░▒▓"
 separator = ""
+# }}}
 
-[icons]
-name = "awesome"
-
+# {{{ blocks
 # [[block]]
 # block = "focused_window"
 # max_width = 20
@@ -85,3 +87,6 @@ format = "%a %F %R"
 [[block]]
 block = "keyboard_layout"
 driver = "localebus"
+# }}}
+
+## vim: foldmethod=marker
