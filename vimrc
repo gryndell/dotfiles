@@ -221,6 +221,10 @@ highlight Visual ctermbg=grey guibg=grey
 " highlight StatusLine   cterm=NONE ctermfg=lightgrey gui=NONE guifg=lightgrey
 " highlight StatusLineNC cterm=NONE ctermfg=darkgrey  gui=NONE guifg=darkgrey
 
+" Mark cursor line and column bold
+highlight CursorLine cterm=bold ctermbg=NONE
+highlight CursorColumn cterm=bold ctermbg=NONE
+
 " Set autoindent
 set autoindent
 set smartindent
@@ -277,16 +281,6 @@ let g:gist_open_browser_after_post = 1
 " https://github.com/vim-scripts/Gist.vim
 " https://github.com/tpope/vim-fugitive
 
-" Airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme='nord'
-let g:airline_left_sep='▓▒░'
-let g:airline_left_alt_sep=' '
-let g:airline_right_sep='░▒▓'
-let g:airline_right_alt_sep=' '
-
 if filereadable(glob(".vimrc.local"))
   source .vimrc.local
 endif
@@ -316,35 +310,50 @@ let g:vimwiki_hl_cb_checked = 2
 let g:vimwiki_listsyms = ' ○◐●✔'
 let g:vimwiki_list = [{'path': '/cygdrive/h/vimwiki/', 'auto_toc': 1, 'index': 'index', 'path_html': '/cygdrive/h/vimwiki/html', 'auto_export': 0}]
 
-" " Some useful glyphs
-" let g:line_vertical = '│'
-" let g:slant_right   = '╱'
-" let g:slant_left    = '╲'
-" let g:chevron_sr    = ''
-" let g:chevron_sl    = ''
-" let g:chevron_or    = ''
-" let g:chevron_ol    = ''
-" let g:logo_ruby     = ''
-" let g:logo_java     = ''
-" let g:logo_js       = ''
-" let g:logo_md       = ''
-" let g:logo_cpp      = ''
-" let g:logo_c        = ''
-" let g:logo_hask     = ''
-" let g:logo_lua      = ''
-" let g:logo_go       = ''
-" let g:logo_html     = ''
-" let g:logo_python   = ''
-" let g:logo_php      = ''
-" let g:logo_code     = ''
-" let g:logo_vim      = ''
-" let g:logo_win      = ''
-" let g:logo_apple    = ''
-" let g:logo_linux    = ''
-" let g:logo_rust     = ''
+" Some useful glyphs
+let g:line_vertical = '│'
+let g:slant_right   = '╱'
+let g:slant_left    = '╲'
+let g:chevron_sr    = ''
+let g:chevron_sl    = ''
+let g:chevron_or    = ''
+let g:chevron_ol    = ''
+let g:logo_ruby     = ''
+let g:logo_java     = ''
+let g:logo_js       = ''
+let g:logo_md       = ''
+let g:logo_cpp      = ''
+let g:logo_c        = ''
+let g:logo_hask     = ''
+let g:logo_lua      = ''
+let g:logo_go       = ''
+let g:logo_html     = ''
+let g:logo_python   = ''
+let g:logo_php      = ''
+let g:logo_code     = ''
+let g:logo_vim      = ''
+let g:logo_win      = ''
+let g:logo_apple    = ''
+let g:logo_linux    = ''
+let g:logo_rust     = ''
 let &t_ut=''
 
 " Base Settings }}}
+
+" ┏━┓╻┏━┓╻  ╻┏┓╻┏━╸   ┏━┓┏━╸╺┳╸╺┳╸╻┏┓╻┏━╸┏━┓
+" ┣━┫┃┣┳┛┃  ┃┃┗┫┣╸    ┗━┓┣╸  ┃  ┃ ┃┃┗┫┃╺┓┗━┓
+" ╹ ╹╹╹┗╸┗━╸╹╹ ╹┗━╸   ┗━┛┗━╸ ╹  ╹ ╹╹ ╹┗━┛┗━┛
+" Airline Settings {{{
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_theme='nord'
+let g:airline_left_sep='▓▒░'
+let g:airline_left_alt_sep=' '
+let g:airline_right_sep='░▒▓'
+let g:airline_right_alt_sep=' '
+" Airline Settings }}}
 
 " ┏━┓╺┳╸┏━┓╺┳╸╻ ╻┏━┓   ╻  ╻┏┓╻┏━╸
 " ┗━┓ ┃ ┣━┫ ┃ ┃ ┃┗━┓   ┃  ┃┃┗┫┣╸

@@ -1,8 +1,14 @@
 # {{{ theme
 [theme]
-theme = "solarized-dark"
-name = "awesome"
+name = "slick"
+# }}}
 
+# {{{ icons
+[icons]
+name = "awesome"
+# }}}
+
+# {{{ theme overrides
 [theme.overrides]
 # idle_bg = "#44475A"
 # idle_fg = "#F8F8F2"

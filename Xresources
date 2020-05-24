@@ -121,16 +121,17 @@ URxvt.bell-command: canberra-gtk-play -i bell
 ! ╻ ╻╺┳╸┏━╸┏━┓┏┳┓   ┏━┓┏━╸╺┳╸╺┳╸╻┏┓╻┏━╸┏━┓
 ! ┏╋┛ ┃ ┣╸ ┣┳┛┃┃┃   ┗━┓┣╸  ┃  ┃ ┃┃┗┫┃╺┓┗━┓
 ! ╹ ╹ ╹ ┗━╸╹┗╸╹ ╹   ┗━┛┗━╸ ╹  ╹ ╹╹ ╹┗━┛┗━┛
-!{{{ xterm settings
-xterm*background: #000000
-xterm*locale: en_AU.UTF-8
-xterm*wideChars: true
-xterm*font: xft:Inconsolata Nerd Font Mono:size=16:antialias=true, \
-            xft:Hack Nerd Font Mono:size=16:antialias=true, \
-            xft:Iosevka Nerd Font Mono:size=16:antialias=true, \
-            xft:UbuntuMono Nerd Font:size=16:antialias=true, \
-            xft:DejaVu Sans Mono:size=16:antialias=true, \
-            xft:Noto Sans Mono:size=16:antialias=true
-!}}} xterm settings
+!{{{ XTerm settings
+XTerm*background: #000000
+XTerm*locale: en_AU.UTF-8
+XTerm*wideChars: true
+XTerm*font: xft:Fira Code:size=14:antialias=true, \
+            xft:Inconsolata Nerd Font Mono:size=14:antialias=true, \
+            xft:Hack Nerd Font Mono:size=14:antialias=true, \
+            xft:Iosevka Nerd Font Mono:size=14:antialias=true, \
+            xft:UbuntuMono Nerd Font:size=14:antialias=true, \
+            xft:DejaVu Sans Mono:size=14:antialias=true, \
+            xft:Noto Sans Mono:size=14:antialias=true
+!}}} XTerm settings
 ! vim: foldmethod=marker
 
