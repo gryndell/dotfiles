@@ -41,3 +41,4 @@ map R rotate
 map K zoom in
 map J zoom out
 
+set adjust-open "width"

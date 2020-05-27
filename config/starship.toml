@@ -5,7 +5,7 @@ add_newline = false
 [character]
 symbol = "❯"
 vicmd_symbol = "❮"
-error_symbol = "✗"
+error_symbol = "❯"
 use_symbol_for_status = true
 style_success = "green"
 style_failure = "red"

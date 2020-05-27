@@ -647,6 +647,7 @@ vnoremap <silent> <leader>' <esc>`>a'<esc>`<i'<esc>
 " Miscellaneous mappings
 " Run fuzzy finder FZF
 nnoremap <silent> <c-p> :<c-u>FZF<cr>
+
 " Easy return to normal mode
 inoremap <silent> jk <esc>
 
