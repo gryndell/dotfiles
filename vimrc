@@ -26,7 +26,9 @@ call minpac#add('tpope/vim-vinegar') " File finder
 call minpac#add('tpope/vim-endwise') " Automatically add end constructs
 call minpac#add('tpope/vim-eunuch') " UNIX shell command helpers
 call minpac#add('junegunn/fzf') " Advanced fuzzy finder
+call minpac#add('junegunn/limelight.vim') " Highlight current paragraph
 call minpac#add('junegunn/goyo.vim') " Distraction-free editing
+call minpac#add('junegunn/vim-easy-align') " Easy alignment of e.g., markdown tables
 call minpac#add('kshenoy/vim-signature') " Place, toggle and display marks
 call minpac#add('vim-scripts/AutoComplPop') " Autocomplete with pop-up
 call minpac#add('jiangmiao/auto-pairs') " Insert or delete brackets, parens, quotes in pair
@@ -49,9 +51,15 @@ call minpac#add('mboughaba/i3config.vim') " i3 config sytax
 call minpac#add('rust-lang/rust.vim') " Configuration for Rust
 call minpac#add('cespare/vim-toml') " Syntax for TOML
 call minpac#add('tommcdo/vim-lion') " Align text around a character
+
+" Aesthetics plugins
 call minpac#add('vim-airline/vim-airline') " Fancy status/tabline
 call minpac#add('vim-airline/vim-airline-themes') " Themes for airline
+call minpac#add('joshdick/onedark.vim') " OneDark Colorscheme
 call minpac#add('arcticicestudio/nord-vim') " Nord colorscheme
+call minpac#add('vim-pandoc/vim-pandoc') " Pandoc integration
+call minpac#add('vim-pandoc/vim-pandoc-syntax') " Pandoc syntax
+call minpac#add('dhruvasagar/vim-table-mode') " Easy tables
 call minpac#add('ryanoasis/vim-devicons') " Vim Dev Icons
 
 command! PackUpdate call minpac#update()
@@ -160,7 +168,7 @@ set listchars=tab:»-,trail:·,nbsp:␣,extends:→,precedes:←
 set list
 
 " Get rid of the delay when pressing O (for example)
-set timeout ttimeout timeoutlen=1000 ttimeoutlen=100
+set timeout ttimeout timeoutlen=500 ttimeoutlen=100
 
 " UTF encoding
 set encoding=utf-8 fileencodings=utf-8,latin1,ucs-bom,default
@@ -203,10 +211,7 @@ set showmatch
 
 " Theme
 set background=dark
-colorscheme nord
-" colorscheme afterglow
-" colorscheme firesparks-256
-" colorscheme oceanblack256
+colorscheme onedark
 " " Make transparent if terminal, black if gui
 if has("gui_running")
   highlight Normal guibg=black
@@ -308,7 +313,25 @@ let g:vimwiki_folding = 'syntax'
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 2
 let g:vimwiki_listsyms = ' ○◐●✔'
-let g:vimwiki_list = [{'path': '/cygdrive/h/vimwiki/', 'auto_toc': 1, 'index': 'index', 'path_html': '/cygdrive/h/vimwiki/html', 'auto_export': 0}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md',
+  \ 'auto_toc': 1, 'index': 'index', 'path_html': '~/vimwiki/html', 'auto_export': 0}]
+let g:vimwiki_global_ext = 0
+
+" Settings for ALE
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+let g:ale_linters_explicit = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+let g:ale_linters = {'markdown': ['mdl', 'writegood'], 'vimwiki': ['mdl', 'writegood'],}
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'],}
+let g:markdown_mdl_executable = 'mdl'
+let g:markdown_mdl_options = ''
+
 
 " Some useful glyphs
 let g:line_vertical = '│'
@@ -337,6 +360,13 @@ let g:logo_apple    = ''
 let g:logo_linux    = ''
 let g:logo_rust     = ''
 let &t_ut=''
+
+" Limelight
+let g:limelight_default_coefficient = 0.8
+let g:limelight_priority = -1
+
+" Markdown-compatible tables with vim-table-mode
+let g:table_mode_corner = '|'
 
 " Base Settings }}}
 
@@ -757,8 +787,8 @@ augroup file_types
   autocmd FileType html,phtml,xhtml,xml,xsl   :CloseTagEnableBuffer
   autocmd FileType calendar   :IndentLinesDisable
   autocmd FileType csv        :IndentLinesDisable
-  autocmd FileType html
-    \ setlocal textwidth=79 wrap shiftwidth=2 tabstop=2 expandtab
+  autocmd FileType html,phtml,xhtml,xml,xsl
+    \ setlocal textwidth=0 wrap shiftwidth=2 tabstop=2 expandtab
 
   " Highlight column 80
   autocmd FileType conf,cpp,go,lua
@@ -786,6 +816,7 @@ augroup file_types
 
   " Fold Methods
   autocmd FileType markdown setlocal foldmethod=expr
+  autocmd FileType markdown xnoremap <leader><bslash> :EasyAlign*<bar><cr>
   autocmd FileType lua,python,sh    setlocal foldmethod=indent
   autocmd FileType c,cpp,java,vimwiki,go    setlocal foldmethod=syntax
   autocmd FileType sh,vim   setlocal foldmethod=marker
@@ -834,11 +865,12 @@ augroup end
 " http://css-tricks.com/words-avoid-educational-writing/
 augroup tech_words
   autocmd!
-  autocmd BufWinEnter *.tex,*.vimwiki highlight TechWordsToAvoid ctermbg=red
+  autocmd BufWinEnter *.tex,*.vimwiki,*.md highlight TechWordsToAvoid
+  \ ctermbg=red
   \ ctermfg=white
-  autocmd BufWinEnter *.tex,*.vimwiki match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-  autocmd InsertEnter *.tex,*.vimwiki match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-  autocmd InsertLeave *.tex,*.vimwiki match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
+  autocmd BufWinEnter *.tex,*.vimwiki,*.md match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
+  autocmd InsertEnter *.tex,*.vimwiki,*.md match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
+  autocmd InsertLeave *.tex,*.vimwiki,*.md match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
   autocmd BufWinLeave * call clearmatches()
 augroup end
 
@@ -907,6 +939,12 @@ augroup cursor_highlight
   autocmd WinLeave * set nocursorcolumn
 augroup END
 
+" Goyo.Limelight integration
+augroup Goyo
+  autocmd! user GoyoEnter Limelight
+  autocmd! user GoyoLeave Limelight!
+augroup END
+
 " Auto Commands }}}
 
 " ┏━┓┏┓ ┏┓ ┏━┓┏━╸╻ ╻╻┏━┓╺┳╸╻┏━┓┏┓╻┏━┓
@@ -944,4 +982,4 @@ let g:BASH_AuthorName = $BASH_AuthorName
 let g:BASH_Email = $BASH_Email
 let g:BASH_Company = $BASH_Company
 " Personal Details }}}
-
+" vim: foldmethod=marker

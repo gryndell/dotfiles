@@ -302,15 +302,18 @@ hide_edge_borders none
 # ╹ ╹╹  ╹  ┗━╸╹┗━╸╹ ╹ ╹ ╹┗━┛╹ ╹   ╹┗╸┗━┛┗━╸┗━╸┗━┛
 # Application Rules {{{
 # ----------- -----
+# for_window [class="Cairo-dock"] floating enable
 # for_window [class="Gnome-terminal"] floating enable
-# for_window [class="Termit"] floating enable
-# for_window [class="Synaptic"] floating enable
 for_window [class="Steam"] floating enable
 for_window [class="XClock"] floating enable
 for_window [class="Yad"] floating enable
-# assign [class="Firefox"] $workspace1
+# assign [class="Termite"] $workspace1
+assign [class="firefoxdeveloperedition"] $workspace2
+# assign [class="Evolution"] $workspace3
 # assign [class="konsole"] $workspace2
-# assign [class="Thunar"] $workspace3
+# assign [class="Thunar"] $workspace4
+# assign [class="Inkscape"] $workspace5
+# assign [class="Gimp"] $workspace6
 # assign [class="Rhythmbox"] $workspace4
 # assign [class="Wfica"] $workspace4
 #
@@ -368,6 +371,7 @@ exec_always --no-startup-id nm-applet
 
 # Set wallpaper
 exec_always --no-startup-id ~/.fehbg
+# exec_always --no-startup-id ~/bin/mkwall
 # Personal Execs }}}
 # ╻┏━┓┏┓ ┏━┓┏━┓   ┏━┓┏━╸╺┳╸╺┳╸╻┏┓╻┏━╸┏━┓
 # ┃╺━┫┣┻┓┣━┫┣┳┛   ┗━┓┣╸  ┃  ┃ ┃┃┗┫┃╺┓┗━┓

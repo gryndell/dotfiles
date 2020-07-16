@@ -34,9 +34,9 @@ alias l='ls -CF'
 alias emax="emacs -nw -q -l ~/.emacs.d/chui.el"
 alias semac="sudo emacs -nw -q -l /home/ralph/.emacs.d/chui.el"
 # alias rm="rm -i"
-if [[ $HOST == 'ishtar' ]]; then
-  alias rm='~/bin/newrm'
-fi
+# if [[ $HOST == 'ishtar' ]]; then
+#   alias rm='~/bin/newrm'
+# fi
 alias cp='cp -iv'
 # alias xterm='xterm -font -*-fixed-medium-r-*-20-*-*-*-*-*-iso8859-16'
 alias tty-clock='tty-clock -bcC5'
@@ -63,4 +63,3 @@ alias -s pdf=zathura
 alias clear='[ $[$RANDOM % 10] = 0 ] && timeout 6 cbeams -o; clear || clear'
 
 # }}} Aliases
-
