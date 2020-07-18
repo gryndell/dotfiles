@@ -211,7 +211,7 @@ set showmatch
 
 " Theme
 set background=dark
-colorscheme onedark
+colorscheme nord
 " " Make transparent if terminal, black if gui
 if has("gui_running")
   highlight Normal guibg=black
