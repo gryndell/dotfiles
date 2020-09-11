@@ -47,9 +47,9 @@ block = "net"
 device = "wlp3s0"
 ssid = true
 ip = false
-speed_up = true
-speed_down = true
-interval = 10
+speed_up = false
+speed_down = false
+interval = 1200
 use_bits = false
 hide_missing = true
 hide_inactive = true
@@ -91,8 +91,15 @@ interval = 60
 format = "%a %F %R"
 
 [[block]]
-block = "keyboard_layout"
-driver = "localebus"
+block = "weather"
+format = "{weather} ({location}) {temp}°"
+service = { name = "openweathermap", api_key = "b0d9aeb621f5e2763f5181c4ae051988", units = "metric" }
+interval = 3600
+autolocate = true
+
+# [[block]]
+# block = "keyboard_layout"
+# driver = "localebus"
 # }}}
 
 ## vim: foldmethod=marker

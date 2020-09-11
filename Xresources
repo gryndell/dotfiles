@@ -83,13 +83,13 @@ URxvt*wideChars: true
 !URxvt*letterSpace:-1
 !URxvt*font: xft:Inconsolata Nerd Font Mono:size=18:antialias=true
 URxvt*font: xft:Fira Code:size=16:antialias=true, \
-            xft:FontAwesome:size=16:antialias=true, \
-            xft:Hack Nerd Font Mono:size=16:antialias=true, \
             xft:Inconsolata Nerd Font Mono:size=18:antialias=true, \
+            xft:Hack Nerd Font Mono:size=16:antialias=true, \
             xft:Iosevka Nerd Font Mono:size=16:antialias=true, \
             xft:UbuntuMono Nerd Font:size=16:antialias=true, \
             xft:DejaVu Sans Mono:size=16:antialias=true, \
             xft:Noto Sans Mono:size=16:antialias=true
+            xft:FontAwesome:size=16:antialias=true, \
 ! URxvt*font: xft:Fira Code:size=16:antialias=true
 ! URxvt*font: xft:Iosevka Nerd Font Mono:size=16:antialias=true
 ! URxvt*font: xft:Hack Nerd Font:size=14:antialias=true

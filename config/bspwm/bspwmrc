@@ -1,0 +1,87 @@
+#! /bin/sh
+
+# start sxhkd if it is not running
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+# See if hdmi monitor is connected
+export HDMICON=$(xrandr -q | grep 'HDMI-1-2.* connected' | cut -d' ' -f1)
+#          
+if [ $HDMICON != '' ]; then
+  bspc monitor eDP-1-1 -d     
+  bspc monitor HDMI-1-2 -d     
+else
+  bspc monitor -d          
+fi
+
+bspc config pointer_follows_focus   true
+bspc config focus_follows_pointer   true
+bspc config pointer_follows_monitor true
+bspc config border_width         1
+bspc config window_gap           2
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+# Border for non-active window
+bspc config normal_border_color "#aaaaaa"
+# Border for active window not on focused desktop
+bspc config active_border_color "#00ffff"
+# Border for active window on focused desktop
+bspc config focused_border_color "#00ff00"
+
+# bspc rule -a firefoxdeveloperedition desktop='^2' state=tiled
+bspc rule -a firefoxdeveloperedition state=tiled private=on follow=on
+bspc rule -a Wfica state=tiled private=on follow=on
+bspc rule -a Gimp desktop='^7' state=floating follow=on
+bspc rule -a Inkscape desktop='^8' state=floating follow=on
+bspc rule -a Zathura state=tiled
+bspc rule -a mplayer2 state=floating
+bspc rule -a 'VirtualBox Manager' state=pseudo_tiled follow=on
+# bspc rule -a Screenkey manage=off
+
+# Fix mouse cursor
+xsetroot -cursor_name left_ptr
+
+# Start gnome settings daemon
+# gnome-settings-daemon
+# Start picom compositor
+/usr/bin/picom --config $HOME/.config/picom/picom.conf -b
+echo "picom started" > /home/ralph/bspwm.log
+# Start dunst
+/usr/bin/dunst -config $HOME/.config/dunst/dunstrc &
+echo "dunst started" >> /home/ralph/bspwm.log
+# Switch numlock on
+/usr/bin/numlockx on
+echo "numlock on" >> /home/ralph/bspwm.log
+# Set volume
+/usr/bin/pactl set-sink-volume 0 50%
+echo "volume set" >> /home/ralph/bspwm.log
+# Unlock keyring (done by dm already)
+# /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
+# echo "gnome-keyring-daemon started" >> /home/ralph/bspwm.log
+# Start NetworkManager Applet
+/usr/bin/nm-applet &
+echo "nm-applet started" >> /home/ralph/bspwm.log
+# Set wallpaper to last used
+# $HOME/.fehbg > /home/ralph/fehbg.log
+# echo "wallpaper set to:" >> /home/ralph/bspwm.log
+# cat $HOME/.fehbg >> /home/ralph/bspwm.log
+/usr/bin/nitrogen --restore &
+# # Start dropbox
+# /usr/bin/killall dropbox
+# /usr/bin/systemctl --user start dropbox
+# echo "dropbox started" >> /home/ralph/bspwm.log
+
+# Start polybar
+$HOME/.config/polybar/launch.sh > /home/ralph/polybar.log
+# echo "polybar started on main monitor" >> /home/ralph/bspwm.log
+# if [ $HDMICON != '' ]; then
+#   $HOME/.config/polybar/launch2.sh >> /home/ralph/polybar.log
+#   echo "polybar started on HDMI-1-2" >> /home/ralph/bspwm.log
+# fi
+
+# Turn off screen blanking
+/usr/bin/xset -dpms s off
+
+# vim: ft=sh

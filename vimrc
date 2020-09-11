@@ -60,6 +60,7 @@ call minpac#add('arcticicestudio/nord-vim') " Nord colorscheme
 call minpac#add('vim-pandoc/vim-pandoc') " Pandoc integration
 call minpac#add('vim-pandoc/vim-pandoc-syntax') " Pandoc syntax
 call minpac#add('dhruvasagar/vim-table-mode') " Easy tables
+call minpac#add('gabrielelana/vim-markdown') " Better Vim Markdown syntax highlighting
 call minpac#add('ryanoasis/vim-devicons') " Vim Dev Icons
 
 command! PackUpdate call minpac#update()
@@ -75,6 +76,11 @@ if has("gui_running")
   " Autoselect
   set guioptions=a
   set guifont=Fira\ Code\ 16
+endif
+
+" Ensure only Python3 is loaded
+if has('python3')
+  " do nothing
 endif
 
 " Make sure background colour of text will fill anything
@@ -313,8 +319,9 @@ let g:vimwiki_folding = 'syntax'
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 2
 let g:vimwiki_listsyms = ' ○◐●✔'
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md',
-  \ 'auto_toc': 1, 'index': 'index', 'path_html': '~/vimwiki/html', 'auto_export': 0}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown',
+  \ 'ext': '.md', 'auto_toc': 1, 'index': 'index',
+  \ 'path_html': '~/vimwiki/html', 'auto_export': 0}]
 let g:vimwiki_global_ext = 0
 
 " Settings for ALE
@@ -327,7 +334,8 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
-let g:ale_linters = {'markdown': ['mdl', 'writegood'], 'vimwiki': ['mdl', 'writegood'],}
+let g:ale_linters = {'markdown': ['mdl', 'writegood'],
+  \ 'vimwiki': ['mdl', 'writegood'], 'pandoc': ['mdl', 'writegood'],}
 let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'],}
 let g:markdown_mdl_executable = 'mdl'
 let g:markdown_mdl_options = ''
@@ -368,6 +376,16 @@ let g:limelight_priority = -1
 " Markdown-compatible tables with vim-table-mode
 let g:table_mode_corner = '|'
 
+if has('nvim')
+  let g:python_host_prog = '/usr/bin/python2'
+  let g:python3_host_prog = '/usr/bin/python3'
+  let g:ruby_host_prog = 'rvm system do neovim-ruby-host'
+  let g:node_host_prog = '/usr/bin/neovim-node-host'
+  set clipboard+=unnamedplus
+endif
+
+let g:tex_flavor = 'latex'
+
 " Base Settings }}}
 
 " ┏━┓╻┏━┓╻  ╻┏┓╻┏━╸   ┏━┓┏━╸╺┳╸╺┳╸╻┏┓╻┏━╸┏━┓
@@ -379,10 +397,14 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme='nord'
-let g:airline_left_sep='▓▒░'
-let g:airline_left_alt_sep=' '
-let g:airline_right_sep='░▒▓'
-let g:airline_right_alt_sep=' '
+" let g:airline_left_sep='▓▒░'
+" let g:airline_left_alt_sep=' '
+" let g:airline_right_sep='░▒▓'
+" let g:airline_right_alt_sep=' '
+let g:airline_left_sep=''
+let g:airline_left_alt_sep=''
+let g:airline_right_sep=''
+let g:airline_right_alt_sep=''
 " Airline Settings }}}
 
 " ┏━┓╺┳╸┏━┓╺┳╸╻ ╻┏━┓   ╻  ╻┏┓╻┏━╸
@@ -776,7 +798,7 @@ augroup file_types
   autocmd FileType tex,vimwiki,text setlocal complete+=,kspell
 
   " Text settings
-  autocmd FileType tex,vimwiki,text
+  autocmd FileType tex,vimwiki,text,markdown
     \ setlocal textwidth=79 wrap shiftwidth=4 tabstop=4 expandtab
   autocmd FileType gitcommit  setlocal spell textwidth=72
   autocmd FileType sh,zsh,ruby
@@ -787,7 +809,7 @@ augroup file_types
   autocmd FileType html,phtml,xhtml,xml,xsl   :CloseTagEnableBuffer
   autocmd FileType calendar   :IndentLinesDisable
   autocmd FileType csv        :IndentLinesDisable
-  autocmd FileType html,phtml,xhtml,xml,xsl
+  autocmd FileType html,phtml,xhtml,xml,xsl,css
     \ setlocal textwidth=0 wrap shiftwidth=2 tabstop=2 expandtab
 
   " Highlight column 80

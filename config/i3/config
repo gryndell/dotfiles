@@ -10,7 +10,7 @@
 # font pango:DejaVu Sans Mono Book, FontAwesome 10
 # font pango:Inconsolata for Powerline Medium, FontAwesome 10
 # font pango:Inconsolata Nerd Font Mono, FontAwesome 11
-font pango: FontAwesome 11
+font pango: Fira Code Regular, FontAwesome 11
 # Fonts }}}
 # ┏━┓┏━╸╺┳╸   ╻ ╻┏━┓┏━┓╻┏━┓┏┓ ╻  ┏━╸┏━┓
 # ┗━┓┣╸  ┃    ┃┏┛┣━┫┣┳┛┃┣━┫┣┻┓┃  ┣╸ ┗━┓
@@ -73,6 +73,8 @@ bindsym $mod+Shift+v exec gvim
 
 # start rofi (program launcher)
 bindsym $mod+d exec "rofi -show drun"
+# start rofi (switch window)
+bindsym $mod+Shift+w exec "rofi -show window"
 # bindsym $mod+d exec "rofi -modi window,drun,run \
 # -show drun -sidebar-mode -bw 2\
 # -terminal termit \
@@ -303,7 +305,10 @@ hide_edge_borders none
 # Application Rules {{{
 # ----------- -----
 # for_window [class="Cairo-dock"] floating enable
+for_window [class="Gimp"] floating enable
+for_window [class="Gtktest"] floating enable
 # for_window [class="Gnome-terminal"] floating enable
+for_window [class="Inkscape"] floating enable
 for_window [class="Steam"] floating enable
 for_window [class="XClock"] floating enable
 for_window [class="Yad"] floating enable
@@ -339,12 +344,12 @@ exec_always --no-startup-id xset s off
 exec_always --no-startup-id xset -dpms
 
 # Start gnome settings daemon
-exec --no-startup-id gnome-settings-daemon
+# exec --no-startup-id gnome-settings-daemon
 
 # Start compositor
 # exec --no-startup-id compton --config ~/.config/i3/compton.conf -b
 # exec_always --no-startup-id killall picom
-exec_always --no-startup-id picom --config ~/.config/i3/picom.conf -b
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf -b
 
 # Start notification daemon
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc &
@@ -356,7 +361,7 @@ exec --no-startup-id dunst -config ~/.config/dunst/dunstrc &
 exec --no-startup-id  numlockx on
 
 # Set Sound Volume to 80%
-exec --no-startup-id  pactl set-sink-volume 0 80%
+exec --no-startup-id  pactl set-sink-volume 0 50%
 
 # Unlock keyring
 # exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
@@ -384,7 +389,7 @@ exec_always --no-startup-id ~/.fehbg
 #
 # font pango:DejaVu Sans Mono Book, FontAwesome 8
 bar {
-    font pango:Boecklins Universe, FontAwesome 11
+    font pango:DejaVu Sans Book, FontAwesome 11
     # font pango: Inconsolata for Powerline Medium 10
     position top
     # separator_symbol "░▒▓"
