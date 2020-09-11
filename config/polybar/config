@@ -537,13 +537,17 @@ menu-2-1-exec = menu-open-0
 ; exec = "/home/ralph/bin/updates"
 ; tail = false
 ; ; label-underline = ${colors.foreground-alt}
-type = custom/ipc
-hook-0 = sudo pacman -Qu | wc -l
+type = custom/script
+exec = sudo pacman -Qu | wc -l
+exec-if = sudo pacman -Syy
 format-prefix = "📦 "
-font = 1
+format = <label>
+label = %output%
+tail = false
 click-left = kitty -o font_size=14 sh -c "sudo pacman -Syu"
 initial = 1
 interval = 1800
+font = 1
 
 [module/demo]
 type = custom/ipc
