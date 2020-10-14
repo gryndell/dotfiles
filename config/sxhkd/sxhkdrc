@@ -26,6 +26,10 @@ super + shift + f
 super + n
     kitty --name ncmpcpp --class ncmpcpp -title ncmpcpp ncmpcpp
 
+# Reload wallpaper
+super + shift + n
+    nitrogen --restore &
+
 # make sxhkd reload its configuration files:
 super + Escape
     pkill -USR1 -x sxhkd

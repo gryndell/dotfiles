@@ -87,3 +87,4 @@ add-zsh-hook preexec make_underscore
 # }}} Prompt
 eval "$(starship init zsh)"
 
+/usr/bin/neofetch --disable title | lolcat

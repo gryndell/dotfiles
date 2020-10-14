@@ -7,10 +7,10 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 export HDMICON=$(xrandr -q | grep 'HDMI-1-2.* connected' | cut -d' ' -f1)
 #          
 if [ $HDMICON != '' ]; then
-  bspc monitor eDP-1-1 -d     
+  bspc monitor eDP-1-1 -d     
   bspc monitor HDMI-1-2 -d     
 else
-  bspc monitor -d          
+  bspc monitor -d     
 fi
 
 bspc config pointer_follows_focus   true
@@ -33,8 +33,8 @@ bspc config focused_border_color "#00ff00"
 # bspc rule -a firefoxdeveloperedition desktop='^2' state=tiled
 bspc rule -a firefoxdeveloperedition state=tiled private=on follow=on
 bspc rule -a Wfica state=tiled private=on follow=on
-bspc rule -a Gimp desktop='^7' state=floating follow=on
-bspc rule -a Inkscape desktop='^8' state=floating follow=on
+bspc rule -a Gimp state=floating follow=on
+bspc rule -a Inkscape state=floating follow=on
 bspc rule -a Zathura state=tiled
 bspc rule -a mplayer2 state=floating
 bspc rule -a 'VirtualBox Manager' state=pseudo_tiled follow=on
@@ -80,6 +80,10 @@ $HOME/.config/polybar/launch.sh > /home/ralph/polybar.log
 #   $HOME/.config/polybar/launch2.sh >> /home/ralph/polybar.log
 #   echo "polybar started on HDMI-1-2" >> /home/ralph/bspwm.log
 # fi
+# # Start tint2
+# killall tint2
+# /usr/bin/tint2
+
 
 # Turn off screen blanking
 /usr/bin/xset -dpms s off

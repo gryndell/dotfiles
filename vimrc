@@ -56,7 +56,7 @@ call minpac#add('tommcdo/vim-lion') " Align text around a character
 call minpac#add('vim-airline/vim-airline') " Fancy status/tabline
 call minpac#add('vim-airline/vim-airline-themes') " Themes for airline
 call minpac#add('joshdick/onedark.vim') " OneDark Colorscheme
-call minpac#add('arcticicestudio/nord-vim') " Nord colorscheme
+call minpac#add('morhetz/gruvbox') " Gruvbox colorscheme
 call minpac#add('vim-pandoc/vim-pandoc') " Pandoc integration
 call minpac#add('vim-pandoc/vim-pandoc-syntax') " Pandoc syntax
 call minpac#add('dhruvasagar/vim-table-mode') " Easy tables
@@ -75,7 +75,7 @@ command! PackClean call minpac#clean()
 if has("gui_running")
   " Autoselect
   set guioptions=a
-  set guifont=Fira\ Code\ 16
+  set guifont=FiraCode\ Nerd\ Font\ Mono\ 16
 endif
 
 " Ensure only Python3 is loaded
@@ -217,7 +217,9 @@ set showmatch
 
 " Theme
 set background=dark
-colorscheme nord
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_italic = '1'
+colorscheme gruvbox
 " " Make transparent if terminal, black if gui
 if has("gui_running")
   highlight Normal guibg=black
@@ -396,15 +398,11 @@ let g:tex_flavor = 'latex'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme='nord'
-" let g:airline_left_sep='▓▒░'
-" let g:airline_left_alt_sep=' '
-" let g:airline_right_sep='░▒▓'
-" let g:airline_right_alt_sep=' '
-let g:airline_left_sep=''
-let g:airline_left_alt_sep=''
-let g:airline_right_sep=''
-let g:airline_right_alt_sep=''
+let g:airline_theme='base16_gruvbox_dark_hard'
+let g:airline_left_sep='▓▒░'
+let g:airline_left_alt_sep=' '
+let g:airline_right_sep='░▒▓'
+let g:airline_right_alt_sep=' '
 " Airline Settings }}}
 
 " ┏━┓╺┳╸┏━┓╺┳╸╻ ╻┏━┓   ╻  ╻┏┓╻┏━╸
