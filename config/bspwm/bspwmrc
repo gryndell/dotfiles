@@ -9,8 +9,16 @@ export HDMICON=$(xrandr -q | grep 'HDMI-1-2.* connected' | cut -d' ' -f1)
 if [ $HDMICON != '' ]; then
   bspc monitor eDP-1-1 -d     
   bspc monitor HDMI-1-2 -d     
+  bspc rule -a Termite desktop='^1' follow=on
+  bspc rule -a ranger desktop='^2' follow=on
+  bspc rule -a firefoxdeveloperedition desktop='^6' state=tiled follow=on
+  bspc rule -a Zathura desktop='^7' state=tiled follow=on
 else
   bspc monitor -d     
+  bspc rule -a Termite desktop='^1' follow=on
+  bspc rule -a firefoxdeveloperedition desktop='^2' state=tiled follow=on
+  bspc rule -a ranger desktop='^3' follow=on
+  bspc rule -a Zathura desktop='^4' state=tiled follow=on
 fi
 
 bspc config pointer_follows_focus   true
@@ -30,12 +38,11 @@ bspc config active_border_color "#00ffff"
 # Border for active window on focused desktop
 bspc config focused_border_color "#00ff00"
 
-# bspc rule -a firefoxdeveloperedition desktop='^2' state=tiled
-bspc rule -a firefoxdeveloperedition state=tiled private=on follow=on
+# bspc rule -a firefoxdeveloperedition state=tiled private=on follow=on
 bspc rule -a Wfica state=tiled private=on follow=on
 bspc rule -a Gimp state=floating follow=on
 bspc rule -a Inkscape state=floating follow=on
-bspc rule -a Zathura state=tiled
+bspc rule -a Shotwell state=floating follow=on
 bspc rule -a mplayer2 state=floating
 bspc rule -a 'VirtualBox Manager' state=pseudo_tiled follow=on
 # bspc rule -a Screenkey manage=off
@@ -87,5 +94,17 @@ $HOME/.config/polybar/launch.sh > /home/ralph/polybar.log
 
 # Turn off screen blanking
 /usr/bin/xset -dpms s off
+
+# Start termite
+/usr/bin/termite &
+
+# Start firefoxdeveloperedition
+/usr/bin/firefox-developer-edition &
+
+# Start Ranger
+kitty --name ranger --class ranger --title ranger ranger &
+
+# # Start Zathura (temporary)
+# /usr/bin/zathura /home/ralph/Documents/Technical_Documents/BSD/AbsoluteFreeBSD_3e.pdf &
 
 # vim: ft=sh
