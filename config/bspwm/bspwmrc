@@ -11,6 +11,7 @@ if [ $HDMICON != '' ]; then
   bspc monitor HDMI-1-2 -d     
   bspc rule -a Termite desktop='^1' follow=on
   bspc rule -a ranger desktop='^2' follow=on
+  bspc rule -a Thunar desktop='^2' follow=on
   bspc rule -a firefoxdeveloperedition desktop='^6' state=tiled follow=on
   bspc rule -a Zathura desktop='^7' state=tiled follow=on
 else
@@ -24,7 +25,7 @@ fi
 bspc config pointer_follows_focus   true
 bspc config focus_follows_pointer   true
 bspc config pointer_follows_monitor true
-bspc config border_width         1
+bspc config border_width         0
 bspc config window_gap           2
 
 bspc config split_ratio          0.5
@@ -70,11 +71,11 @@ echo "volume set" >> /home/ralph/bspwm.log
 # Start NetworkManager Applet
 /usr/bin/nm-applet &
 echo "nm-applet started" >> /home/ralph/bspwm.log
-# Set wallpaper to last used
-# $HOME/.fehbg > /home/ralph/fehbg.log
+# Set wallpaper using feh
+$HOME/.fehbg > /home/ralph/fehbg.log
 # echo "wallpaper set to:" >> /home/ralph/bspwm.log
 # cat $HOME/.fehbg >> /home/ralph/bspwm.log
-/usr/bin/nitrogen --restore &
+# /usr/bin/nitrogen --restore &
 # # Start dropbox
 # /usr/bin/killall dropbox
 # /usr/bin/systemctl --user start dropbox
@@ -95,14 +96,10 @@ $HOME/.config/polybar/launch.sh > /home/ralph/polybar.log
 # Turn off screen blanking
 /usr/bin/xset -dpms s off
 
-# Start termite
+# Start termite, Thunar and Firefox
 /usr/bin/termite &
-
-# Start firefoxdeveloperedition
+# /usr/bin/thunar &
 /usr/bin/firefox-developer-edition &
-
-# Start Ranger
-kitty --name ranger --class ranger --title ranger ranger &
 
 # # Start Zathura (temporary)
 # /usr/bin/zathura /home/ralph/Documents/Technical_Documents/BSD/AbsoluteFreeBSD_3e.pdf &

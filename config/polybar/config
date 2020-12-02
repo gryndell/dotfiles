@@ -99,8 +99,7 @@ module-margin-right = 1
 ; See the Fonts wiki page for more details
 font-0 = FiraCode Nerd Font Mono:style=Regular:size=10;2
 font-1 = NotoColorEmoji:style=Regular:scale=10;2
-font-2 = Siji:style=Regular:size=10;2
-font-3 = FontAwesome:style=Regular:size=10;2
+font-2 = FontAwesome:style=Regular:size=10;2
 
 modules-left = bspwm updates volume
 modules-center = eth wlan
