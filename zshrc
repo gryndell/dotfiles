@@ -28,6 +28,8 @@ export HISTCONTROL=ignoredups
 # {{{ Some extra settings
 setopt completealiases
 setopt autocd autopushd pushdignoredups
+setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_ALL_DUPS
 
 # _fix_cursor() {
 #     echo -ne '\e[3 q'

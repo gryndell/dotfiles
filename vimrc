@@ -57,6 +57,7 @@ call minpac#add('vim-airline/vim-airline') " Fancy status/tabline
 call minpac#add('vim-airline/vim-airline-themes') " Themes for airline
 call minpac#add('joshdick/onedark.vim') " OneDark Colorscheme
 call minpac#add('morhetz/gruvbox') " Gruvbox colorscheme
+call minpac#add('yuqio/vim-darkspace') " Darkspace
 call minpac#add('vim-pandoc/vim-pandoc') " Pandoc integration
 call minpac#add('vim-pandoc/vim-pandoc-syntax') " Pandoc syntax
 call minpac#add('dhruvasagar/vim-table-mode') " Easy tables
@@ -217,19 +218,23 @@ set showmatch
 
 " Theme
 set background=dark
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_italic = '1'
-colorscheme gruvbox
+set termguicolors
+" colorscheme gruvbox
+" let g:gruvbox_contrast_dark = 'hard'
+" let g:gruvbox_italic = '1'
+colorscheme darkspace
+let g:darkspace_italics=1
 " " Make transparent if terminal, black if gui
 if has("gui_running")
   highlight Normal guibg=black
 else
   highlight Normal ctermbg=NONE
 endif
+highlight Comment cterm=italic
 " highlight Terminal ctermbg=NONE
 " ColorColumn highlight
-highlight ColorColumn ctermbg=darkgrey  guibg=darkgrey
-highlight Visual ctermbg=grey guibg=grey
+" highlight ColorColumn ctermbg=darkgrey  guibg=darkgrey
+" highlight Visual ctermbg=grey guibg=grey
 " " StatusLine
 " highlight StatusLine   cterm=NONE ctermfg=lightgrey gui=NONE guifg=lightgrey
 " highlight StatusLineNC cterm=NONE ctermfg=darkgrey  gui=NONE guifg=darkgrey
@@ -398,7 +403,8 @@ let g:tex_flavor = 'latex'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme='base16_gruvbox_dark_hard'
+" let g:airline_theme='base16_gruvbox_dark_hard'
+let g:airline_theme='darkspace'
 let g:airline_left_sep='▓▒░'
 let g:airline_left_alt_sep=' '
 let g:airline_right_sep='░▒▓'

@@ -10,7 +10,7 @@ if [ $HDMICON != '' ]; then
   bspc monitor eDP-1-1 -d     
   bspc monitor HDMI-1-2 -d     
   bspc rule -a Termite desktop='^1' follow=on
-  bspc rule -a ranger desktop='^2' follow=on
+  bspc rule -a Ranger desktop='^2' follow=on
   bspc rule -a Thunar desktop='^2' follow=on
   bspc rule -a firefoxdeveloperedition desktop='^6' state=tiled follow=on
   bspc rule -a Zathura desktop='^7' state=tiled follow=on
@@ -92,16 +92,21 @@ $HOME/.config/polybar/launch.sh > /home/ralph/polybar.log
 # killall tint2
 # /usr/bin/tint2
 
+# Start Plank
+/usr/bin/plank &
 
 # Turn off screen blanking
 /usr/bin/xset -dpms s off
 
-# Start termite, Thunar and Firefox
-/usr/bin/termite &
-# /usr/bin/thunar &
+# Start termite, Ranger and Firefox
 /usr/bin/firefox-developer-edition &
+/usr/bin/kitty --class Ranger --name Ranger /usr/bin/ranger &
+/usr/bin/termite &
 
 # # Start Zathura (temporary)
 # /usr/bin/zathura /home/ralph/Documents/Technical_Documents/BSD/AbsoluteFreeBSD_3e.pdf &
+
+# Swap capslock and escape
+/usr/bin/setxkbmap -layout 'us' -option caps:swapescape
 
 # vim: ft=sh
