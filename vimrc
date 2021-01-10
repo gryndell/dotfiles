@@ -90,6 +90,7 @@ if &term =~ '256color' || &term =~ 'kitty'
   " render properly when inside 256-color tmux and GNU screen.
   " see also http://sunaku.github.io/vim-256color-bce.html
   set t_ut=''
+  set t_RV=''
 endif
 
 " Use vim, not vi
@@ -165,7 +166,7 @@ set helplang=en
 
 " Format sensibly for numbered lists.
 " Remove comment leader when joining comment lines.
-set formatoptions+=nj1
+" set formatoptions+=nj1
 
 " Limit what is saved of a view
 set viewoptions=folds,options,cursor,curdir
@@ -405,10 +406,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 " let g:airline_theme='base16_gruvbox_dark_hard'
 let g:airline_theme='darkspace'
-let g:airline_left_sep='▓▒░'
-let g:airline_left_alt_sep=' '
-let g:airline_right_sep='░▒▓'
-let g:airline_right_alt_sep=' '
+if (&term != 'xterm-kitty')
+  let g:airline_left_sep='▓▒░'
+  let g:airline_left_alt_sep=' '
+  let g:airline_right_sep='░▒▓'
+  let g:airline_right_alt_sep=' '
+endif
 " Airline Settings }}}
 
 " ┏━┓╺┳╸┏━┓╺┳╸╻ ╻┏━┓   ╻  ╻┏┓╻┏━╸
@@ -802,7 +805,7 @@ augroup file_types
   autocmd FileType tex,vimwiki,text setlocal complete+=,kspell
 
   " Text settings
-  autocmd FileType tex,vimwiki,text,markdown
+  autocmd FileType tex,vimwiki,text,markdown,pandoc
     \ setlocal textwidth=79 wrap shiftwidth=4 tabstop=4 expandtab
   autocmd FileType gitcommit  setlocal spell textwidth=72
   autocmd FileType sh,zsh,ruby
@@ -829,8 +832,8 @@ augroup file_types
     \ call matchadd('ColorColumn', '\%80v', 100)
 
   " Wrapping and formatting
-  autocmd FileType sh,python,c        setlocal formatoptions=tcq
-  autocmd FileType java,lua,vim       setlocal formatoptions=tcq
+  autocmd FileType sh,python,c        setlocal formatoptions=tcqnj1
+  autocmd FileType java,lua,vim       setlocal formatoptions=tcqnj1
   autocmd FileType tex,markdown
     \ setlocal wrap linebreak formatoptions=tcqn
   autocmd FileType text,vimwiki

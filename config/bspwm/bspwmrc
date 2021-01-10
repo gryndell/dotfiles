@@ -9,16 +9,17 @@ export HDMICON=$(xrandr -q | grep 'HDMI-1-2.* connected' | cut -d' ' -f1)
 if [ $HDMICON != '' ]; then
   bspc monitor eDP-1-1 -d     
   bspc monitor HDMI-1-2 -d     
-  bspc rule -a Termite desktop='^1' follow=on
+  bspc rule -a kitty desktop='^1' follow=on
   bspc rule -a Ranger desktop='^2' follow=on
   bspc rule -a Thunar desktop='^2' follow=on
   bspc rule -a firefoxdeveloperedition desktop='^6' state=tiled follow=on
   bspc rule -a Zathura desktop='^7' state=tiled follow=on
 else
   bspc monitor -d     
-  bspc rule -a Termite desktop='^1' follow=on
+  bspc rule -a kitty desktop='^1' follow=on
   bspc rule -a firefoxdeveloperedition desktop='^2' state=tiled follow=on
-  bspc rule -a ranger desktop='^3' follow=on
+  bspc rule -a Ranger desktop='^3' follow=on
+  bspc rule -a Thunar desktop='^3' follow=on
   bspc rule -a Zathura desktop='^4' state=tiled follow=on
 fi
 
@@ -81,6 +82,9 @@ $HOME/.fehbg > /home/ralph/fehbg.log
 # /usr/bin/systemctl --user start dropbox
 # echo "dropbox started" >> /home/ralph/bspwm.log
 
+# lxpolkit
+/usr/bin/lxpolkit &
+
 # Start polybar
 $HOME/.config/polybar/launch.sh > /home/ralph/polybar.log
 # echo "polybar started on main monitor" >> /home/ralph/bspwm.log
@@ -92,21 +96,21 @@ $HOME/.config/polybar/launch.sh > /home/ralph/polybar.log
 # killall tint2
 # /usr/bin/tint2
 
-# Start Plank
-/usr/bin/plank &
+# # Start Plank
+# /usr/bin/plank &
 
 # Turn off screen blanking
 /usr/bin/xset -dpms s off
 
-# Start termite, Ranger and Firefox
-/usr/bin/firefox-developer-edition &
+# Start kitty, Ranger and Firefox
+/usr/bin/kitty &
 /usr/bin/kitty --class Ranger --name Ranger /usr/bin/ranger &
-/usr/bin/termite &
+/usr/bin/firefox-developer-edition &
 
 # # Start Zathura (temporary)
 # /usr/bin/zathura /home/ralph/Documents/Technical_Documents/BSD/AbsoluteFreeBSD_3e.pdf &
 
-# Swap capslock and escape
-/usr/bin/setxkbmap -layout 'us' -option caps:swapescape
+# # Swap capslock and escape
+# /usr/bin/setxkbmap -layout 'us' -option caps:swapescape
 
 # vim: ft=sh

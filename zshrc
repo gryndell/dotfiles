@@ -90,4 +90,4 @@ add-zsh-hook preexec make_underscore
 eval "$(starship init zsh)"
 
 /usr/bin/neofetch --disable title | lolcat
-/usr/bin/fortune -a
+/usr/bin/fortune -o

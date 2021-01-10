@@ -82,14 +82,14 @@ URxvt*underlineColor: color3
 URxvt*wideChars: true
 !URxvt*letterSpace:-1
 !URxvt*font: xft:Inconsolata Nerd Font Mono:size=18:antialias=true
-URxvt*font: xft:Fira Code:size=16:antialias=true, \
-            xft:Inconsolata Nerd Font Mono:size=18:antialias=true, \
-            xft:Hack Nerd Font Mono:size=16:antialias=true, \
-            xft:Iosevka Nerd Font Mono:size=16:antialias=true, \
-            xft:UbuntuMono Nerd Font:size=16:antialias=true, \
-            xft:DejaVu Sans Mono:size=16:antialias=true, \
-            xft:Noto Sans Mono:size=16:antialias=true
-            xft:FontAwesome:size=16:antialias=true, \
+URxvt*font: xft:FiraCode Nerd Font Mono:size=16:antialias=true
+!             xft:Inconsolata Nerd Font Mono:size=18:antialias=true, \
+!             xft:Hack Nerd Font Mono:size=16:antialias=true, \
+!             xft:Iosevka Nerd Font Mono:size=16:antialias=true, \
+!             xft:UbuntuMono Nerd Font:size=16:antialias=true, \
+!             xft:DejaVu Sans Mono:size=16:antialias=true, \
+!             xft:Noto Sans Mono:size=16:antialias=true
+!             xft:FontAwesome:size=16:antialias=true, \
 ! URxvt*font: xft:Fira Code:size=16:antialias=true
 ! URxvt*font: xft:Iosevka Nerd Font Mono:size=16:antialias=true
 ! URxvt*font: xft:Hack Nerd Font:size=14:antialias=true
@@ -122,16 +122,20 @@ URxvt.bell-command: canberra-gtk-play -i bell
 ! ┏╋┛ ┃ ┣╸ ┣┳┛┃┃┃   ┗━┓┣╸  ┃  ┃ ┃┃┗┫┃╺┓┗━┓
 ! ╹ ╹ ╹ ┗━╸╹┗╸╹ ╹   ┗━┛┗━╸ ╹  ╹ ╹╹ ╹┗━┛┗━┛
 !{{{ XTerm settings
-XTerm*background: #000000
-XTerm*locale: en_AU.UTF-8
+XTerm*background: #002200
+XTerm*foreground: #00ff00
+XTerm*locale: UTF-8
 XTerm*wideChars: true
-XTerm*font: xft:Fira Code:size=14:antialias=true, \
-            xft:Inconsolata Nerd Font Mono:size=14:antialias=true, \
-            xft:Hack Nerd Font Mono:size=14:antialias=true, \
-            xft:Iosevka Nerd Font Mono:size=14:antialias=true, \
-            xft:UbuntuMono Nerd Font:size=14:antialias=true, \
-            xft:DejaVu Sans Mono:size=14:antialias=true, \
-            xft:Noto Sans Mono:size=14:antialias=true
+XTerm*faceName: FiraCode Nerd Font Mono
+XTerm*faceSize: 14
+XTerm*renderFont: true
+XTerm*geometry: 40x12
+! XTerm.font: xft:FiraCode Nerd Font Mono:size=16:antialias=true
+!             xft:Inconsolata Nerd Font Mono:size=14:antialias=true, \
+!             xft:Hack Nerd Font Mono:size=14:antialias=true, \
+!             xft:Iosevka Nerd Font Mono:size=14:antialias=true, \
+!             xft:UbuntuMono Nerd Font:size=14:antialias=true, \
+!             xft:DejaVu Sans Mono:size=14:antialias=true, \
+!             xft:Noto Sans Mono:size=14:antialias=true
 !}}} XTerm settings
 ! vim: foldmethod=marker
-

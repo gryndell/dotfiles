@@ -4,9 +4,9 @@
 
 # terminal emulator
 super + Return
-    termite
-super + shift + Return
     kitty
+super + shift + Return
+    termite
 
 # Dmenu
 super + @space
@@ -148,8 +148,13 @@ super + F3
     /usr/bin/firefox-developer-edition
 super + F4
     /usr/bin/firefox-developer-edition -private-window
+# Launch chromium
 super + F5
     /usr/bin/chromium
+
+# Launch qalc in a terminal
+super + c
+    /usr/bin/xterm -e "qalc -c"
 
 # Screen Shots
 Print

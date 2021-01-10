@@ -31,9 +31,9 @@ green = #ff44ff44
 
 [settings]
 format-foreground = ${colors.foreground-alt}
-format-underline =
+format-underline = #00000000
 format-background = ${colors.background}
-format-overline =
+format-overline = #00000000
 format-padding = 1
 format-margin = 0
 format-offset = 0
@@ -48,9 +48,6 @@ format-offset = 0
 ; expires or limit is reached.
 throttle-output = 5
 throttle-output-for = 10
-
-; Time in milliseconds that the input handler will wait between processing events
-throttle-input-for = 30
 
 ; Reload upon receiving XCB_RANDR_SCREEN_CHANGE_NOTIFY events
 screenchange-reload = true
@@ -68,11 +65,12 @@ screenchange-reload = true
 ; monitor = ${env:MONITOR:HDMI-1-2}
 ; monitor = eDP-1
 monitor = ${env:MONITOR:eDP-1-1}
-width = 100%:-4
+; width = 100%:-4
+width = 100%:0
 height = 24
-offset-x = 2
-offset-y = 2
-radius = 8.0
+; offset-x = 2
+; offset-y = 2
+radius = 0.0
 fixed-center = false
 
 background = ${colors.background}
@@ -189,7 +187,7 @@ label-empty = %name%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 1
 
-Separator in between workspaces
+; Separator in between workspaces
 label-separator = |
 label-separator-font = 1
 
@@ -464,7 +462,7 @@ format-discharging-foreground = ${colors.amber}
 
 ; format-full-prefix = " "
 ; label-full = 🔌%percentage%%
-format-full = 🔌%percentage%%
+format-full-prefix = "🔌 "
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
