@@ -68,8 +68,8 @@ monitor = ${env:MONITOR:eDP-1-1}
 ; width = 100%:-4
 width = 100%:0
 height = 24
-; offset-x = 2
-; offset-y = 2
+offset-x = 0
+offset-y = 0
 radius = 0.0
 fixed-center = false
 

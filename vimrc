@@ -34,7 +34,7 @@ call minpac#add('vim-scripts/AutoComplPop') " Autocomplete with pop-up
 call minpac#add('jiangmiao/auto-pairs') " Insert or delete brackets, parens, quotes in pair
 call minpac#add('itchyny/calendar.vim') " A calendar application for Vim
 call minpac#add('lervag/vimtex') " Latex plugin
-call minpac#add('w0rp/ale') " Advanced Linter Engine
+call minpac#add('dense-analysis/ale') " Advanced Linter Engine
 call minpac#add('Yggdroot/indentLine') " Display thin vertical lines at indent levels
 call minpac#add('vim-utils/vim-man') " Display man pages
 call minpac#add('chrisbra/csv.vim') " Working with CSV files
@@ -164,10 +164,6 @@ set number relativenumber
 " Help language
 set helplang=en
 
-" Format sensibly for numbered lists.
-" Remove comment leader when joining comment lines.
-" set formatoptions+=nj1
-
 " Limit what is saved of a view
 set viewoptions=folds,options,cursor,curdir
 
@@ -220,9 +216,6 @@ set showmatch
 " Theme
 set background=dark
 set termguicolors
-" colorscheme gruvbox
-" let g:gruvbox_contrast_dark = 'hard'
-" let g:gruvbox_italic = '1'
 colorscheme darkspace
 let g:darkspace_italics=1
 " " Make transparent if terminal, black if gui
@@ -232,13 +225,6 @@ else
   highlight Normal ctermbg=NONE
 endif
 highlight Comment cterm=italic
-" highlight Terminal ctermbg=NONE
-" ColorColumn highlight
-" highlight ColorColumn ctermbg=darkgrey  guibg=darkgrey
-" highlight Visual ctermbg=grey guibg=grey
-" " StatusLine
-" highlight StatusLine   cterm=NONE ctermfg=lightgrey gui=NONE guifg=lightgrey
-" highlight StatusLineNC cterm=NONE ctermfg=darkgrey  gui=NONE guifg=darkgrey
 
 " Mark cursor line and column bold
 highlight CursorLine cterm=bold ctermbg=NONE
@@ -309,7 +295,7 @@ if has('folding')
   if has('windows')
     set fillchars=vert:┃
   endif
-  set fillchars=fold:↕
+  set fillchars=fold:+
   " Folding details
   highlight folded ctermbg=NONE ctermfg=darkgrey guibg=NONE guifg=darkgrey
 endif
@@ -342,12 +328,19 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
-let g:ale_linters = {'markdown': ['mdl', 'writegood'],
-  \ 'vimwiki': ['mdl', 'writegood'], 'pandoc': ['mdl', 'writegood'],}
+let g:ale_linters = {
+\ 'bash': ['shellcheck'],
+\ 'c': ['ccls'],
+\ 'cpp': ['ccls'],
+\ 'javascript': ['eslint'],
+\ 'markdown': ['mdl', 'writegood', 'proselint'],
+\ 'vimwiki': ['mdl', 'writegood', 'proselint'],
+\ 'pandoc': ['mdl', 'writegood', 'proselint'],
+\ 'sh': ['language_server', 'shellcheck']
+\ }
 let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'],}
 let g:markdown_mdl_executable = 'mdl'
 let g:markdown_mdl_options = ''
-
 
 " Some useful glyphs
 let g:line_vertical = '│'
@@ -404,7 +397,7 @@ let g:tex_flavor = 'latex'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-" let g:airline_theme='base16_gruvbox_dark_hard'
+let g:airline#extensions#ale#enabled = 1
 let g:airline_theme='darkspace'
 if (&term != 'xterm-kitty')
   let g:airline_left_sep='▓▒░'
@@ -418,13 +411,7 @@ endif
 " ┗━┓ ┃ ┣━┫ ┃ ┃ ┃┗━┓   ┃  ┃┃┗┫┣╸
 " ┗━┛ ╹ ╹ ╹ ╹ ┗━┛┗━┛   ┗━╸╹╹ ╹┗━╸
 " {{{ Status Line
-" " Set the status line to something useful
-" set statusline+=%F\ %m
-" set statusline+=\ %{ShowFileType()}
-" set statusline+=\ %{ShowFileFormat()}
-" set statusline+=\ %{&fileencoding}\ %r
-" set statusline+=\ %{ShowSpell()}
-" set statusline+=%=\ ≡:%l/%L\ %c\ (%p%%)\ 0x%04.B
+" Always show statusline and tabline
 set laststatus=2
 set showtabline=2
 
@@ -508,21 +495,6 @@ function! StripTrailingWhitespace()
   endif
 endfunction " StripTrailingWhitespace
 
-" " Reset spelling colours when reading a new buffer
-" " This works around an issue where the colorscheme is changed by .local.vimrc
-" function! SetSpellingColors()
-"   highlight SpellBad cterm=bold ctermfg=white ctermbg=red
-"   highlight SpellCap cterm=bold ctermfg=red ctermbg=white
-" endfunction " SetSpellingColors
-
-" " Change colourscheme when diffing
-" function! SetDiffColors()
-"   highlight DiffAdd     cterm=bold ctermfg=white ctermbg=DarkGreen
-"   highlight DiffDelete  cterm=bold ctermfg=white ctermbg=DarkGrey
-"   highlight DiffChange  cterm=bold ctermfg=white ctermbg=DarkBlue
-"   highlight DiffText    cterm=bold ctermfg=white ctermbg=DarkRed
-" endfunction " SetDiffColors
-
 " Visual Move Functions from Drew Neil's vimcasts - http://vimcasts.org/episodes/bubbling-text/
 " Modified to check for line-visual mode.
 function! Visual()
@@ -551,69 +523,6 @@ endfunction " Move_Down
 function! AutoCorrect()
     normal! ms[s1z=`s
 endfunction " AutoCorrect
-
-" " Check for modified
-" function! CheckModified() abort
-"   if &modified
-"     highlight TabLineSel ctermfg=green
-"   else
-"     highlight TabLineSel ctermfg=lightgrey
-"   endif
-" endfunction " CheckModified
-
-" " See if Spelling is on
-" function! ShowSpell()
-"   if &spell
-"     return ' [SPELL]'
-"   else
-"     return ''
-"   endif
-" endfunction " ShowSpell
-
-" " Get file format
-" function! ShowFileFormat()
-"   if &ff == 'dos'
-"     return g:logo_win
-"   elseif &ff == 'mac'
-"     return g:logo_apple
-"   else
-"     return g:logo_linux
-"   endfunction " ShowFileFormat
-
-" " Show filetype glyph
-" function! ShowFileType()
-"   if &ft == 'c'
-"     return g:logo_c
-"   elseif &ft == 'cpp'
-"     return g:logo_cpp
-"   elseif &ft == 'go'
-"     return g:logo_go
-"   elseif &ft == 'haskell'
-"     return g:logo_hask
-"   elseif &ft == 'html'
-"     return g:logo_html
-"   elseif &ft == 'java'
-"     return g:logo_java
-"   elseif &ft == 'javascript'
-"     return g:logo_js
-"   elseif &ft == 'lua'
-"     return g:logo_lua
-"   elseif &ft == 'markdown'
-"     return g:logo_md
-"   elseif &ft == 'php'
-"     return g:logo_php
-"   elseif &ft == 'python'
-"     return g:logo_python
-"   elseif &ft == 'ruby'
-"     return g:logo_ruby
-"   elseif &ft == 'rust'
-"     return g:logo_rust
-"   elseif &ft == 'vim'
-"     return g:logo_vim
-"   else
-"     return '[' . &ft . ']'
-"   endif
-" endfunction " ShowFileType
 
 " Functions }}}
 
@@ -756,15 +665,6 @@ nnoremap <silent> <leader>o :setlocal spell!<cr>
 " Auto correct last spelling error
 nnoremap <leader>ac :call AutoCorrect()<cr>
 
-" " Can be used to do without pairing plugins
-" inoremap ( ()<Esc>i
-" inoremap { {}<Esc>i
-" inoremap {<CR> {<CR>}<Esc>O
-" inoremap [ []<Esc>i
-" inoremap < <><Esc>i
-" inoremap ' ''<Esc>i
-" inoremap " ""<Esc>i
-
 " Repeat last find+operation
 nnoremap <silent> <leader>r @='n.'<cr>
 
@@ -903,29 +803,6 @@ augroup tech_words
   autocmd BufWinLeave * call clearmatches()
 augroup end
 
-" Create a 'scratch buffer' which is a temporary buffer Vim wont ask to save
-" http://vim.wikia.com/wiki/Display_output_of_shell_commands_in_new_window
-" command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
-" function! s:RunShellCommand(cmdline)
-"   echo a:cmdline
-"   let expanded_cmdline = a:cmdline
-"   for part in split(a:cmdline, ' ')
-"     if part[0] =~ '\v[%#<]'
-"       let expanded_part = fnameescape(expand(part))
-"       let expanded_cmdline =
-"         \ substitute(expanded_cmdline, part, expanded_part, '')
-"     endif
-"   endfor
-"   botright new
-"   setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-"   call setline(1, 'You entered:  ' . a:cmdline)
-"   call setline(2, 'Expanded Form:  ' .expanded_cmdline)
-"   call setline(3,substitute(getline(2),'.','=','g'))
-"   execute '$read !'. expanded_cmdline
-"   setlocal nomodifiable
-"   1
-" endfunction
-
 " Save folds etc.
 augroup view_group
   autocmd!
@@ -938,27 +815,6 @@ augroup view_group
   autocmd BufWinLeave .vimrc mkview
   autocmd BufWinEnter .vimrc silent loadview
 augroup end
-
-
-" augroup spelling_colors
-"   autocmd!
-"   autocmd BufWinEnter * call SetSpellingColors()
-"   autocmd BufNewFile * call SetSpellingColors()
-"   autocmd BufRead * call SetSpellingColors()
-"   autocmd InsertEnter * call SetSpellingColors()
-"   autocmd InsertLeave * call SetSpellingColors()
-" augroup end
-
-" augroup diff_colors
-"   autocmd!
-"   autocmd FilterWritePre * call SetDiffColors()
-" augroup end
-
-" augroup checkmod
-"   autocmd!
-"   autocmd BufWinEnter,BufWritePost,FileWritePost * call CheckModified()
-"   autocmd TextChanged,TextChangedI,WinEnter * call CheckModified()
-" augroup end
 
 augroup cursor_highlight
   autocmd!

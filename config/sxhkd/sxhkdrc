@@ -143,9 +143,9 @@ super + {Left,Down,Up,Right}
 # Lanuch Thunar
 super + F2
     /usr/bin/thunar
-# Launch Firefox
+# Launch Chromium
 super + F3
-    /usr/bin/firefox-developer-edition
+    /usr/bin/chromium
 super + F4
     /usr/bin/firefox-developer-edition -private-window
 # Launch chromium

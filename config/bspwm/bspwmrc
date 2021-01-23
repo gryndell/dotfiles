@@ -9,19 +9,25 @@ export HDMICON=$(xrandr -q | grep 'HDMI-1-2.* connected' | cut -d' ' -f1)
 if [ $HDMICON != '' ]; then
   bspc monitor eDP-1-1 -d     
   bspc monitor HDMI-1-2 -d     
-  bspc rule -a kitty desktop='^1' follow=on
+  bspc rule -a Console desktop='^1' follow=on
   bspc rule -a Ranger desktop='^2' follow=on
   bspc rule -a Thunar desktop='^2' follow=on
-  bspc rule -a firefoxdeveloperedition desktop='^6' state=tiled follow=on
+  bspc rule -a qemu-system-x86_64 desktop='^3' state=fullscreen follow=on
+  bspc rule -a Qemu-system-x86_64 desktop='^3' state=fullscreen follow=on
+  bspc rule -a Chromium desktop='^6' state=tiled follow=on
   bspc rule -a Zathura desktop='^7' state=tiled follow=on
 else
   bspc monitor -d     
-  bspc rule -a kitty desktop='^1' follow=on
-  bspc rule -a firefoxdeveloperedition desktop='^2' state=tiled follow=on
+  bspc rule -a Console desktop='^1' follow=on
+  bspc rule -a Chromium desktop='^2' state=tiled follow=on
   bspc rule -a Ranger desktop='^3' follow=on
   bspc rule -a Thunar desktop='^3' follow=on
   bspc rule -a Zathura desktop='^4' state=tiled follow=on
+  bspc rule -a qemu-system-x86_64 desktop='^5' state=fullscreen follow=on
+  bspc rule -a Qemu-system-x86_64 desktop='^5' state=fullscreen follow=on
 fi
+
+bspc rule -a Emacs state=tiled follow=on
 
 bspc config pointer_follows_focus   true
 bspc config focus_follows_pointer   true
@@ -103,9 +109,9 @@ $HOME/.config/polybar/launch.sh > /home/ralph/polybar.log
 /usr/bin/xset -dpms s off
 
 # Start kitty, Ranger and Firefox
-/usr/bin/kitty &
+/usr/bin/kitty --class Console --name Console &
 /usr/bin/kitty --class Ranger --name Ranger /usr/bin/ranger &
-/usr/bin/firefox-developer-edition &
+/usr/bin/chromium &
 
 # # Start Zathura (temporary)
 # /usr/bin/zathura /home/ralph/Documents/Technical_Documents/BSD/AbsoluteFreeBSD_3e.pdf &

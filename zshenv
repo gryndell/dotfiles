@@ -1,4 +1,64 @@
+# PATH {{{
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+  export PATH="$HOME/bin:$PATH"
+fi
+if [ -d "$HOME/.gem/ruby/2.7.0/bin" ]; then
+  export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
+fi
+if [ -d "$HOME/.local/bin/" ]; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+if [ -d "$HOME/.vim/pack/minpac/start/fzf/bin" ]; then
+  export PATH="$HOME/.vim/pack/minpac/start/fzf/bin:$PATH"
+fi
+# export PATH="$PATH:/usr/sbin:/sbin:pycharm-community-2017.2.4"
+if [ -d "$HOME/.cargo/bin" ]; then
+  export PATH="$HOME/.cargo/bin/:$PATH"
+fi
+
+# Settings for Fuchsia
+export PATH=~/fuchsia/.jiri_root/bin:$PATH
+source ~/fuchsia/scripts/fx-env.sh
+
+# }}}
+
+# GOPATH and GOBIN {{{
+export GOPATH=$HOME/go
+export GOBIN=$HOME/go/bin
+# }}}
+
+# WALLPATH {{{
+export WALLPATH="$HOME/Wallpapers/Aenami"
+# }}}
+
+# TEXMFHOME {{{
+export TEXMFHOME="$HOME/texmf"
+# }}}
+
+# AWKPATH {{{
+export AWKPATH=".:/usr/share/awk"
+# }}}
+
 # Exports {{{
+# ls options
+export LS_OPTIONS='--color=yes'
+export LESS='-X'
+# man pages in color
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+# Initialisation for par (text formatter)
+export PARINIT='rTbgqR\ B=.,?_A_a Q=_s>|'
+
+# Ruby documentation
+export RI="--format ansi -i"
+
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
@@ -49,6 +109,8 @@ alias tty-clock='tty-clock -bcC5'
 
 alias nnn='nnn -egHrx'
 
+alias emacs='emacs -nw'
+
 # Suffix aliases
 alias -s tex=vim
 alias -s rb=vim
@@ -68,3 +130,12 @@ alias -s pdf=zathura
 alias clear='[ $[$RANDOM % 10] = 0 ] && timeout 6 cbeams -o; clear || clear'
 
 # }}} Aliases
+
+# EDITOR {{{
+export ALTERNATE_EDITOR=""
+export EDITOR="vim"      # $EDITOR should open in terminal
+export VISUAL="vim"      # $VISUAL also vim
+export GIT_EDITOR="vim"  # GIT EDITOR
+# }}}
+
+# vim: foldmethod=marker
