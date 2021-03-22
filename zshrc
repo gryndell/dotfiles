@@ -89,5 +89,9 @@ add-zsh-hook preexec make_underscore
 # }}} Prompt
 eval "$(starship init zsh)"
 
-/usr/bin/neofetch --disable title | lolcat
-/usr/bin/fortune -o
+# /usr/bin/neofetch --disable title | lolcat
+if [[ "$TERM" == "xterm-kitty" ]]; then
+  /usr/bin/neofetch --disable title --kitty /usr/share/pixmaps/archlinux.svg
+else
+  /usr/bin/neofetch --disable title | lolcat
+fi

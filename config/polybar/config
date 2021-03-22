@@ -296,7 +296,7 @@ ramp-coreload-7-font = 1
 type = internal/memory
 interval = 5
 format-prefix-font = 1
-format-prefix = ""
+format-prefix = "🐏 "
 label = %percentage_used%%
 
 ; bar-used-width = 10
@@ -566,11 +566,14 @@ menu-2-1-exec = menu-open-0
 type = custom/script
 exec = sudo pacman -Qu | wc -l
 exec-if = sudo pacman -Syy
+; exec = yay -Qu | wc -l
+; exec-if = yay -Syy
 format-prefix = "📦 "
 format = <label>
 label = %output%
 tail = false
-click-left = kitty -o font_size=14 sh -c "sudo pacman -Syu"
+; click-left = kitty -o font_size=14 sh -c "sudo pacman -Syu"
+click-left = kitty -o font_size=14 sh -c "yay -Syu"
 initial = 1
 interval = 1800
 font = 1
