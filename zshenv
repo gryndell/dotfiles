@@ -111,20 +111,22 @@ alias nnn='nnn -egHrx'
 
 alias emacs='emacs -nw'
 
+alias vim='nvim'
+
 # Suffix aliases
-alias -s tex=vim
-alias -s rb=vim
-alias -s rs=vim
-alias -s toml=vim
-alias -s txt=vim
-alias -s html=vim
-alias -s vim=vim
-alias -s wiki=vim
-alias -s ms=vim
-alias -s mom=vim
+alias -s tex=nvim
+alias -s rb=nvim
+alias -s rs=nvim
+alias -s toml=nvim
+alias -s txt=nvim
+alias -s html=nvim
+alias -s nvim=vim
+alias -s wiki=nvim
+alias -s ms=nvim
+alias -s mom=nvim
 alias -s png=feh
 alias -s {jpg,jpeg}=feh
-alias -s gif=vim
+alias -s gif=nvim
 alias -s ps=zathura
 alias -s pdf=zathura
 alias clear='[ $[$RANDOM % 10] = 0 ] && timeout 6 cbeams -o; clear || clear'
@@ -133,9 +135,9 @@ alias clear='[ $[$RANDOM % 10] = 0 ] && timeout 6 cbeams -o; clear || clear'
 
 # EDITOR {{{
 export ALTERNATE_EDITOR=""
-export EDITOR="vim"      # $EDITOR should open in terminal
-export VISUAL="vim"      # $VISUAL also vim
-export GIT_EDITOR="vim"  # GIT EDITOR
+export EDITOR="nnvim"      # $EDITOR should open in terminal
+export VISUAL="nvim"      # $VISUAL also nvim
+export GIT_EDITOR="nvim"  # GIT EDITOR
 # }}}
 
 # vim: foldmethod=marker

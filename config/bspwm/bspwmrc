@@ -13,6 +13,7 @@ if [ "$HDMICON" != "" ]; then
   bspc rule -a Console desktop='^1' follow=on
   bspc rule -a Ranger desktop='^2' follow=on
   bspc rule -a Thunar desktop='^2' follow=on
+  bspc rule -a Org.gnome.Nautilus desktop='^2' follow=on
   bspc rule -a qemu-system-x86_64 desktop='^3' state=fullscreen follow=on
   bspc rule -a Qemu-system-x86_64 desktop='^3' state=fullscreen follow=on
   # bspc rule -a Google-chrome desktop='^6' state=tiled follow=on
@@ -113,7 +114,8 @@ echo "nm-applet started" >> /home/ralph/bspwm.log
 
 # Start kitty, Ranger and Firefox
 /usr/bin/kitty --class Console --name Console &
-/usr/bin/kitty --class Ranger --name Ranger /usr/bin/ranger &
+# /usr/bin/kitty --class Ranger --name Ranger /usr/bin/ranger &
+/usr/bin/nautilus --new-window &
 /usr/bin/firefox-developer-edition &
 
 # # Start Zathura (temporary)
