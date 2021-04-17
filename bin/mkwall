@@ -1,0 +1,52 @@
+#!/bin/bash
+
+DAY="$(date +%d)"
+DOW="$(date +%w)"
+HOUR="$(date +%H)"
+if [[ $# -gt 0 ]]; then
+  HOUR=$1
+fi
+# echo $DOW
+export DOW
+export HOUR
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+export DISPLAY=:0
+export DAYMOD=`expr $DAY % 3`
+case $DOW in
+  0) WALLPATH="/home/ralph/Wallpapers/Horror";;
+  1) WALLPATH="/home/ralph/Wallpapers/Calm";;
+  2) WALLPATH="/home/ralph/Wallpapers/Sci_Fi_Art";;
+  3) WALLPATH="/home/ralph/Wallpapers/Space";;
+  4) WALLPATH="/home/ralph/Wallpapers/Yuri_Hill";;
+  5) WALLPATH="/home/ralph/Wallpapers/Fantasy_Art";;
+  6) WALLPATH="/home/ralph/Wallpapers/Heroic";;
+  *) WALLPATH="/home/ralph/Wallpapers/Linux";;
+esac
+
+export NUMFILES=`ls -1 $WALLPATH/*.* | wc -l`
+
+if [[ $NUMFILES -gt 0 ]]; then
+  export RAND0="$(shuf -i 0-$NUMFILES -n 1)"
+  export RAND1="$(shuf -i 0-$NUMFILES -n 1)"
+  while [ $RAND1 -eq $RAND0 ]; do
+    export RAND1="$(shuf -i 0-$NUMFILES -n 1)"
+  done
+fi
+
+export PAPER0=""
+export PAPER1=""
+export ITER=0
+for FILE in $(ls -1 $WALLPATH/*.*)
+do
+  if [[ $ITER -eq $RAND0 ]]; then
+    export PAPER0=$FILE
+  fi
+  if [[ $ITER -eq $RAND1 ]]; then
+    export PAPER1=$FILE
+  fi
+  export ITER=$(expr $ITER + 1)
+done
+
+# gsettings set org.gnome.desktop.background picture-options 'scaled'
+gsettings set org.gnome.desktop.background picture-options 'zoom'
+gsettings set org.gnome.desktop.background picture-uri $PAPER0

@@ -77,8 +77,8 @@ export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 # enable color support of ls and also add handy aliases
 if [[ -x /usr/bin/dircolors ]]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  # alias ls='ls -hCF --color=auto'
-  alias ls='exa -hF --color=auto'
+  alias ls='ls -hCF --color=auto'
+  # alias ls='exa -hF --color=auto'
   #alias dir='dir --color=auto'
   #alias vdir='vdir --color=auto'
 
