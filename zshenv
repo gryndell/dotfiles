@@ -77,7 +77,8 @@ export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 # enable color support of ls and also add handy aliases
 if [[ -x /usr/bin/dircolors ]]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls -hCF --color=auto'
+  # alias ls='ls -hCF --color=auto'
+  alias ls='exa -hF --color=auto'
   #alias dir='dir --color=auto'
   #alias vdir='vdir --color=auto'
 
@@ -95,9 +96,8 @@ fi
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+alias cat='bat'
 
-alias emax="emacs -nw -q -l ~/.emacs.d/chui.el"
-alias semac="sudo emacs -nw -q -l /home/ralph/.emacs.d/chui.el"
 # alias rm="rm -i"
 # if [[ $HOST == 'ishtar' ]]; then
 #   alias rm='~/bin/newrm'
@@ -109,9 +109,9 @@ alias tty-clock='tty-clock -bcC5'
 
 alias nnn='nnn -egHrx'
 
-alias emacs='emacs -nw'
-
 alias vim='nvim'
+
+# alias less='/usr/share/nvim/runtime/macros/less.sh'
 
 # Suffix aliases
 alias -s tex=nvim
@@ -135,7 +135,7 @@ alias clear='[ $[$RANDOM % 10] = 0 ] && timeout 6 cbeams -o; clear || clear'
 
 # EDITOR {{{
 export ALTERNATE_EDITOR=""
-export EDITOR="nnvim"      # $EDITOR should open in terminal
+export EDITOR="nvim"      # $EDITOR should open in terminal
 export VISUAL="nvim"      # $VISUAL also nvim
 export GIT_EDITOR="nvim"  # GIT EDITOR
 # }}}

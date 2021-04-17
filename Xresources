@@ -129,7 +129,7 @@ XTerm*wideChars: true
 XTerm*faceName: FiraCode Nerd Font Mono
 XTerm*faceSize: 14
 XTerm*renderFont: true
-XTerm*geometry: 40x12
+XTerm*geometry: 80x24
 ! XTerm.font: xft:FiraCode Nerd Font Mono:size=16:antialias=true
 !             xft:Inconsolata Nerd Font Mono:size=14:antialias=true, \
 !             xft:Hack Nerd Font Mono:size=14:antialias=true, \

@@ -21,24 +21,24 @@ augroup end
 augroup file_types
   autocmd!
   " Spelling etc.
-  autocmd FileType tex,vimwiki,text
+  autocmd FileType tex,pandoc,text
     \ setlocal spell spelllang=en_au
-  autocmd FileType tex,vimwiki,text
+  autocmd FileType tex,pandoc,text
     \ setlocal spellfile=~/.config/nvim/spell/en.utf-8.add
-  autocmd FileType tex,vimwiki,text
+  autocmd FileType tex,pandoc,text
     \ setlocal spellfile+=/.config/nvim/spell/jargon.utf-8.add
-  autocmd FileType tex,vimwiki,text
+  autocmd FileType tex,pandoc,text
     \ setlocal dictionary+=/usr/share/dict/british-english
-  autocmd FileType tex,vimwiki,text setlocal thesaurus+=~/mthesaur.txt
-  autocmd FileType tex,vimwiki,text setlocal complete+=,kspell
+  autocmd FileType tex,pandoc,text setlocal thesaurus+=~/mthesaur.txt
+  autocmd FileType tex,pandoc,text setlocal complete+=i,kspell
 
   " Text settings
-  autocmd FileType tex,vimwiki,text,markdown,pandoc
+  autocmd FileType tex,text,markdown,pandoc
     \ setlocal textwidth=79 wrap shiftwidth=4 tabstop=4 expandtab
   autocmd FileType gitcommit  setlocal spell textwidth=72
   autocmd FileType sh,zsh,ruby
     \ setlocal textwidth=0 shiftwidth=2 tabstop=2 expandtab
-  autocmd FileType vim
+  autocmd FileType vim,yaml
     \ setlocal textwidth=0 shiftwidth=2 tabstop=2 expandtab
   autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
   autocmd FileType html,phtml,xhtml,xml,xsl   :CloseTagEnableBuffer
@@ -56,7 +56,7 @@ augroup file_types
     \ call matchadd('ColorColumn', '\%80v', 100)
   autocmd FileType tex,markdown
     \ call matchadd('ColorColumn', '\%80v', 100)
-  autocmd FileType text,vimwiki,html,progress
+  autocmd FileType text,pandoc,html,progress
     \ call matchadd('ColorColumn', '\%80v', 100)
 
   " Wrapping and formatting
@@ -64,10 +64,10 @@ augroup file_types
   autocmd FileType java,lua,vim       setlocal formatoptions=tcqnj1
   autocmd FileType tex,markdown
     \ setlocal wrap linebreak formatoptions=tcqn
-  autocmd FileType text,vimwiki
+  autocmd FileType text,pandoc
     \ setlocal wrap linebreak formatoptions=tcqn
   autocmd FileType tex,markdown       setlocal formatprg=par\ -w79
-  autocmd FileType text,vimwiki,nroff setlocal formatprg=par\ -w79
+  autocmd FileType text,pandoc,nroff setlocal formatprg=par\ -w79
   autocmd FileType c,cpp,rust,lua     setlocal cindent
   autocmd FileType javascript,sh,vim  setlocal cindent
 
@@ -75,7 +75,7 @@ augroup file_types
   autocmd FileType markdown setlocal foldmethod=expr
   autocmd FileType markdown xnoremap <leader><bslash> :EasyAlign*<bar><cr>
   autocmd FileType lua,python,sh    setlocal foldmethod=indent
-  autocmd FileType c,cpp,java,vimwiki,go    setlocal foldmethod=syntax
+  autocmd FileType c,cpp,java,pandoc,go    setlocal foldmethod=syntax
   autocmd FileType sh,vim   setlocal foldmethod=marker
   " Comment out lines/sections in various file types
   autocmd FileType python     nnoremap <buffer> <leader>c I# <esc>
@@ -122,12 +122,12 @@ augroup end
 " http://css-tricks.com/words-avoid-educational-writing/
 augroup tech_words
   autocmd!
-  autocmd BufWinEnter *.tex,*.vimwiki,*.md highlight TechWordsToAvoid
+  autocmd BufWinEnter *.tex,*.pandoc,*.md highlight TechWordsToAvoid
   \ guibg=red
   \ guifg=white
-  autocmd BufWinEnter *.tex,*.vimwiki,*.md match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-  autocmd InsertEnter *.tex,*.vimwiki,*.md match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-  autocmd InsertLeave *.tex,*.vimwiki,*.md match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
+  autocmd BufWinEnter *.tex,*.pandoc,*.md match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
+  autocmd InsertEnter *.tex,*.pandoc,*.md match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
+  autocmd InsertLeave *.tex,*.pandoc,*.md match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
   autocmd BufWinLeave * call clearmatches()
 augroup end
 

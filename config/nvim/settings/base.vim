@@ -69,6 +69,8 @@ set wildmenu            " Wild Menu Mode for completion on command line
 set lazyredraw          " Do not redraw after each step of a macro
 set showmatch           " highlight a matching [{()}]
 set tags=tags;          " Tags
+set complete+=i,kspell
+set completeopt=menuone,longest
 set sessionoptions-=options " Session Options
 " Set viminfo
 " was -> '100,<50,s10,h

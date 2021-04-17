@@ -80,6 +80,10 @@ make_underscore
 autoload -U add-zsh-hook
 add-zsh-hook preexec make_underscore
 
+function set_win_title() {
+  echo -ne "\033]0; ${PWD/\/home\/ralph/~} \007"
+}
+precmd_functions+="set_win_title"
 # autoload -Uz promptinit
 # promptinit
 # PROMPT='%F{magenta}%m%f:[%F{cyan}%~%f]

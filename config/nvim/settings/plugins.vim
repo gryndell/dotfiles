@@ -8,60 +8,61 @@ filetype plugin indent on
 call plug#begin('~/.local/share/nvim/site/pack')
 
 " Various plugins
-Plug 'vim-scripts/AutoComplPop' "
-Plug 'shougo/deoplete.nvim' "
-Plug 'tpope/vim-commentary' "
+Plug 'vim-scripts/AutoComplPop' " Auto Completion - Lightweight
+" Plug 'shougo/deoplete.nvim' " Auto Completion
+Plug 'tpope/vim-commentary' " Shortcuts for comments
 " Abolish: Example to swap the words "man" and "dog":
 " :%S/{man,dog}/{dog,man}/g
-Plug 'tpope/vim-abolish' "
-Plug 'tpope/vim-surround' "
-Plug 'tpope/vim-vinegar' "
-Plug 'tpope/vim-endwise' "
-Plug 'tpope/vim-eunuch' "
-Plug 'junegunn/fzf' "
-Plug 'junegunn/limelight.vim' "
-Plug 'junegunn/goyo.vim' "
-Plug 'junegunn/vim-easy-align' "
-Plug 'kshenoy/vim-signature' "
-Plug 'jiangmiao/auto-pairs' "
-Plug 'itchyny/calendar.vim' "
-Plug 'lervag/vimtex' "
-Plug 'dense-analysis/ale' "
-Plug 'Yggdroot/indentLine' "
-Plug 'vim-utils/vim-man' "
-Plug 'chrisbra/csv.vim' "
-Plug 'wincent/loupe' "
-Plug 'wincent/terminus' "
-Plug 'SirVer/ultisnips' "
-Plug 'honza/vim-snippets' "
-" Plug 'davidhalter/jedi-vim' "
-Plug 'vim-ruby/vim-ruby' "
-Plug 'freitass/todo.txt-vim' "
-Plug 'mbbill/undotree' "
-Plug 'alvan/vim-closetag' "
-Plug 'mboughaba/i3config.vim' "
-Plug 'rust-lang/rust.vim' "
-Plug 'cespare/vim-toml' "
-Plug 'tommcdo/vim-lion' "
+Plug 'tpope/vim-abolish' " Fancy Substitutions
+Plug 'tpope/vim-surround' " Wrap a selection with pairs
+Plug 'tpope/vim-vinegar' " Smarter netrw
+Plug 'tpope/vim-endwise' " Automatically add end constructs
+Plug 'tpope/vim-eunuch' " Unix shell command helpers
+Plug 'junegunn/fzf' " Advanced fuzzy finder
+Plug 'junegunn/limelight.vim' " Highlight current paragraph
+Plug 'junegunn/goyo.vim' " Distraction-free editing
+Plug 'junegunn/vim-easy-align' " Easy alignment of e.g., markdown tables
+Plug 'kshenoy/vim-signature' " Place, toggle and display marks
+Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair
+Plug 'itchyny/calendar.vim' " A calendar application for Vim
+Plug 'lervag/vimtex' " LaTeX plugin
+Plug 'dense-analysis/ale' " Advanced Linter Engine
+Plug 'Yggdroot/indentLine' " Display thin vertical lines at indent levels
+Plug 'vim-utils/vim-man' " Display man pages
+Plug 'chrisbra/csv.vim' " Working with CSV files
+Plug 'wincent/loupe' " Enhanced search
+Plug 'wincent/terminus' " Enhanced terminal support
+Plug 'SirVer/ultisnips' " Snippets engine
+Plug 'honza/vim-snippets' " Snippets for various languages
+" Plug 'davidhalter/jedi-vim' " Autocompletion for Python
+Plug 'vim-ruby/vim-ruby' " Ruby configuration etc.
+Plug 'freitass/todo.txt-vim' " Syntax highlighting for todo.txt files
+Plug 'mbbill/undotree' " Undo tree visualisation
+Plug 'alvan/vim-closetag' " Automatically close tags in html
+" Plug 'mboughaba/i3config.vim' " i3 config syntax
+Plug 'rust-lang/rust.vim' " Configuration for Rust
+Plug 'cespare/vim-toml' " Syntax for TOML
+Plug 'tommcdo/vim-lion' " Align text around a character
+Plug 'vim-pandoc/vim-pandoc' " Pandoc integration
+Plug 'vim-pandoc/vim-pandoc-syntax' " Pandoc syntax
+Plug 'dhruvasagar/vim-table-mode' " Easy tables
+Plug 'gabrielelana/vim-markdown' " Better Vim Markdown syntax highlighting
 
 " Aesthetics plugins
-Plug 'vim-airline/vim-airline' "
-Plug 'vim-airline/vim-airline-themes' "
-Plug 'joshdick/onedark.vim' "
-Plug 'morhetz/gruvbox' "
-Plug 'yuqio/vim-darkspace' "
-Plug 'vim-pandoc/vim-pandoc' "
-Plug 'vim-pandoc/vim-pandoc-syntax' "
-Plug 'dhruvasagar/vim-table-mode' "
-Plug 'gabrielelana/vim-markdown' "
-Plug 'ryanoasis/vim-devicons' "
+Plug 'vim-airline/vim-airline' " Fancy status/tabline
+Plug 'vim-airline/vim-airline-themes' " Themes for airline
+Plug 'joshdick/onedark.vim' " OneDark colorscheme
+Plug 'morhetz/gruvbox' " Gruvbox colorscheme
+Plug 'yuqio/vim-darkspace' " Darkspace colorscheme
+Plug 'ryanoasis/vim-devicons' " Vim Dev Icons (nerdfont glyphs)
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 "Initialize plugin system
 call plug#end()
 
 " Deoplete Settings {{{
 " Enable deoplete at startup
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 " Deoplete Settings }}}:w
 
 " Airline Settings {{{
@@ -89,15 +90,16 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
-\ 'bash': ['shellcheck'],
-\ 'c': ['ccls'],
-\ 'cpp': ['ccls'],
-\ 'javascript': ['eslint'],
-\ 'markdown': ['mdl', 'writegood', 'proselint'],
-\ 'vimwiki': ['mdl', 'writegood', 'proselint'],
-\ 'pandoc': ['mdl', 'writegood', 'proselint'],
-\ 'sh': ['language_server', 'shellcheck']
-\ }
+    \ 'bash': ['shellcheck'],
+    \ 'c': ['ccls'],
+    \ 'cpp': ['ccls'],
+    \ 'javascript': ['eslint'],
+    \ 'markdown': ['mdl', 'writegood', 'proselint'],
+    \ 'vimwiki': ['mdl', 'writegood', 'proselint'],
+    \ 'pandoc': ['mdl', 'writegood', 'proselint'],
+    \ 'sh': ['language_server', 'shellcheck'],
+    \ 'rust': ['cargo', 'rls']
+    \ }
 let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'],}
 let g:markdown_mdl_executable = 'mdl'
 let g:markdown_mdl_options = ''
