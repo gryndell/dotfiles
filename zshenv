@@ -96,7 +96,11 @@ fi
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+
+# Useful aliases
 alias cat='bat'
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
 
 # alias rm="rm -i"
 # if [[ $HOST == 'ishtar' ]]; then
