@@ -36,38 +36,27 @@ augroup file_types
   autocmd FileType tex,text,markdown,pandoc
     \ setlocal textwidth=79 wrap shiftwidth=4 tabstop=4 expandtab
   autocmd FileType gitcommit  setlocal spell textwidth=72
-  autocmd FileType sh,zsh,ruby,vim,yaml
-    \ setlocal textwidth=0 shiftwidth=2 tabstop=2 expandtab
+  autocmd FileType sh,zsh,ruby,vim,yaml,html,phtml,xhtml,xml,xsl,css
+    \ setlocal textwidth=0 wrap shiftwidth=2 tabstop=2 expandtab
   autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
   autocmd FileType html,phtml,xhtml,xml,xsl   :CloseTagEnableBuffer
   autocmd FileType calendar   :IndentLinesDisable
   autocmd FileType csv        :IndentLinesDisable
-  autocmd FileType html,phtml,xhtml,xml,xsl,css
-    \ setlocal textwidth=0 wrap shiftwidth=2 tabstop=2 expandtab
 
   " Highlight column 80
-  autocmd FileType conf,cpp,go,lua
+  autocmd FileType c,conf,cpp,go,lua,javascript,perl,python,sh,tmux,vim
     \ call matchadd('ColorColumn', '\%80v', 100)
-  autocmd FileType javascript,c,perl
-    \ call matchadd('ColorColumn', '\%80v', 100)
-  autocmd FileType python,sh,tmux,vim
-    \ call matchadd('ColorColumn', '\%80v', 100)
-  autocmd FileType tex,markdown
-    \ call matchadd('ColorColumn', '\%80v', 100)
-  autocmd FileType text,pandoc,html,progress
+  autocmd FileType html,pandoc,markdown,tex,text
     \ call matchadd('ColorColumn', '\%80v', 100)
 
   " Wrapping and formatting
-  autocmd FileType sh,python,c        setlocal formatoptions=tcqnj1
-  autocmd FileType java,lua,vim       setlocal formatoptions=tcqnj1
+  autocmd FileType c,java,lua,python,sh,vim setlocal formatoptions=tcqnj1
   autocmd FileType tex,markdown
     \ setlocal wrap linebreak formatoptions=tcqn
   autocmd FileType text,pandoc
     \ setlocal wrap linebreak formatoptions=tcqn
-  autocmd FileType tex,markdown       setlocal formatprg=par\ -w79
-  autocmd FileType text,pandoc,nroff setlocal formatprg=par\ -w79
-  autocmd FileType c,cpp,rust,lua     setlocal cindent
-  autocmd FileType javascript,sh,vim  setlocal cindent
+  autocmd FileType markdown,nroff,pandoc,tex,text   setlocal formatprg=par\ -w79
+  autocmd FileType c,cpp,javascript,lua,rust,sh,vim setlocal cindent
 
   " Fold Methods
   autocmd FileType markdown setlocal foldmethod=expr
