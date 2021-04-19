@@ -82,7 +82,7 @@ augroup file_types
 
   " Settings for specific files
   autocmd BufRead,BufNewFile *.spv setlocal ft=php
-  autocmd BufRead,BufNewFile *.md  setlocal ft=markdown
+  autocmd BufRead,BufNewFile *.md  setlocal ft=pandoc
   autocmd BufRead,BufNewFile *.p   setlocal ft=progress
   autocmd BufRead,BufNewFile *.tsv setlocal ft=csv
   autocmd BufRead,BufNewFile *.h   setlocal ft=c

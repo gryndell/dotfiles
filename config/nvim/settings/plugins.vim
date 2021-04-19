@@ -103,6 +103,7 @@ let g:ale_linters = {
 let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'],}
 let g:markdown_mdl_executable = 'mdl'
 let g:markdown_mdl_options = ''
+
 " ALE Settings }}}
 
 " Ultisnips Settings {{{
@@ -128,6 +129,33 @@ let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
 let g:closetag_filetypes = 'html,xhtml,phtml'
 let g:closetag_xhtml_filetypes = 'xhtml,jsx'
 " HTML Settings }}}
+
+" Vim-Pandoc-syntax settings {{{
+let g:pandoc#syntax#codeblocks#embeds#langs = [
+      \ "awk",
+      \ "bash=sh",
+      \ "c",
+      \ "css",
+      \ "go",
+      \ "html",
+      \ "ini",
+      \ "json=javascript",
+      \ "latex",
+      \ "lua",
+      \ "markdown",
+      \ "php",
+      \ "python",
+      \ "ruby",
+      \ "sql",
+      \ "sqlmysql",
+      \ "sqlpostgresql",
+      \ "toml",
+      \ "vim",
+      \ "xml",
+      \ "yaml",
+      \ "zsh",
+      \ ]
+" Vim-pandoc-syntax settings }}}
 
 " Connect to google calendar and tasks
 let g:calendar_google_calendar = 1
