@@ -28,7 +28,6 @@ Plug 'itchyny/calendar.vim' " A calendar application for Vim
 Plug 'lervag/vimtex' " LaTeX plugin
 Plug 'dense-analysis/ale' " Advanced Linter Engine
 Plug 'Yggdroot/indentLine' " Display thin vertical lines at indent levels
-Plug 'vim-utils/vim-man' " Display man pages
 Plug 'chrisbra/csv.vim' " Working with CSV files
 Plug 'wincent/loupe' " Enhanced search
 Plug 'wincent/terminus' " Enhanced terminal support
@@ -71,6 +70,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#ale#enabled = 1
 let g:airline_theme='darkspace'
+let g:airline_left_sep=''
+let g:airline_left_alt_sep=' '
+let g:airline_right_sep=''
+let g:airline_right_alt_sep=' '
 " if !(&term =~ 'xterm-kitty')
 "   let g:airline_left_sep='▓▒░'
 "   let g:airline_left_alt_sep=' '
@@ -86,21 +89,27 @@ highlight ALEErrorSign guibg=NONE guifg=red
 highlight ALEWarningSign guibg=NONE guifg=yellow
 let g:ale_linters_explicit = 1
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
+let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_linters = {
     \ 'bash': ['shellcheck'],
-    \ 'c': ['ccls'],
-    \ 'cpp': ['ccls'],
+    \ 'c': ['cc'],
+    \ 'cpp': ['cc'],
     \ 'javascript': ['eslint'],
     \ 'markdown': ['mdl', 'writegood', 'proselint'],
     \ 'vimwiki': ['mdl', 'writegood', 'proselint'],
     \ 'pandoc': ['mdl', 'writegood', 'proselint'],
+    \ 'python': ['flake8'],
     \ 'sh': ['language_server', 'shellcheck'],
     \ 'rust': ['cargo', 'rls']
     \ }
-let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'],}
+let g:ale_fixers = {
+      \ 'c': ['astyle'],
+      \ 'cpp': ['astyle'],
+      \ 'python': ['yapf'],
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ }
 let g:markdown_mdl_executable = 'mdl'
 let g:markdown_mdl_options = ''
 

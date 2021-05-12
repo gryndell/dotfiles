@@ -115,6 +115,8 @@ alias nnn='nnn -egHrx'
 
 alias vim='nvim'
 
+alias yeet='paru -Rcs'
+
 # alias less='/usr/share/nvim/runtime/macros/less.sh'
 
 # Suffix aliases
@@ -141,7 +143,9 @@ alias clear='[ $[$RANDOM % 10] = 0 ] && timeout 6 cbeams -o; clear || clear'
 export ALTERNATE_EDITOR=""
 export EDITOR="nvim"      # $EDITOR should open in terminal
 export VISUAL="nvim"      # $VISUAL also nvim
+export PAGER="less -R"    # PAGER
 export GIT_EDITOR="nvim"  # GIT EDITOR
+export VIMRUNTIME="/usr/share/nvim/runtime"
 # }}}
 
 # vim: foldmethod=marker

@@ -80,6 +80,11 @@ make_underscore
 autoload -U add-zsh-hook
 add-zsh-hook preexec make_underscore
 
+# Enable editing commands in nvim with ESC-v
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 function set_win_title() {
   echo -ne "\033]0; ${PWD/\/home\/ralph/~} \007"
 }

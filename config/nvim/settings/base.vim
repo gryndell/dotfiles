@@ -83,6 +83,7 @@ if has("gui_running")
   set guioptions=a
   set guifont=Hack\ Nerd\ Font\ Mono\ 16
 endif
+set runtimepath+=/usr/share/nvim/site
 " Base Settings }}}
 
 " vim: foldmethod=marker

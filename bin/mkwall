@@ -26,27 +26,22 @@ esac
 export NUMFILES=`ls -1 $WALLPATH/*.* | wc -l`
 
 if [[ $NUMFILES -gt 0 ]]; then
-  export RAND0="$(shuf -i 0-$NUMFILES -n 1)"
-  export RAND1="$(shuf -i 0-$NUMFILES -n 1)"
-  while [ $RAND1 -eq $RAND0 ]; do
-    export RAND1="$(shuf -i 0-$NUMFILES -n 1)"
-  done
+  RAND0="$(shuf -i 0-$NUMFILES -n 1)"
+  export RAND0
 fi
 
 export PAPER0=""
-export PAPER1=""
 export ITER=0
 for FILE in $(ls -1 $WALLPATH/*.*)
 do
   if [[ $ITER -eq $RAND0 ]]; then
     export PAPER0=$FILE
   fi
-  if [[ $ITER -eq $RAND1 ]]; then
-    export PAPER1=$FILE
-  fi
   export ITER=$(expr $ITER + 1)
 done
 
 # gsettings set org.gnome.desktop.background picture-options 'scaled'
 gsettings set org.gnome.desktop.background picture-options 'zoom'
-gsettings set org.gnome.desktop.background picture-uri $PAPER0
+gsettings set org.gnome.desktop.background picture-uri "$PAPER0"
+
+echo "PAPER0 = $PAPER0"
