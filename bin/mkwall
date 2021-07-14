@@ -13,25 +13,25 @@ export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 export DISPLAY=:0
 export DAYMOD=`expr $DAY % 3`
 case $DOW in
-  0) WALLPATH="/home/ralph/Wallpapers/Horror";;
+  0) WALLPATH="/home/ralph/Wallpapers/Fantasy_Art";;
   1) WALLPATH="/home/ralph/Wallpapers/Calm";;
   2) WALLPATH="/home/ralph/Wallpapers/Sci_Fi_Art";;
   3) WALLPATH="/home/ralph/Wallpapers/Space";;
   4) WALLPATH="/home/ralph/Wallpapers/Yuri_Hill";;
-  5) WALLPATH="/home/ralph/Wallpapers/Fantasy_Art";;
+  5) WALLPATH="/home/ralph/Wallpapers/Horror";;
   6) WALLPATH="/home/ralph/Wallpapers/Heroic";;
-  *) WALLPATH="/home/ralph/Wallpapers/Linux";;
+  *) WALLPATH="/home/ralph/Wallpapers/Fantasy_Art";;
 esac
 
 export NUMFILES=`ls -1 $WALLPATH/*.* | wc -l`
 
 if [[ $NUMFILES -gt 0 ]]; then
-  RAND0="$(shuf -i 0-$NUMFILES -n 1)"
+  RAND0="$(shuf -i 1-$NUMFILES -n 1)"
   export RAND0
 fi
 
 export PAPER0=""
-export ITER=0
+export ITER=1
 for FILE in $(ls -1 $WALLPATH/*.*)
 do
   if [[ $ITER -eq $RAND0 ]]; then

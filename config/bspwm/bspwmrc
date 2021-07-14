@@ -27,6 +27,7 @@ else
   bspc rule -a firefoxdeveloperedition desktop='^2' follow=on
   bspc rule -a Ranger desktop='^3' follow=on
   bspc rule -a Thunar desktop='^3' follow=on
+  bspc rule -a Org.gnome.Nautilus desktop='^3' follow=on
   bspc rule -a Zathura desktop='^4' state=tiled follow=on
   bspc rule -a Wfica desktop='^5' state=tiled follow=on
   bspc rule -a qemu-system-x86_64 desktop='^5' state=fullscreen follow=on

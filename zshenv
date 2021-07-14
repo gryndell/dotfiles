@@ -113,6 +113,8 @@ alias tty-clock='tty-clock -bcC5'
 
 alias nnn='nnn -egHrx'
 
+alias sed='sed -E'
+
 alias vim='nvim'
 
 alias yeet='paru -Rcs'

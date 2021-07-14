@@ -5,7 +5,7 @@
 
 syntax enable           " Switch syntax highlighting on
 set hidden              " Required to keep multiple buffers open
-set nowrap              " Display long lines as just one line
+set wrap                " Display long lines as just one line
 set encoding=utf-8      " The encoding displayed
 set fileencoding=utf-8  " Encoding written to file
 set pumheight=10        " Makes popup menu smaller

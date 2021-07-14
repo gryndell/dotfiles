@@ -33,7 +33,7 @@ Plug 'wincent/loupe' " Enhanced search
 Plug 'wincent/terminus' " Enhanced terminal support
 Plug 'SirVer/ultisnips' " Snippets engine
 Plug 'honza/vim-snippets' " Snippets for various languages
-" Plug 'davidhalter/jedi-vim' " Autocompletion for Python
+Plug 'davidhalter/jedi-vim' " Autocompletion for Python
 Plug 'vim-ruby/vim-ruby' " Ruby configuration etc.
 Plug 'freitass/todo.txt-vim' " Syntax highlighting for todo.txt files
 Plug 'mbbill/undotree' " Undo tree visualisation
@@ -46,6 +46,7 @@ Plug 'vim-pandoc/vim-pandoc' " Pandoc integration
 Plug 'vim-pandoc/vim-pandoc-syntax' " Pandoc syntax
 Plug 'dhruvasagar/vim-table-mode' " Easy tables
 Plug 'gabrielelana/vim-markdown' " Better Vim Markdown syntax highlighting
+Plug 'neovim/nvim-lspconfig' " LSP Configuration
 
 " Aesthetics plugins
 Plug 'vim-airline/vim-airline' " Fancy status/tabline
@@ -54,7 +55,7 @@ Plug 'joshdick/onedark.vim' " OneDark colorscheme
 Plug 'morhetz/gruvbox' " Gruvbox colorscheme
 Plug 'yuqio/vim-darkspace' " Darkspace colorscheme
 Plug 'ryanoasis/vim-devicons' " Vim Dev Icons (nerdfont glyphs)
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+" Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 "Initialize plugin system
 call plug#end()
