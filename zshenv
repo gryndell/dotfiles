@@ -17,9 +17,9 @@ if [ -d "$HOME/.cargo/bin" ]; then
   export PATH="$HOME/.cargo/bin/:$PATH"
 fi
 
-# Settings for Fuchsia
-export PATH=~/fuchsia/.jiri_root/bin:$PATH
-source ~/fuchsia/scripts/fx-env.sh
+# # Settings for Fuchsia
+# export PATH=~/fuchsia/.jiri_root/bin:$PATH
+# source ~/fuchsia/scripts/fx-env.sh
 
 # }}}
 
