@@ -15,6 +15,7 @@ local nvim_lsp = require('lspconfig')
 require 'lspconfig'.pyright.setup{}
 require 'lspconfig'.bashls.setup{}
 require 'lspconfig'.ccls.setup{}
+require 'lspconfig'.dartls.setup{}
 EOF
 " }}} Lua code
 

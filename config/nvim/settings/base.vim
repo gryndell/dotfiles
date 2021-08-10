@@ -44,8 +44,6 @@ set clipboard+=unnamedplus  " Use system clipboard
 set nocompatible        " Use vim, not vi
 set path+=**            " Use fuzzy directory search
 set noswapfile          " No swap file
-set undofile            " Undo persistence
-set undodir=~/.config/nvim/undo
 set history=100         " Command history
 set showcmd             " Show incomplete commands
 set incsearch           " Incremental searching (search as you type)
@@ -72,9 +70,9 @@ set tags=tags;          " Tags
 set complete+=i,kspell
 set completeopt=menuone,longest
 set sessionoptions-=options " Session Options
-" Set viminfo
+" Set shada
 " was -> '100,<50,s10,h
-set viminfo='100,f1,:100,/100,<100,s10,!,h
+set shada='100,f1,:100,/100,<100,s10,!,h
 set belloff=all         " Set bell off
 let g:netrw_liststyle=1 " Set file system explorer to use long line listing
 " Check if using gui

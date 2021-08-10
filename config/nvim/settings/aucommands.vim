@@ -145,6 +145,12 @@ augroup Goyo
   autocmd! user GoyoLeave Limelight!
 augroup END
 
+" Terminal fix for ACP
+augroup Terminal
+  autocmd BufEnter,TermOpen term://* AcpDisable
+  autocmd BufLeave term://* AcpEnable
+augroup END
+
 " Auto Commands }}}
 
 " vim: foldmethod=marker

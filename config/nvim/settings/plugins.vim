@@ -48,6 +48,16 @@ Plug 'dhruvasagar/vim-table-mode' " Easy tables
 Plug 'gabrielelana/vim-markdown' " Better Vim Markdown syntax highlighting
 Plug 'neovim/nvim-lspconfig' " LSP Configuration
 
+" " Dart/Flutter
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart'
+Plug 'natebosch/dartlang-snippets'
+Plug 'thosakwe/vim-flutter'
+
+" Use Ranger instead of netrw
+Plug 'kevinhwang91/rnvimr', { 'do': 'make sync' }
+
 " Aesthetics plugins
 Plug 'vim-airline/vim-airline' " Fancy status/tabline
 Plug 'vim-airline/vim-airline-themes' " Themes for airline
@@ -97,6 +107,7 @@ let g:ale_linters = {
     \ 'bash': ['shellcheck'],
     \ 'c': ['cc'],
     \ 'cpp': ['cc'],
+    \ 'dart': ['dart'],
     \ 'javascript': ['eslint'],
     \ 'markdown': ['mdl', 'writegood', 'proselint'],
     \ 'vimwiki': ['mdl', 'writegood', 'proselint'],
@@ -108,6 +119,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
       \ 'c': ['astyle'],
       \ 'cpp': ['astyle'],
+      \ 'dart': ['dartfmt'],
       \ 'python': ['yapf'],
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \ }
@@ -178,5 +190,11 @@ endif
 let g:calendar_cyclic_view = 1
 
 let g:tex_flavor = 'latex'
+
+" lsc
+let g:lsc_auto_map = v:true
+
+" Ranger
+source $HOME/.config/nvim/plug-config/rnvimr.vim
 
 " vim: foldmethod=marker

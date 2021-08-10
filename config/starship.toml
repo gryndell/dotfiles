@@ -1,21 +1,19 @@
 # Don't print a new line at the start of the prompt
 add_newline = false
+command_timeout = 2000
 
 # Can replace the "❯" symbol in the prompt with "➜"
 [character]
-symbol = "❯"
-vicmd_symbol = "❮"
-error_symbol = "❯"
-use_symbol_for_status = true
-style_success = "green"
-style_failure = "red"
+format = "$symbol "
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[❮](bold green)"
 
 [cmd_duration]
 disabled = true
 
 [directory]
 truncation_length = 9
-prefix = ""
 style = "bold cyan"
 disabled = false
 
