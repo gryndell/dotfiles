@@ -1,6 +1,7 @@
 " Theme
-colorscheme darkspace
-let g:darkspace_italics=1
+colorscheme enfocado
+" let g:darkspace_italics=1
+let g:enfocado_style="nature"
 " " Make transparent if terminal, black if gui
 if has("gui_running")
   highlight Normal guibg=black

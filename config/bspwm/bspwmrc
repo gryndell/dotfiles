@@ -84,10 +84,10 @@ echo "volume set" >> /home/ralph/bspwm.log
 /usr/bin/nm-applet &
 echo "nm-applet started" >> /home/ralph/bspwm.log
 # Set wallpaper using feh
-# /home/ralph/.fehbg > /home/ralph/fehbg.log
-# echo "wallpaper set to:" >> /home/ralph/bspwm.log
-# cat $HOME/.fehbg >> /home/ralph/bspwm.log
-/usr/bin/nitrogen --restore &
+/home/ralph/.fehbg > /home/ralph/fehbg.log
+echo "wallpaper set to:" >> /home/ralph/bspwm.log
+cat $HOME/.fehbg >> /home/ralph/bspwm.log
+# /usr/bin/nitrogen --restore &
 # # Start dropbox
 # /usr/bin/killall dropbox
 # /usr/bin/systemctl --user start dropbox
@@ -108,15 +108,15 @@ echo "nm-applet started" >> /home/ralph/bspwm.log
 # /usr/bin/tint2
 
 # Start Plank
-/usr/bin/plank &
+# /usr/bin/plank &
 
 # Turn off screen blanking
 /usr/bin/xset -dpms s off
 
 # Start kitty, Ranger and Firefox
 /usr/bin/kitty --class Console --name Console &
-# /usr/bin/kitty --class Ranger --name Ranger /usr/bin/ranger &
-/usr/bin/nautilus --new-window &
+/usr/bin/kitty --class Ranger --name Ranger /usr/bin/ranger &
+# /usr/bin/thunar &
 /usr/bin/firefox-developer-edition &
 
 # # Start Zathura (temporary)

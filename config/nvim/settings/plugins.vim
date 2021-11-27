@@ -55,8 +55,11 @@ Plug 'natebosch/vim-lsc-dart'
 Plug 'natebosch/dartlang-snippets'
 Plug 'thosakwe/vim-flutter'
 
-" Use Ranger instead of netrw
-Plug 'kevinhwang91/rnvimr', { 'do': 'make sync' }
+" " Use Ranger instead of netrw
+" Plug 'kevinhwang91/rnvimr', { 'do': 'make sync' }
+
+" Use nnn as file picker
+Plug 'luukvbaal/nnn.nvim'
 
 " Aesthetics plugins
 Plug 'vim-airline/vim-airline' " Fancy status/tabline
@@ -65,6 +68,7 @@ Plug 'joshdick/onedark.vim' " OneDark colorscheme
 Plug 'morhetz/gruvbox' " Gruvbox colorscheme
 Plug 'yuqio/vim-darkspace' " Darkspace colorscheme
 Plug 'ryanoasis/vim-devicons' " Vim Dev Icons (nerdfont glyphs)
+Plug 'wuelnerdotexe/vim-enfocado' " enfocado colorscheme
 " Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 "Initialize plugin system
@@ -80,7 +84,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#ale#enabled = 1
-let g:airline_theme='darkspace'
+let g:airline_theme='enfocado'
 let g:airline_left_sep=''
 let g:airline_left_alt_sep=' '
 let g:airline_right_sep=''
@@ -194,7 +198,22 @@ let g:tex_flavor = 'latex'
 " lsc
 let g:lsc_auto_map = v:true
 
-" Ranger
-source $HOME/.config/nvim/plug-config/rnvimr.vim
+" " Ranger
+" source $HOME/.config/nvim/plug-config/rnvimr.vim
+
+" nnn
+lua << EOF
+require("nnn").setup({
+picker = {
+  cmd = "nnn -d",
+  style = {
+    width = 0.5,    -- width in proportion of viewport
+    height = 0.5,   -- height in proportion of viewport
+    border = "rounded"   -- border decoration, e.g., "rounded" (:h nvim_open_win)
+    },
+  },
+  replace_netrw = "picker"
+})
+EOF
 
 " vim: foldmethod=marker

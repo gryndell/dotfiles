@@ -192,3 +192,5 @@ alias vi='vim --servername vim'
 alias figfuture='figlet -f ~/figlet-fonts/future'
 
 # }}}
+
+source /home/ralph/.config/broot/launcher/bash/br

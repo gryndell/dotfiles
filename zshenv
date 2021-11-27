@@ -71,6 +71,19 @@ export CLICOLOR=1
 # Initialisation for par (text formatter)
 export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 
+# Config for nnn
+export NNN_OPTS="DegHrx"
+export NNN_PLUG='f:finder;o:fzopen;p:mocplay;d:diffs;t:nmount;v:!ristretto $nnn;z:preview-tui'
+export NNN_SEL='/tmp/.sel'
+export NNN_FIFO='/tmp/nnn.fifo'
+export NNN_SSHFS='sshfs -o follow_symlinks'     # make sshfs follow symlinks on the remote
+export NNN_COLORS='1234'                        # use a different colour for each context
+export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'   # file-specific Colors
+export NNN_TRASH=1                              # trash (using trash-cli) instead of delete
+export NNN_BMS='d:~/Documents;t:~/Documents/Technical_Documents;w:~/Wallpapers'
+export NNN_LOCKER='cmatrix'
+export NNN_TMPFILE='/tmp/.lastd'
+
 # Exports }}}
 
 # Aliases {{{
@@ -111,7 +124,7 @@ alias cp='cp -iv'
 alias tty-clock='tty-clock -bcC5'
 # alias tmux='tmux -u'
 
-alias nnn='nnn -egHrx'
+# alias nnn='nnn -egHrx'
 
 alias sed='sed -E'
 
@@ -138,6 +151,9 @@ alias -s gif=nvim
 alias -s ps=zathura
 alias -s pdf=zathura
 alias clear='[ $[$RANDOM % 10] = 0 ] && timeout 6 cbeams -o; clear || clear'
+
+# nnn
+# alias nnn='nnn -egHrx'
 
 # }}} Aliases
 

@@ -121,13 +121,14 @@ augroup end
 " Save folds etc.
 augroup view_group
   autocmd!
-  autocmd BufWinLeave *.* mkview
+  autocmd VimEnter * ++nested colorscheme enfocado
+  autocmd BufWinLeave *.* silent! mkview!
   autocmd BufWinEnter *.* silent! loadview
-  autocmd BufWinLeave config mkview
+  autocmd BufWinLeave config mkview!
   autocmd BufWinEnter config silent! loadview
-  autocmd BufWinLeave .Xresources mkview
+  autocmd BufWinLeave .Xresources mkview!
   autocmd BufWinEnter .Xresources silent! loadview
-  autocmd BufWinLeave init.vim mkview
+  autocmd BufWinLeave init.vim mkview!
   autocmd BufWinEnter init.vim silent! loadview
 augroup end
 
