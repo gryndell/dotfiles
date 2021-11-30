@@ -1,19 +1,3 @@
-" Theme
-colorscheme enfocado
-" let g:darkspace_italics=1
-let g:enfocado_style="nature"
-" " Make transparent if terminal, black if gui
-if has("gui_running")
-  highlight Normal guibg=black
-else
-  highlight Normal guibg=NONE
-endif
-highlight Comment gui=italic
-
-" Mark cursor line and column bold
-highlight CursorLine gui=bold guibg=NONE
-highlight CursorColumn gui=bold guibg=NONE
-
 " Set character for indent lines
 let g:indentLine_char = '│'
 
@@ -29,5 +13,21 @@ if has('folding')
   " Folding details
   highlight folded guibg=NONE guifg=darkgrey guibg=NONE guifg=darkgrey
 endif
+
+" Theme
+colorscheme enfocado
+" let g:darkspace_italics=1
+let g:enfocado_style="nature"
+" " Make transparent if terminal, black if gui
+if has("gui_running")
+  highlight Normal guibg=black
+else
+  highlight Normal guibg=NONE
+endif
+highlight Comment gui=italic
+
+" Mark cursor line and column bold
+highlight CursorLine gui=bold guibg=NONE
+highlight CursorColumn gui=bold guibg=NONE
 
 " vim: foldmethod=marker

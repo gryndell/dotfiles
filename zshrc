@@ -159,7 +159,7 @@ n ()
     # stty lnext undef
 
     # nnn "$@"
-    nnn -P z
+    nnn -P z -t 600
 
     if [ -f "$NNN_TMPFILE" ]; then
             . "$NNN_TMPFILE"
