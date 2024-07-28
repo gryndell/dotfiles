@@ -39,8 +39,6 @@ alias vimdiff "nvim -d"
 
 # Alias modern equivalents
 alias docker "podman"
-alias ll "exa -alh"
-alias tree "exa --tree"
 
 # Some cd aliases
 alias .. "cd .."
