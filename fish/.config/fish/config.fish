@@ -151,6 +151,7 @@ function fish_mode_prompt
 end
 
 # starship init fish | source
+
 eval "$(atuin init fish --disable-up-arrow)"
 
 # opam configuration
