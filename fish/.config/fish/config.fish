@@ -158,9 +158,6 @@ eval "$(atuin init fish --disable-up-arrow)"
 source /home/ralph/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
 # Abbreviations
-abbr -a -- vimdiff 'nvim -d'
 abbr -a -- docker podman
-abbr -a -- vim nvim
 abbr -a --position anywhere --function last_history_item -- !!
 abbr -a --regex .+\\.\(md\|txt\) --function nvim_edit -- nvim_edit
-abbr -a -- vv /home/ralph/bin/vv.sh
