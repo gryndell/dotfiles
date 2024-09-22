@@ -52,8 +52,8 @@ alias rm "trash-put"
 # Show progress when copying large files
 alias cpv "rsync -ah --info=progress2"
 
-# When using /usr/bin/indent, use K&R style, but do not use tabs
-alias indent "indent --k-and-r-style --indent-level8 --no-tabs"
+# When using /usr/bin/indent, use linux style, but do not use tabs
+alias indent "indent -linux -brf --indent-level8 --no-tabs"
 
 # Use clang for compiling, rather than gcc
 alias cc "clang"
