@@ -53,7 +53,7 @@ alias rm "trash-put"
 alias cpv "rsync -ah --info=progress2"
 
 # When using /usr/bin/indent, use linux style, but do not use tabs
-alias indent "indent --linux-style --indent-level8 --no-tabs"
+alias indent "indent --linux-style --indent-level4 --no-tabs"
 
 # Use clang for compiling, rather than gcc
 alias cc "clang"
