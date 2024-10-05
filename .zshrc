@@ -71,6 +71,7 @@ zstyle 'fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias ls='ls --color'
 alias vi='nvim'
 alias vim='nvim'
+alias indent='indent --linux-style --indent-level4 --no-tabs'
 
 # PATH
 PATH="$HOME/go/bin:$PATH"
