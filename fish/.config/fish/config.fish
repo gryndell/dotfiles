@@ -77,9 +77,6 @@ abbr --add vv /home/ralph/bin/vv.sh
 alias pbcopy "xsel --input --clipboard"
 alias pbpaste "xsel --output --clipboard"
 
-# Run amfora as if a native program
-alias amfora "/usr/bin/distrobox enter -n archbox -- amfora $argv"
-
 set -x ALTERNATE_EDITOR "nano"
 set -x EDITOR "nvim"      # $EDITOR should open in terminal
 set -x VISUAL "nvim"      # $VISUAL also nvim
@@ -161,3 +158,7 @@ source /home/ralph/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 abbr -a -- docker podman
 abbr -a --position anywhere --function last_history_item -- !!
 abbr -a --regex .+\\.\(md\|txt\) --function nvim_edit -- nvim_edit
+
+# Use nvim to view manpages
+set -Ux MANPAGER 'nvim +Man!'
+

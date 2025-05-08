@@ -72,5 +72,8 @@ GOPATH="$HOME/go"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
+# Man Page Viewer
+MANPAGER="nvim +Man!"
+
 # Starship prompt
 eval "$(starship init zsh)"
