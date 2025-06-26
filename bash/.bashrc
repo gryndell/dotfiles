@@ -40,6 +40,7 @@ alias update='sudo dnf offline-upgrade download -y && sudo dnf offline-upgrade r
 alias indent='indent --linux-style --indent-level8 --no-tabs'
 alias luamake=/home/ralph/lua-language-server/3rd/luamake/luamake
 alias lynx='lynx -editor=nvim -vikeys'
+alias wfh='$HOME/bin/wfh_log.sh'
 # Switch between vi and emacs input mode
 alias svi='set -o vi'
 alias sem='set -o emacs'
