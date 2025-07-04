@@ -49,10 +49,13 @@ alias sem='set -o emacs'
 shopt -s autocd
 
 # Set neovim as the editor
-export EDITOR=/usr/bin/nvim
+export EDITOR=nvim
 
 # Use nvim to view manpages
 export MANPAGER='nvim +Man!'
+
+# Load Gemini API Key
+export GEMINI_API_KEY="$(cat $HOME/gemini.key)"
 
 # Find string in files
 fstr() {
@@ -72,20 +75,22 @@ PROMPT_COMMAND=__prompt_command     # Function to generate PS1 after CMDs
 __prompt_command() {
   local EXIT="$?"                   # This needs to be first
   PS1=""
-  local RCol='\[\e[0m\]'
-  local Red='\[\e[0;31m\]'
-  local Gre='\[\e[0;32m\]'
-  local BYel='\[\e[1;33m\]'
-  local BBlu='\[\e[1;34m\]'
-  local Pur='\[\e[0;35m\]'
+  local NORMAL='\[\e[0m\]'
+  local RED='\[\e[0;31m\]'
+  local GREEN='\[\e[0;32m\]'
+  local YELLOW='\[\e[0;33m\]'
+  local BLUE='\[\e[0;34m\]'
+  local MAGENTA='\[\e[0;35m\]'
+  local CYAN='\[\e[0;36m\]'
 
   if [ $EXIT != 0 ]; then
-    RESULT="${Red}"         # Add red if exit code non 0
+    RESULT="${RED}"         # Add red if exit code non 0
   else
-    RESULT="${Gre}"
+    RESULT="${GREEN}"
   fi
 
-  PS1+="$RESULT╭─(${BYel}\u${RCol}@${BBlu}\h$RESULT)─[${RCol}\w$RESULT]\n╰─$ ${RCol}"
+  PS1+="$RESULT╭─(${YELLOW}\u${NORMAL}@${BLUE}\h$RESULT)─[${CYAN}\w${NORMAL}"
+  PS1+="$RESULT]\n╰─$ ${NORMAL}"
 }
 eval "$(atuin init bash --disable-up-arrow)"
 
