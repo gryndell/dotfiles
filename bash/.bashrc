@@ -35,6 +35,9 @@ alias rm='trash-put'
 # Show progress when copying large file
 alias cpv='rsync -ah --info=progress2'
 
+# Grep with color by default
+alias grep='grep --color=auto'
+
 # Other aliases
 alias update='sudo dnf offline-upgrade download -y && sudo dnf offline-upgrade reboot'
 alias indent='indent --linux-style --indent-level8 --no-tabs'
@@ -65,7 +68,10 @@ fstr() {
 source /home/ralph/.config/broot/launcher/bash/br
 # . "$HOME/.cargo/env"
 
+# Use vi keybindings
 set -o vi
+# Set Ctrl+l to be clear screen a la emacs bindings
+bind -m vi '"\C-l": "clear\r"'
 
 # Set time format for history
 HISTTIMEFORMAT="%F %T "
