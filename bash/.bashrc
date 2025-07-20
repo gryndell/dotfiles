@@ -71,7 +71,7 @@ source /home/ralph/.config/broot/launcher/bash/br
 # Use vi keybindings
 set -o vi
 # Set Ctrl+l to be clear screen a la emacs bindings
-bind -m vi '"\C-l": "clear\r"'
+bind -x '"\C-l":clear'
 
 # Set time format for history
 HISTTIMEFORMAT="%F %T "
