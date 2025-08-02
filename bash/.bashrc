@@ -95,7 +95,7 @@ __prompt_command() {
     RESULT="${GREEN}"
   fi
 
-  PS1+="$RESULT╭─(${YELLOW}\u${NORMAL}@${BLUE}\h$RESULT)─[${CYAN}\w${NORMAL}"
+  PS1+="$RESULT╭─(${YELLOW}\u${NORMAL}@${CYAN}\h${NORMAL}$RESULT)─[${CYAN}\w${NORMAL}"
   PS1+="$RESULT]\n$RESULT╰─$ ${NORMAL}"
 }
 eval "$(atuin init bash --disable-up-arrow)"
