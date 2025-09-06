@@ -65,6 +65,17 @@ fstr() {
   grep -Rnw "." -e "$1"
 }
 
+# Google search and open in lynx
+google() {
+    local query="$*"
+    if [ -z "$query" ]; then
+        lynx "https://www.google.com"
+    else
+        query=$(echo "$query" | jq -sRr @uri)
+        lynx "https://www.google.com/search?q=$query"
+    fi
+}
+
 source /home/ralph/.config/broot/launcher/bash/br
 # . "$HOME/.cargo/env"
 
@@ -74,6 +85,7 @@ set -o vi
 bind -x '"\C-l":clear'
 
 # Set time format for history
+export HISTCONTROL=ignoreboth
 HISTTIMEFORMAT="%F %T "
 
 PROMPT_COMMAND=__prompt_command     # Function to generate PS1 after CMDs
