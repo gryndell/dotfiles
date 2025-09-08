@@ -48,6 +48,8 @@ alias wfh='$HOME/bin/wfh_log.sh'
 alias svi='set -o vi'
 alias sem='set -o emacs'
 
+# cdspell
+shopt -s cdspell
 # Auto CD into directories
 shopt -s autocd
 
