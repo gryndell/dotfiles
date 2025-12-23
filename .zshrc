@@ -76,4 +76,4 @@ eval "$(zoxide init --cmd cd zsh)"
 MANPAGER="nvim +Man!"
 
 # Starship prompt
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
