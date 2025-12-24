@@ -23,6 +23,19 @@ style = 'bold yellow'
 [cmd_duration]
 disabled = true
 
+[username]
+style_user = 'yellow'
+style_root = 'red bold'
+format = '[$user]($style)'
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = '[$ssh_symbol](blue)@[$hostname](green) '
+trim_at = '.companyname.com'
+disabled = false
+
 [directory]
 format = '[\[$path\]]($style)[$read_only]($read_only_style) '
 truncation_length = 0
