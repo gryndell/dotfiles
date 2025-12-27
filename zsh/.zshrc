@@ -7,8 +7,20 @@
 #
 
 # Autosuggestions, Syntax Highlighting
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+OPSYS=$(uname)
+case $OPSYS in
+  Linux)
+    PLUGDIR="/usr/share"
+    ;;
+  FreeBSD)
+    PLUGDIR="/usr/local/share"
+    ;;
+  *)
+    :
+    ;;
+esac
+source ${PLUGDIR}/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ${PLUGDIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Use vim keybindings
 bindkey -v
