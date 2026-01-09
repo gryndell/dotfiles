@@ -81,6 +81,12 @@ eval "$(fzf --zsh)"
 # Man Page Viewer
 MANPAGER="nvim +Man!"
 
-# Starship prompt
-eval "$(starship init zsh)"
+precmd() {
+  vcs_info # runs before prompt is displayed
+}
+
+# PROMPT='%n@%m:%~%# '
+PROMPT=$'%F{green}╭─(%F{cyan}%n@%m%F{green})-[%F{blue}%~%F{magenta}\${vcs_info_msg_0_}%F{green}]%F{white}\n%F{green}╰─%# %F{reset}'
+# # Starship prompt
+# eval "$(starship init zsh)"
 
