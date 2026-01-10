@@ -76,7 +76,7 @@ GOPATH="$HOME/go"
 
 # Shell integrations
 eval "$(fzf --zsh)"
-# eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
 # Man Page Viewer
 MANPAGER="nvim +Man!"
@@ -85,8 +85,5 @@ precmd() {
   vcs_info # runs before prompt is displayed
 }
 
-# PROMPT='%n@%m:%~%# '
-PROMPT=$'%F{green}╭─(%F{cyan}%n@%m%F{green})-[%F{blue}%~%F{magenta}\${vcs_info_msg_0_}%F{green}]%F{white}\n%F{green}╰─%# %F{reset}'
-# # Starship prompt
-# eval "$(starship init zsh)"
+PROMPT=$'%F{green}╭─(%F{cyan}%n@%m%F{green})-[%F{white}%~%F{magenta}\${vcs_info_msg_0_}%F{green}]\n%F{green}╰─%# %F{reset}'
 
