@@ -77,7 +77,6 @@ if which nvim &>/dev/null; then
 else
   if which vim &>/dev/null; then
     alias vi='vim'
-    export MANPAGER="col -b | view -c 'set ft=man nomod nolist' -"
   fi
 fi
 alias indent='indent --linux-style --indent-level8 --no-tabs'
