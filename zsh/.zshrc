@@ -34,10 +34,14 @@ autoload -U compinit && compinit
 autoload -Uz vcs_info
 
 # History
-HISTSIZE=5000
 HISTFILE=~/.zsh_history
+HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
+
+# zshoptions
+setopt auto_cd
+setopt extended_glob
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
@@ -65,21 +69,26 @@ zstyle ':vcs_info:*' unstagedstr ' %F{red}●%f'
 
 # Aliases
 alias ls='ls --color'
-alias vi='nvim'
-alias vim='nvim'
+if [[ $(which nvim) ]]; then
+  alias vi='nvim'
+  alias vim='nvim'
+  # Man Page Viewer
+  export MANPAGER="nvim +Man!"
+else
+  if [[ $(which vim) ]]; then
+    alias vi='vim'
+    export MANPAGER="col -b | view -c 'set ft=man nomod nolist' -"
+  fi
+fi
 alias indent='indent --linux-style --indent-level8 --no-tabs'
 
-# PATH
-PATH="$HOME/go/bin:$PATH"
-PATH="$HOME/.cargo/bin:$PATH"
-GOPATH="$HOME/go"
-
 # Shell integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-
-# Man Page Viewer
-MANPAGER="nvim +Man!"
+if [[ $(which fzf) ]]; then
+  eval "$(fzf --zsh)"
+fi
+if [[ $(which zoxide) ]]; then
+  eval "$(zoxide init --cmd cd zsh)"
+fi
 
 precmd() {
   vcs_info # runs before prompt is displayed
