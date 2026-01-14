@@ -77,17 +77,17 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # Useful aliases
-if [[ $(which bat) ]]; then
+if which bat &>/dev/null; then
   alias cat='bat -p'
 fi
-if [[ $(which xsel) ]]; then
+if which xsel &>/dev/null; then
   alias pbcopy='xsel --clipboard --input'
   alias pbpaste='xsel --clipboard --output'
 fi
 
 alias cp='cp -iv'
 # alias xterm='xterm -font -*-fixed-medium-r-*-20-*-*-*-*-*-iso8859-16'
-if [[ $(which tty-clock) ]]; then
+if which tty-clock &>/dev/null; then
   alias tty-clock='tty-clock -bcC5'
 fi
 
@@ -98,12 +98,12 @@ alias sed='sed -E'
 
 # EDITOR {{{
 export ALTERNATE_EDITOR="vi"
-if [[ $(which nvim) ]]; then
+if which nvim &>/dev/null; then
   export EDITOR="nvim"      # $EDITOR should open in terminal
   export VISUAL="nvim"      # $VISUAL also nvim
   export GIT_EDITOR="nvim"  # GIT EDITOR
 else
-  if [[ $(which vim) ]]; then
+  if which vim &>/dev/null; then
     export EDITOR="vim"
     export VISUAL="vim"
     export GIT_EDITOR="vim"

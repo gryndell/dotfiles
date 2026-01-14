@@ -69,13 +69,13 @@ zstyle ':vcs_info:*' unstagedstr ' %F{red}●%f'
 
 # Aliases
 alias ls='ls --color'
-if [[ $(which nvim) ]]; then
+if which nvim &>/dev/null; then
   alias vi='nvim'
   alias vim='nvim'
   # Man Page Viewer
   export MANPAGER="nvim +Man!"
 else
-  if [[ $(which vim) ]]; then
+  if which vim &>/dev/null; then
     alias vi='vim'
     export MANPAGER="col -b | view -c 'set ft=man nomod nolist' -"
   fi
@@ -83,10 +83,10 @@ fi
 alias indent='indent --linux-style --indent-level8 --no-tabs'
 
 # Shell integrations
-if [[ $(which fzf) ]]; then
+if which fzf &>/dev/null; then
   eval "$(fzf --zsh)"
 fi
-if [[ $(which zoxide) ]]; then
+if which zoxide &>/dev/null; then
   eval "$(zoxide init --cmd cd zsh)"
 fi
 
