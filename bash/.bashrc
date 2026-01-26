@@ -111,6 +111,7 @@ __prompt_command() {
 
   PS1+="$RESULT╭─(${CYAN}\u@\h${NORMAL}$RESULT)─[${NORMAL}\w"
   PS1+="$RESULT]\n$RESULT╰─$ ${NORMAL}"
+  printf "\033]0;%s@%s:%s\007" "$USER" "$HOSTNAME" "${PWD/#$HOME/\~}"
 }
 eval "$(atuin init bash --disable-up-arrow)"
 

@@ -91,6 +91,7 @@ fi
 
 precmd() {
   vcs_info # runs before prompt is displayed
+  printf "\033]0;%s@%s:%s\007" "$USER" "$HOSTNAME" "${PWD/#$HOME/~}"
 }
 
 PROMPT=$'%F{green}╭─(%F{cyan}%n@%m%F{green})-[%F{white}%~%F{magenta}\${vcs_info_msg_0_}%F{green}]\n%F{green}╰─%# %F{reset}'
