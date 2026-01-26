@@ -50,11 +50,15 @@ alias sem='set -o emacs'
 
 # cdspell
 shopt -s cdspell
+# dirspell
+shopt -s dirspell
 # Auto CD into directories
 shopt -s autocd
 
 # Set neovim as the editor
-export EDITOR=nvim
+export EDITOR='nvim'
+# And as VISUAL
+export VISUAL='nvim'
 
 # Use nvim to view manpages
 export MANPAGER='nvim +Man!'
@@ -77,9 +81,6 @@ google() {
         lynx "https://www.google.com/search?q=$query"
     fi
 }
-
-source /home/ralph/.config/broot/launcher/bash/br
-# . "$HOME/.cargo/env"
 
 # Use vi keybindings
 set -o vi
@@ -111,6 +112,7 @@ __prompt_command() {
 
   PS1+="$RESULT╭─(${CYAN}\u@\h${NORMAL}$RESULT)─[${NORMAL}\w"
   PS1+="$RESULT]\n$RESULT╰─$ ${NORMAL}"
+# PS1="\u@\h:\w \$ "
   printf "\033]0;%s@%s:%s\007" "$USER" "$HOSTNAME" "${PWD/#$HOME/\~}"
 }
 eval "$(atuin init bash --disable-up-arrow)"
