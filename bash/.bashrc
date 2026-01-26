@@ -17,10 +17,6 @@ alias la='ls -Al'
 alias lt='ls -ltr' # Sort by date
 alias labc='ls -lap' # Sort alphabetically, show dotfiles
 
-# Map vi/vim to nvim
-alias vi='nvim'
-alias vim='nvim'
-
 # Some cd aliases
 alias ..='cd ..'
 alias cd..='cd ..'
@@ -55,13 +51,21 @@ shopt -s dirspell
 # Auto CD into directories
 shopt -s autocd
 
-# Set neovim as the editor
-export EDITOR='nvim'
-# And as VISUAL
-export VISUAL='nvim'
+if which nvim &>/dev/null; then
+  export EDITOR='nvim'
+  export VISUAL='nvim'
+  alias vi='nvim'
+  alias vim='nvim'
+else
+  if which vim &>/dev/null; then
+    export EDITOR='vim'
+    export VISUAL='vim'
+    alias vi='vim'
+  fi
+fi
 
-# Use nvim to view manpages
-export MANPAGER='nvim +Man!'
+# Color man pages
+export MANROFFOPT="-c"
 
 # Load Gemini API Key
 export GEMINI_API_KEY="$(cat $HOME/gemini.key)"

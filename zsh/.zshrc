@@ -34,10 +34,13 @@ autoload -U compinit && compinit
 autoload -Uz vcs_info
 
 # History
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=$HISTSIZE
+export HISTDUP=erase
+
+# Color man pages
+export MANROFFOPT="-c"
 
 # zshoptions
 setopt auto_cd
@@ -72,8 +75,6 @@ alias ls='ls --color'
 if which nvim &>/dev/null; then
   alias vi='nvim'
   alias vim='nvim'
-  # Man Page Viewer
-  export MANPAGER="nvim +Man!"
 else
   if which vim &>/dev/null; then
     alias vi='vim'
