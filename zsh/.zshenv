@@ -32,7 +32,7 @@ fi
 # Exports {{{
 # ls options
 export LS_OPTIONS='--color=yes'
-export LESS='-X'
+
 # man pages in color
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 1)
 export LESS_TERMCAP_md=$(tput bold; tput setaf 1)
