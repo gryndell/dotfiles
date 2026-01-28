@@ -83,7 +83,9 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 export MANROFFOPT="-c"
 
 # Load Gemini API Key
-export GEMINI_API_KEY="$(cat $HOME/gemini.key)"
+if [[ -r $HOME/gemini.key ]]; then
+  export GEMINI_API_KEY="$(cat $HOME/gemini.key)"
+fi
 
 # Find string in files
 fstr() {
@@ -134,5 +136,8 @@ __prompt_command() {
 # PS1="\u@\h:\w \$ "
   printf "\033]0;%s@%s:%s\007" "$USER" "$HOSTNAME" "${PWD/#$HOME/\~}"
 }
-eval "$(atuin init bash --disable-up-arrow)"
+
+if which atuin &>/dev/null; then
+  eval "$(atuin init bash --disable-up-arrow)"
+fi
 
