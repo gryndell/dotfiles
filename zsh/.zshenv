@@ -121,4 +121,6 @@ export PAGER="less -R"    # PAGER
 # }}}
 
 # vim: foldmethod=marker
-. "$HOME/.cargo/env"
+if [[ -r "$HOME/.cargo/env" ]]; then
+  . "$HOME/.cargo/env"
+fi
