@@ -109,7 +109,7 @@ if which trash-put &>/dev/null; then
 else
   alias rm='rm -i'
 fi
-alias indent='indent --linux-style --indent-level8 --no-tabs'
+alias indent='indent --linux-style --indent-level8'
 
 ## Some cd aliases
 alias ..='cd ..'
