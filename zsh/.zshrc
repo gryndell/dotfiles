@@ -6,7 +6,8 @@
 # (_)___|___/_| |_|_|  \___|
 #
 
-# Autosuggestions, Syntax Highlighting
+# Plugins {{{
+## Autosuggestions, Syntax Highlighting
 OPSYS=$(uname)
 case $OPSYS in
   Linux)
@@ -21,28 +22,24 @@ case $OPSYS in
 esac
 source ${PLUGDIR}/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ${PLUGDIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Plugins }}}
 
-# Use vim keybindings
+# Keybindings {{{
+## Use vim keybindings
 bindkey -v
 bindkey '^k' history-search-backward
 bindkey '^j' history-search-forward
+# Keybindings }}}
 
-# Load completions
+# Completions {{{
+## Load completions
 autoload -U compinit && compinit
 
-# vcs info
+## vcs info
 autoload -Uz vcs_info
+# Completions }}}
 
-# History
-export HISTFILE=~/.zsh_history
-export HISTSIZE=10000
-export SAVEHIST=$HISTSIZE
-export HISTDUP=erase
-
-# Color man pages
-export MANROFFOPT="-c"
-
-# zshoptions
+# zshoptions {{{
 setopt auto_cd
 setopt extended_glob
 setopt appendhistory
@@ -53,8 +50,10 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 setopt prompt_subst
+# zshoptions }}}
 
-# Completion styling
+# Styling {{{
+## Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu select # tab opens cmp menu
@@ -63,38 +62,33 @@ zstyle ':completion:*' squeeze-slashes false # to allow /*/ expansion
 zstyle 'fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle 'fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-# VCS syling
+## VCS syling
 zstyle ':vcs_info:git*' formats " %F{blue}%b%f %m%u%c %a "
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr ' %F{green}✚%f'
 zstyle ':vcs_info:*' unstagedstr ' %F{red}●%f'
+# Styling }}}
 
-# Aliases
-alias ls='ls --color'
-if which nvim &>/dev/null; then
-  alias vi='nvim'
-  alias vim='nvim'
-else
-  if which vim &>/dev/null; then
-    alias vi='vim'
-  fi
-fi
-alias indent='indent --linux-style --indent-level8 --no-tabs'
-
-# Shell integrations
+# Shell integrations {{{
 if which fzf &>/dev/null; then
   eval "$(fzf --zsh)"
 fi
 if which zoxide &>/dev/null; then
   eval "$(zoxide init --cmd cd zsh)"
 fi
+# Shell integrations }}}
 
+# Functions {{{
 precmd() {
   vcs_info # runs before prompt is displayed
   HOSTNAME=$(hostname | cut -d. -f1)
   printf "\033]0;%s@%s:%s\007" "$USER" "$HOSTNAME" "${PWD/#$HOME/~}"
 }
+# Functions }}}
 
+# Prompt {{{
 PROMPT=$'%F{green}╭─(%F{cyan}%n@%m%F{green})-[%F{white}%~%F{magenta}\${vcs_info_msg_0_}%F{green}]\n%F{green}╰─%# %F{reset}'
+# Prompt }}}
 
+# vim: foldmethod=marker

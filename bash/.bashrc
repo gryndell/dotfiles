@@ -10,23 +10,29 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Aliases {{{
 # Some ls aliases
 alias ls='ls --color=always'
 alias ll='ls -l'
 alias la='ls -Al'
 alias lt='ls -ltr' # Sort by date
+alias l='ls -CF'
 alias labc='ls -lap' # Sort alphabetically, show dotfiles
+
+# Safe cp, mv, and rm
+alias cp='cp -iv'
+alias mv='mv -iv'
+if which trash-put &>/dev/null; then
+  alias rm='trash-put'
+else
+  alias rm='rm -i'
+fi
 
 # Some cd aliases
 alias ..='cd ..'
 alias cd..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-
-# Safe cp, mv, and rm
-alias cp='cp -iv'
-alias mv='mv -iv'
-alias rm='trash-put'
 
 # Show progress when copying large file
 alias cpv='rsync -ah --info=progress2'
@@ -35,21 +41,17 @@ alias cpv='rsync -ah --info=progress2'
 alias grep='grep --color=auto'
 
 # Other aliases
-alias update='sudo dnf offline-upgrade download -y && sudo dnf offline-upgrade reboot'
-alias indent='indent --linux-style --indent-level8 --no-tabs'
-alias luamake=/home/ralph/lua-language-server/3rd/luamake/luamake
-alias lynx='lynx -editor=nvim -vikeys'
-alias wfh='$HOME/bin/wfh_log.sh'
+if which lynx &>/dev/null; then
+  alias lynx='lynx -editor=nvim -vikeys'
+fi
+if which wfh_log.sh &>/dev/null; then
+  alias wfh='$HOME/bin/wfh_log.sh'
+fi
+
 # Switch between vi and emacs input mode
 alias svi='set -o vi'
 alias sem='set -o emacs'
-
-# cdspell
-shopt -s cdspell
-# dirspell
-shopt -s dirspell
-# Auto CD into directories
-shopt -s autocd
+alias indent='indent --linux-style --indent-level8 --no-tabs'
 
 if which nvim &>/dev/null; then
   export EDITOR='nvim'
@@ -63,8 +65,19 @@ else
     alias vi='vim'
   fi
 fi
+# Aliases }}}
 
-# Support colors in less
+# Shell options {{{
+# cdspell
+shopt -s cdspell
+# dirspell
+shopt -s dirspell
+# Auto CD into directories
+shopt -s autocd
+# Shell options }}}
+
+# Exports {{{
+## Support colors in less
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 1)
 export LESS_TERMCAP_md=$(tput bold; tput setaf 1)
 export LESS_TERMCAP_me=$(tput sgr0)
@@ -79,20 +92,32 @@ export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
-# Color man pages
+## Color man pages
 export MANROFFOPT="-c"
 
-# Load Gemini API Key
+## Load Gemini API Key
 if [[ -r $HOME/gemini.key ]]; then
   export GEMINI_API_KEY="$(cat $HOME/gemini.key)"
 fi
 
-# Find string in files
+## Set time format for history
+export HISTCONTROL=ignoreboth
+HISTTIMEFORMAT="%F %T "
+
+## Use vi keybindings
+set -o vi
+
+## Set Ctrl+l to be clear screen a la emacs bindings
+bind -x '"\C-l":clear'
+# Exports }}}
+
+# Functions {{{
+## Find string in files
 fstr() {
   grep -Rnw "." -e "$1"
 }
 
-# Google search and open in lynx
+## Google search and open in lynx
 google() {
     local query="$*"
     if [ -z "$query" ]; then
@@ -102,16 +127,9 @@ google() {
         lynx "https://www.google.com/search?q=$query"
     fi
 }
+# Functions }}}
 
-# Use vi keybindings
-set -o vi
-# Set Ctrl+l to be clear screen a la emacs bindings
-bind -x '"\C-l":clear'
-
-# Set time format for history
-export HISTCONTROL=ignoreboth
-HISTTIMEFORMAT="%F %T "
-
+# Prompt {{{
 PROMPT_COMMAND=__prompt_command     # Function to generate PS1 after CMDs
 
 __prompt_command() {
@@ -133,11 +151,13 @@ __prompt_command() {
 
   PS1+="$RESULT╭─(${CYAN}\u@\h${NORMAL}$RESULT)─[${NORMAL}\w"
   PS1+="$RESULT]\n$RESULT╰─$ ${NORMAL}"
-# PS1="\u@\h:\w \$ "
   printf "\033]0;%s@%s:%s\007" "$USER" "$HOSTNAME" "${PWD/#$HOME/\~}"
 }
+# Prompt }}}
 
+# Use atuin for history search, if installed
 if which atuin &>/dev/null; then
   eval "$(atuin init bash --disable-up-arrow)"
 fi
 
+# vim: foldmethod=marker
