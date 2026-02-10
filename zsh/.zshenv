@@ -136,19 +136,17 @@ alias svi='set -o vi'
 alias sem='set -o emacs'
 alias indent='indent --linux-style --indent-level8 --no-tabs'
 
-## alias vi to nvim or vim
+## alias vim to nvim, if possible
 if which nvim &>/dev/null; then
   export EDITOR='nvim'
   export VISUAL='nvim'
   export GIT_EDITOR="nvim"  # GIT EDITOR
-  alias vi='nvim'
   alias vim='nvim'
 else
   if which vim &>/dev/null; then
     export EDITOR='vim'
     export VISUAL='vim'
     export GIT_EDITOR="vim"  # GIT EDITOR
-    alias vi='vim'
   else
     export EDITOR='vi'
     export VISUAL='vi'
