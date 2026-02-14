@@ -78,6 +78,11 @@ export HISTDUP=erase
 
 ## Color man pages
 export MANROFFOPT="-c"
+
+## Load Gemini API Key
+if [[ -r $HOME/gemini.key ]]; then
+  export GEMINI_API_KEY="$(cat $HOME/gemini.key)"
+fi
 # Exports }}}
 
 # Aliases {{{
