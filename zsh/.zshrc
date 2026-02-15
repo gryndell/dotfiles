@@ -88,7 +88,7 @@ precmd() {
 # Functions }}}
 
 # Prompt {{{
-PROMPT=$'%F{green}╭─(%F{cyan}%n@%m%F{green})-[%F{white}%~%F{magenta}\${vcs_info_msg_0_}%F{green}]\n%F{green}╰─%# %F{reset}'
+PROMPT=$'%F{green}╭─(%F{cyan}%n@%m%F{green})-[%F{white}%~%F{magenta}%F{green}]\n%F{green}╰─%# %F{reset}'
 # Prompt }}}
 
 # vim: foldmethod=marker
