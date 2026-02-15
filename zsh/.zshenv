@@ -139,7 +139,7 @@ fi
 ## Switch between vi and emacs input mode
 alias svi='set -o vi'
 alias sem='set -o emacs'
-alias indent='indent --linux-style --indent-level8 --no-tabs'
+alias indent='indent --linux-style --indent-level8'
 
 ## alias vim to nvim, if possible
 if which nvim &>/dev/null; then
