@@ -80,6 +80,12 @@ fi
 # Shell integrations }}}
 
 # Functions {{{
+## Create a directory and cd into it
+mkcd() {
+  mkdir "$1" && cd "$1"
+}
+
+## Pre-prompt function
 precmd() {
   vcs_info # runs before prompt is displayed
   HOSTNAME=$(hostname | cut -d. -f1)

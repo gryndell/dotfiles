@@ -112,6 +112,11 @@ bind -x '"\C-l":clear'
 # Exports }}}
 
 # Functions {{{
+## Create a directory and cd to it
+mkcd() {
+  mkdir "$1" && cd "$1"
+}
+
 ## Find string in files
 fstr() {
   grep -Rnw "." -e "$1"
