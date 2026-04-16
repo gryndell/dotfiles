@@ -47,6 +47,9 @@ fi
 if which wfh_log.sh &>/dev/null; then
   alias wfh='$HOME/bin/wfh_log.sh'
 fi
+if which bat &>/dev/null; then
+  alias cat='bat -p'
+fi
 
 # Switch between vi and emacs input mode
 alias svi='set -o vi'
