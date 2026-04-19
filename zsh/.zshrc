@@ -71,9 +71,12 @@ zstyle ':vcs_info:*' unstagedstr ' %F{red}●%f'
 # Styling }}}
 
 # Shell integrations {{{
+# Set up fzf key bindings and fuzzy completion
 if which fzf &>/dev/null; then
-  eval "$(fzf --zsh)"
+  source <(fzf --zsh)
 fi
+
+# zoxide
 if which zoxide &>/dev/null; then
   eval "$(zoxide init --cmd cd zsh)"
 fi
