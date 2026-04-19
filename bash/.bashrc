@@ -137,6 +137,13 @@ google() {
 }
 # Functions }}}
 
+# fzf shell integration {{{
+if which fzf &>/dev/null; then
+  # Set up fzf key bindings and fuzzy completion
+  eval "$(fzf --bash)"
+fi
+# fzf shell integration }}}
+
 # Prompt {{{
 PROMPT_COMMAND=__prompt_command     # Function to generate PS1 after CMDs
 
@@ -162,10 +169,5 @@ __prompt_command() {
   printf "\033]0;%s@%s:%s\007" "$USER" "$HOSTNAME" "${PWD/#$HOME/\~}"
 }
 # Prompt }}}
-
-# Use atuin for history search, if installed
-if which atuin &>/dev/null; then
-  eval "$(atuin init bash --disable-up-arrow)"
-fi
 
 # vim: foldmethod=marker
