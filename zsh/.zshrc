@@ -59,8 +59,6 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu select # tab opens cmp menu
 zstyle ':completion:*' special-dirs true # force . and .. to show in cmp menu
 zstyle ':completion:*' squeeze-slashes false # to allow /*/ expansion
-zstyle 'fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle 'fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 ## VCS syling
 zstyle ':vcs_info:git*' formats " %F{blue}%b%f %m%u%c %a "
