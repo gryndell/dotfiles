@@ -68,6 +68,9 @@ else
     alias vi='vim'
   fi
 fi
+
+## Use a prompt with ed
+alias ed='ed -E -p "> " -v'
 # Aliases }}}
 
 # Shell options {{{
