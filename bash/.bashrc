@@ -70,7 +70,7 @@ else
 fi
 
 ## Use a prompt with ed
-alias ed='ed -p "> " -v'
+alias ed='ed -p "> "'
 # Aliases }}}
 
 # Shell options {{{

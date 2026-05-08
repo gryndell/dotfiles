@@ -181,7 +181,7 @@ fi
 alias sed='sed -E'
 
 ## Use a prompt with ed
-alias ed='ed -p "> " -v'
+alias ed='ed -p "> "'
 # Aliases }}}
 
 
