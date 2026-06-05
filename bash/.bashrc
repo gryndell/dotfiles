@@ -115,6 +115,11 @@ set -o vi
 
 ## Set Ctrl+l to be clear screen a la emacs bindings
 bind -x '"\C-l":clear'
+
+## CDPATH
+CDPATH="$HOME:$HOME/Downloads:$HOME/Templates:$HOME/Public:$HOME/Documents"
+CDPATH="$CDPATH:$HOME/Music:$HOME/Pictures:$HOME/Videos"
+
 # Exports }}}
 
 # Functions {{{

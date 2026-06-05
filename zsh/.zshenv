@@ -18,6 +18,10 @@ if [[ -d "$HOME/.cargo/bin" ]]; then
   export PATH="$HOME/.cargo/bin/:$PATH"
 fi
 
+## CDPATH
+CDPATH="$HOME:$HOME/Downloads:$HOME/Templates:$HOME/Public:$HOME/Documents"
+CDPATH="$CDPATH:$HOME/Music:$HOME/Pictures:$HOME/Videos"
+
 ## GOPATH and GOBIN
 if [[ -d "$HOME/go" ]]; then
   export GOPATH=$HOME/go
