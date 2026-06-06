@@ -1,0 +1,63 @@
+# Open document in fit-width mode by default
+set adjust-open "width"
+
+# One page per row by default
+set pages-per-row 1
+
+# Stop at page boundries
+set scroll-page-aware "true"
+set scroll-full-overlap 0.01
+set scroll-step 100
+
+# copy selection to system clipboard
+set selection-clipboard clipboard
+
+# Zoom settings
+set zoom-min 10
+
+# No default gui elements
+# set guioptions ""
+
+# Font
+set font "LiberationSans 20"
+
+# Colors
+# set recolor true
+# set recolor-lightcolor          \#222222
+# set recolor-darkcolor           \#A4DFFF
+# set highlight-color             \#077575
+# set highlight-active-color      \#0BBFBF
+
+set completion-bg               \#222222
+set completion-fg               \#0BBFBF
+set completion-group-bg         \#303030
+set completion-group-fg         \#FCE8C3
+set completion-highlight-bg     \#A4DFFF
+set completion-highlight-fg     \#222222
+
+# set-default-bg                  \#222222
+# set-default-fg                  \#A4DFFF
+
+set inputbar-bg                 \#363636
+set inputbar-fg                 \#0BBFBF
+
+set notification-error-bg       \#222222
+set notification-error-fg       \#FF5F00
+set notification-warning-bg     \#222222
+set notification-warning-fg     \#FBB829
+
+# set tabbar-bg                  \#222222
+# set tabbar-fg                  \#A4DFFF
+# set tabbar-focus-bg            \#222222
+# set tabbar-focus-fg            \#98BC37
+
+set statusbar-bg               \#363636
+set statusbar-fg               \#0BBFBF
+
+# Window
+set window-width 1600
+set window-height 900
+# set sandbox none
+
+# set database null
+set database sqlite
