@@ -108,7 +108,7 @@ fi
 
 ## Set time format for history
 export HISTCONTROL=ignoreboth
-HISTTIMEFORMAT="%F %T "
+export HISTTIMEFORMAT="%F %T "
 
 ## Use vi keybindings
 set -o vi
