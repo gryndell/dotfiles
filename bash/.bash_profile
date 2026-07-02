@@ -8,15 +8,7 @@
 # ~/.bash_profile
 #
 
-export TZ=Australia/Brisbane
-
-if [ -d "$HOME/bin" ]; then
-  PATH="$HOME/bin:$PATH"
+if [[ -f ~/.bashrc ]]; then
+  . ~/.bashrc
 fi
-export PATH
-if [ -f "$HOME/.cargo/env" ]; then
-  . "$HOME/.cargo/env"
-fi
-
-[[ -f ~/.bashrc ]] && . ~/.bashrc
 

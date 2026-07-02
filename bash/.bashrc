@@ -83,6 +83,10 @@ shopt -s autocd
 # Shell options }}}
 
 # Exports {{{
+
+## Set time zone
+export TZ=Australia/Brisbane
+
 ## Support colors in less
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 1)
 export LESS_TERMCAP_md=$(tput bold; tput setaf 1)
@@ -115,6 +119,15 @@ set -o vi
 
 ## Set Ctrl+l to be clear screen a la emacs bindings
 bind -x '"\C-l":clear'
+
+## PATH
+if [[ -d "$HOME/bin" ]]; then
+  PATH="$HOME/bin:$PATH"
+fi
+if [[ -f "$HOME/.cargo/env "]]; then
+  . "$HOME/.cargo/env"
+fi
+export PATH
 
 ## CDPATH
 CDPATH="$HOME:$HOME/Downloads:$HOME/Templates:$HOME/Public:$HOME/Documents"
