@@ -181,9 +181,6 @@ if which tty-clock &>/dev/null; then
   alias tty-clock='tty-clock -bcC5'
 fi
 
-## Always use extended regular expressions
-alias sed='sed -E'
-
 ## Use a prompt with ed
 alias ed='ed -p "> "'
 # Aliases }}}
