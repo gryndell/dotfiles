@@ -124,7 +124,7 @@ bind -x '"\C-l":clear'
 if [[ -d "$HOME/bin" ]]; then
   PATH="$HOME/bin:$PATH"
 fi
-if [[ -f "$HOME/.cargo/env "]]; then
+if [[ -f "$HOME/.cargo/env" ]]; then
   . "$HOME/.cargo/env"
 fi
 export PATH
