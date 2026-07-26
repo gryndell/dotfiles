@@ -1,3 +1,5 @@
-# Linux Dotfiles for fish, kitty, and tmux
+# Various configuration files
 
-Using GNU stow on local machines
+Using GNU stow on local Linux machines.
+
+Manual symbolic links for BSD machines.
