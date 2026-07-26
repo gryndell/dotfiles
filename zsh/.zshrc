@@ -13,15 +13,19 @@ case $OPSYS in
   Linux)
     PLUGDIR="/usr/share"
     ;;
-  FreeBSD)
+  FreeBSD|OpenBSD)
     PLUGDIR="/usr/local/share"
     ;;
   *)
     :
     ;;
 esac
-source ${PLUGDIR}/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ${PLUGDIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ -d "$PLUGDIR/zsh-autosuggestions" ]]; then
+  source ${PLUGDIR}/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+if [[ -d "$PLUGDIR/zsh-syntax-highlighting" ]]; then
+  source ${PLUGDIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 # Plugins }}}
 
 # Keybindings {{{
