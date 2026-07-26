@@ -17,6 +17,9 @@ fi
 if [[ -d "$HOME/.cargo/bin" ]]; then
   export PATH="$HOME/.cargo/bin/:$PATH"
 fi
+if [[ -d "$HOME/.config/emacs/bin" ]]; then
+  export PATH="$HOME/.config/emacs/bin:$PATH"
+fi
 
 ## CDPATH
 CDPATH="$HOME:$HOME/Downloads:$HOME/Templates:$HOME/Public:$HOME/Documents"
