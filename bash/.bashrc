@@ -127,6 +127,9 @@ fi
 if [[ -f "$HOME/.cargo/env" ]]; then
   . "$HOME/.cargo/env"
 fi
+if [[ -d "$HOME/.config/emacs/bin" ]]; then
+  PATH="$HOME/.config/emacs/bin:$PATH"
+fi
 export PATH
 
 ## CDPATH
