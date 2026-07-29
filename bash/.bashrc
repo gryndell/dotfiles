@@ -10,6 +10,42 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Functions {{{
+## Create a directory and cd to it
+mkcd() {
+  mkdir "$1" && cd "$1"
+}
+
+## Find string in files
+fstr() {
+  grep -Rnw "." -e "$1"
+}
+
+## Google search and open in lynx
+google() {
+    local query="$*"
+    if [ -z "$query" ]; then
+        lynx "https://www.google.com"
+    else
+        query=$(echo "$query" | jq -sRr @uri)
+        lynx "https://www.google.com/search?q=$query"
+    fi
+}
+
+## change the current working directory when exiting Yazi
+function y() {
+  if which yazi &>/dev/null; then
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    command yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+    [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+    command rm -f -- "$tmp"
+  else
+    echo "yazi is not installed on this device."
+  fi
+}
+# Functions }}}
+
 # Aliases {{{
 # Some ls aliases
 alias ls='ls --color=always'
@@ -137,29 +173,6 @@ CDPATH="$HOME:$HOME/Downloads:$HOME/Templates:$HOME/Public:$HOME/Documents"
 CDPATH="$CDPATH:$HOME/Music:$HOME/Pictures:$HOME/Videos"
 
 # Exports }}}
-
-# Functions {{{
-## Create a directory and cd to it
-mkcd() {
-  mkdir "$1" && cd "$1"
-}
-
-## Find string in files
-fstr() {
-  grep -Rnw "." -e "$1"
-}
-
-## Google search and open in lynx
-google() {
-    local query="$*"
-    if [ -z "$query" ]; then
-        lynx "https://www.google.com"
-    else
-        query=$(echo "$query" | jq -sRr @uri)
-        lynx "https://www.google.com/search?q=$query"
-    fi
-}
-# Functions }}}
 
 # fzf shell integration {{{
 if which fzf &>/dev/null; then

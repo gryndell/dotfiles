@@ -6,6 +6,33 @@
 # (_)___|___/_| |_|_|  \___|
 #
 
+# Functions {{{
+## Create a directory and cd into it
+mkcd() {
+  mkdir "$1" && cd "$1"
+}
+
+## Pre-prompt function
+precmd() {
+  vcs_info # runs before prompt is displayed
+  HOSTNAME=$(hostname | cut -d. -f1)
+  printf "\033]0;%s@%s:%s\007" "$USER" "$HOSTNAME" "${PWD/#$HOME/~}"
+}
+
+## change the current working directory when exiting Yazi
+function y() {
+  if which yazi &>/dev/null; then
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    command yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+    [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+    command rm -f -- "$tmp"
+  else
+    echo "yazi is not installed on this device."
+  fi
+}
+# Functions }}}
+
 # Plugins {{{
 ## Autosuggestions, Syntax Highlighting
 OPSYS=$(uname)
@@ -83,20 +110,6 @@ if which zoxide &>/dev/null; then
   eval "$(zoxide init --cmd cd zsh)"
 fi
 # Shell integrations }}}
-
-# Functions {{{
-## Create a directory and cd into it
-mkcd() {
-  mkdir "$1" && cd "$1"
-}
-
-## Pre-prompt function
-precmd() {
-  vcs_info # runs before prompt is displayed
-  HOSTNAME=$(hostname | cut -d. -f1)
-  printf "\033]0;%s@%s:%s\007" "$USER" "$HOSTNAME" "${PWD/#$HOME/~}"
-}
-# Functions }}}
 
 # Prompt {{{
 PROMPT=$'%F{green}╭─(%F{cyan}%n@%m%F{green})-[%F{white}%~%F{magenta}%F{green}]\n%F{green}╰─%# %F{reset}'
