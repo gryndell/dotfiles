@@ -112,7 +112,7 @@ fi
 # Shell integrations }}}
 
 # Prompt {{{
-PROMPT=$'%F{green}(%F{cyan}%n@%m%F{blue})[%F{white}%~%F{green}]'
+PROMPT=$'%F{green}(%F{cyan}%n@%m%F{green})[%F{white}%~%F{green}]'
 PROMPT+=$'%(?..%F{red}:%?:)\n%# %F{reset}'
 # Prompt }}}
 
