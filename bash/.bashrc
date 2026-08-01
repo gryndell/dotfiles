@@ -196,14 +196,13 @@ __prompt_command() {
   local CYAN='\[\e[0;36m\]'
 
   if [ $EXIT != 0 ]; then
-    RESULT="${RED}:$EXIT:${NORMAL}"         # Add red if exit code non 0
+    RESULT="${RED}:$EXIT:"          # If exit code not 0
   else
     RESULT=""
   fi
 
   PS1+="$GREEN(${CYAN}\u@\h${NORMAL}$GREEN)[${NORMAL}\w"
-  PS1+="$GREEN]$RESULT\n$GREEN$ ${NORMAL}"
-  printf "\033]0;%s@%s:%s\007" "$USER" "$HOSTNAME" "${PWD/#$HOME/\~}"
+  PS1+="$GREEN]$RESULT\n$ ${NORMAL}"
 }
 # Prompt }}}
 

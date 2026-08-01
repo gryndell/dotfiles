@@ -112,8 +112,8 @@ fi
 # Shell integrations }}}
 
 # Prompt {{{
-PROMPT=$'%F{green}(%F{cyan}%n@%m%F{green})[%F{white}%~%F{magenta}%F{green}]'
-PROMPT+=$'%(?..%F{red}:%?:)%F{green}\n%# %F{reset}'
+PROMPT=$'%F{green}(%F{cyan}%n@%m%F{blue})[%F{white}%~%F{green}]'
+PROMPT+=$'%(?..%F{red}:%?:)\n%# %F{reset}'
 # Prompt }}}
 
 # vim: foldmethod=marker
