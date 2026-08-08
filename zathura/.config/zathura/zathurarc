@@ -56,7 +56,7 @@ set statusbar-fg               \#0BBFBF
 
 # Window
 set window-width 1600
-set window-height 900
+set window-height 1200
 # set sandbox none
 
 # set database null
