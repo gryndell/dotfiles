@@ -160,6 +160,9 @@ bind -x '"\C-l":clear'
 if [[ -d "$HOME/bin" ]]; then
   PATH="$HOME/bin:$PATH"
 fi
+if [[ -d "$HOME/.local/bin" ]]; then
+  PATH="$HOME/.local/bin:$PATH"
+fi
 if [[ -f "$HOME/.cargo/env" ]]; then
   . "$HOME/.cargo/env"
 fi
