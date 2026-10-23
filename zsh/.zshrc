@@ -56,8 +56,8 @@ fi
 # Plugins }}}
 
 # Keybindings {{{
-## Use vim keybindings
-bindkey -v
+## Use emacs keybindings
+bindkey -e
 bindkey '^k' history-search-backward
 bindkey '^j' history-search-forward
 # Keybindings }}}

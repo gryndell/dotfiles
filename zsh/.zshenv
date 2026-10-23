@@ -146,8 +146,8 @@ if which wfh_log.sh &>/dev/null; then
 fi
 
 ## Switch between vi and emacs input mode
-alias svi='set -o vi'
-alias sem='set -o emacs'
+alias svi='bindkey -v'
+alias sem='bindkey -e'
 alias indent='indent --linux-style --indent-level8'
 
 ## alias vim to nvim, if possible
@@ -186,6 +186,9 @@ fi
 
 ## Use a prompt with ed
 alias ed='ed -p "> "'
+
+## Default emacs to terminal mode
+alias emacs='emacs -nw'
 # Aliases }}}
 
 

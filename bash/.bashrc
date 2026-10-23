@@ -107,6 +107,9 @@ fi
 
 ## Use a prompt with ed
 alias ed='ed -p "> "'
+
+## Set emacs to default to terminal mode
+alias emacs='emacs -nw'
 # Aliases }}}
 
 # Shell options {{{
@@ -150,8 +153,8 @@ fi
 export HISTCONTROL=ignoreboth
 export HISTTIMEFORMAT="%F %T "
 
-## Use vi keybindings
-set -o vi
+## Use emacs keybindings
+set -o emacs
 
 ## Set Ctrl+l to be clear screen a la emacs bindings
 bind -x '"\C-l":clear'
