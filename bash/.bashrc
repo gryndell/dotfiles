@@ -152,6 +152,8 @@ fi
 ## Set time format for history
 export HISTCONTROL=ignoreboth
 export HISTTIMEFORMAT="%F %T "
+export HISTSIZE=10000
+export HISTFILESIZE=10000
 
 ## Use emacs keybindings
 set -o emacs
