@@ -119,6 +119,8 @@ shopt -s cdspell
 shopt -s dirspell
 # Auto CD into directories
 shopt -s autocd
+# Append to history
+shopt -s histappend
 # Shell options }}}
 
 # Exports {{{
@@ -150,7 +152,7 @@ if [[ -r $HOME/gemini.key ]]; then
 fi
 
 ## Set time format for history
-export HISTCONTROL=ignoreboth
+export HISTCONTROL=ignoreboth:erasedups
 export HISTTIMEFORMAT="%F %T "
 export HISTSIZE=10000
 export HISTFILESIZE=10000
