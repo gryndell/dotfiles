@@ -160,8 +160,8 @@ export HISTFILESIZE=10000
 ## Use emacs keybindings
 set -o emacs
 
-## Set Ctrl+l to be clear screen a la emacs bindings
-bind -x '"\C-l":clear'
+# ## Set Ctrl+l to be clear screen a la emacs bindings
+# bind -x '"\C-l":clear'
 
 ## PATH
 if [[ -d "$HOME/bin" ]]; then
