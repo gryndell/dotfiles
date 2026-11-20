@@ -37,20 +37,20 @@ function y() {
 ## Autosuggestions, Syntax Highlighting
 OPSYS=$(uname)
 case $OPSYS in
-  Linux)
+  "Linux")
     PLUGDIR="/usr/share"
     ;;
-  FreeBSD|OpenBSD)
+  "FreeBSD"|"OpenBSD")
     PLUGDIR="/usr/local/share"
     ;;
   *)
     :
     ;;
 esac
-if [[ -d "$PLUGDIR/zsh-autosuggestions" ]]; then
+if [[ -d "${PLUGDIR}/zsh-autosuggestions" ]]; then
   source ${PLUGDIR}/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
-if [[ -d "$PLUGDIR/zsh-syntax-highlighting" ]]; then
+if [[ -d "${PLUGDIR}/zsh-syntax-highlighting" ]]; then
   source ${PLUGDIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 # Plugins }}}
