@@ -68,6 +68,11 @@ autoload -U compinit && compinit
 
 ## vcs info
 autoload -Uz vcs_info
+
+## Edit command line
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
 # Completions }}}
 
 # zshoptions {{{
