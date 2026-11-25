@@ -78,6 +78,16 @@
   :mode ("\\.md\\'" . markdown-mode)
   :init (setq markdown-command "pandoc")) ; Or "multimarkdown" / "markdown"
 
+;; 11. Stop italicising comments
+(set-face-attribute 'font-lock-comment-face nil :slant 'normal)
+
+;; 12. Tabs vs Spaces; Tabs
+(setq-default indent-tabs-mode t)
+(setq-default tab-width 8) ; Visual width of a \t character
+
+;; Language-specific offsets must match tab-width to avoid mixing in spaces
+(setq-default c-basic-offset 8)
+
 ;;; init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
