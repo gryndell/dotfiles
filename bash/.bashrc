@@ -151,6 +151,11 @@ if [[ -r $HOME/gemini.key ]]; then
   export GEMINI_API_KEY="$(cat $HOME/gemini.key)"
 fi
 
+## Load Claude API Key
+if [[ -r $HOME/claude.key ]]; then
+    export CLAUDE_API_KEY="$(cat $HOME/claude.key)"
+fi
+
 ## Set time format for history
 export HISTCONTROL=ignoreboth:erasedups
 export HISTTIMEFORMAT="%F %T "
